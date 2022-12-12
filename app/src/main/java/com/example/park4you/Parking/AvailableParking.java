@@ -30,10 +30,11 @@ public class AvailableParking extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.available_parking);
-        TextView textViewCityName = findViewById(R.id.cityName);
-        String cityName = getIntent().getExtras().getString("City Name");
-        textViewCityName.setText("Available Parking In " + cityName);
-        TextView textViewDetails = findViewById(R.id.parkingDetails);
+
+//        TextView textViewCityName = findViewById(R.id.cityName);
+//        String cityName = getIntent().getExtras().getString("City Name");
+//        textViewCityName.setText("Available Parking In " + cityName);
+//        TextView textViewDetails = findViewById(R.id.parkingDetails);
 
     }
 

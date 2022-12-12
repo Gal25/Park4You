@@ -24,6 +24,7 @@ public class RentUser extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.rent_user);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         databaseReference = FirebaseDatabase.getInstance().getReference();
         phoneNumText = findViewById(R.id.PhoneNumber);
         cityText = findViewById(R.id.City);
@@ -61,4 +62,5 @@ public class RentUser extends AppCompatActivity {
                 Toast.makeText(RentUser.this, "Data Saved", Toast.LENGTH_SHORT).show();
             }
         });
-}}
+}
+}

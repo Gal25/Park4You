@@ -45,6 +45,7 @@ public class ParkingList extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.parking_list);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         recyclerView = findViewById(R.id.parkingList);
         database = FirebaseDatabase.getInstance().getReference().child("Addresses");
         recyclerView.setHasFixedSize(true);
@@ -94,10 +95,6 @@ public class ParkingList extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
 
-//                System.out.println("city " + city);
-//                String id = database.child(city).getKey();
-//                System.out.println("id " + id);
-//                assert id != null;
                 database.child(city).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
