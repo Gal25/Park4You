@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "659107237969",
+    "project_id": "park4you-145c4",
+    "storage_bucket": "park4you-145c4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:659107237969:android:aac19b21cceb9e53aaa870",
+        "android_client_info": {
+          "package_name": "com.example.park4you"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "659107237969-v039961avul3ah12sk7jk361dg2nnbuk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.park4you",
+            "certificate_hash": "2a616f62c79e5245d216cc8513d889e2a5608187"
+          }
+        },
+        {
+          "client_id": "659107237969-k9ltdlf1pm0obbvfqmvijbd4d6to1969.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcyg_bmMSsF0_yrCyKV79D9TjvhBjUKB0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "659107237969-k9ltdlf1pm0obbvfqmvijbd4d6to1969.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

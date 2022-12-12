@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Location.Location"
+    android:background="@drawable/backround">
+
+    <EditText
+        android:id="@+id/location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:hint="Choose Location"
+        android:textSize="20dp"
+        android:textColorHint="@color/white"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="250dp" />
+
+    <Button
+        android:id="@+id/proceedButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/location"
+        android:layout_centerInParent="true"
+        android:onClick="proceedButton"
+        android:text="Proceed"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="341dp" />
+
+
+    <Button
+        android:id="@+id/Rent"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:text="Rent Your Parking"
+        android:onClick="rentButton"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/ProfileUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="145dp"
+        android:layout_toRightOf="@id/Rent"
+        android:onClick="ProfileUser"
+        android:text="Profile User" />
+
+</RelativeLayout>

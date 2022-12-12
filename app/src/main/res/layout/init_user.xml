@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".User.UserDB">
+
+    <EditText
+        android:id="@+id/NameNewUser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/EmailNewUser"
+        android:hint="Name" />
+
+    <EditText
+        android:id="@+id/EmailNewUser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:hint="Email" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/passwordUser"
+        android:hint="Password"
+        android:layout_below="@id/EmailNewUser"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/PhoneNumberuUser"
+        android:hint="Phone Number"
+        android:layout_below="@id/passwordUser"/>
+    <Button
+        android:id="@+id/LogInButton"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:background="#DDDCDC"
+        android:layout_centerInParent="true"
+        android:layout_below="@+id/PhoneNumberuUser"
+        android:onClick="registerButton"
+        android:text="Register"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="112dp"
+        tools:layout_editor_absoluteY="636dp" />
+
+
+</RelativeLayout>

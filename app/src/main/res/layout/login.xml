@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginUser.Login"
+    android:id="@+id/container"
+    android:background="@drawable/backround">
+
+
+
+    <EditText
+        android:id="@+id/EmailNewUser"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginTop="400dp"
+        android:layout_marginBottom="40dp"
+        android:hint="Email"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="497dp" />
+
+    <Button
+        android:id="@+id/LogInButton"
+        android:layout_width="160dp"
+        android:layout_height="70dp"
+        android:layout_below="@+id/PasswordLogIn"
+        android:layout_centerInParent="true"
+        android:background="#DDDCDC"
+        android:onClick="regButton"
+        android:text="Log in"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="112dp"
+        tools:layout_editor_absoluteY="636dp" />
+
+    <Button
+        android:id="@+id/new_user"
+        android:layout_width="177dp"
+        android:layout_height="130dp"
+        android:background="#DDDCDC"
+        android:onClick="newUserButton"
+        android:text="new user"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="112dp"
+        tools:layout_editor_absoluteY="636dp" />
+
+    <EditText
+        android:id="@+id/PasswordLogIn"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginTop="500dp"
+        android:layout_marginBottom="40dp"
+        android:ems="10"
+        android:textColor="@color/white"
+        android:inputType="textPassword"
+        android:hint="Password"
+        android:textColorHint="@color/white"
+        android:textSize="34sp"
+        android:textStyle="bold"
+    />
+
+</RelativeLayout>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RentUser.RentUser">
+
+    <EditText
+        android:id="@+id/PhoneNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/City"
+        android:hint="Phone Number" />
+
+    <EditText
+        android:id="@+id/City"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:hint="City" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/Street"
+        android:hint="Street"
+        android:layout_below="@id/City"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/HouseNumber"
+        android:hint="House Number"
+        android:layout_below="@id/Street"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/AvailableHours"
+        android:hint="Available Hours"
+        android:layout_below="@id/HouseNumber"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/Price"
+        android:hint="Price Per Hour"
+        android:layout_below="@id/AvailableHours"/>
+
+    <Button
+        android:id="@+id/LogInButton"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/Price"
+        android:background="#DDDCDC"
+        android:text="Publish"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:onClick="publishButton"
+        android:layout_centerInParent="true"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="112dp"
+        tools:layout_editor_absoluteY="636dp" />
+
+
+
+
+
+
+
+</RelativeLayout>
