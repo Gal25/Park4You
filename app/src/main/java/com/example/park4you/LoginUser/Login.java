@@ -3,6 +3,7 @@ package com.example.park4you.LoginUser;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.accounts.AccountManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -37,6 +38,7 @@ public class Login extends AppCompatActivity {
         passwordEditText = findViewById(R.id.PasswordLogIn);
         textEmail = findViewById(R.id.EmailNewUser);
         mAuth= FirebaseAuth.getInstance();
+
     }
     private void loginUserAccount() {
 
@@ -67,6 +69,7 @@ public class Login extends AppCompatActivity {
     }
 
     public void regButton(View view){
+
         loginUserAccount();
 
     }

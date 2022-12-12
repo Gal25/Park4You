@@ -6,18 +6,46 @@ public class Parking {
     int houseNum;
     double price;
     String avHours;
-    long ownerPhoneNum;
+//    long ownerPhoneNum;
+    String Email;
     String id;
-    long renterPhoneNum;
 
 
-    public Parking(String city, String street, int houseNum, double price, String avHours, long ownerPhoneNum, String ID) {
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public void setHouseNum(int houseNum) {
+        this.houseNum = houseNum;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public void setAvHours(String avHours) {
+        this.avHours = avHours;
+    }
+
+    public void setEmail(String email) {
+        Email = email;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public Parking(String city, double price, String street, String avHours, String ID, String Email, int houseNum) {
         this.city = city;
         this.street = street;
         this.houseNum = houseNum;
         this.price = price;
         this.avHours = avHours;
-        this.ownerPhoneNum = ownerPhoneNum;
+        this.Email = Email;
         this.id=ID;
     }
 
@@ -44,12 +72,16 @@ public class Parking {
         return avHours;
     }
 
-    public long getPhoneNum() {
-        return ownerPhoneNum;
-    }
+//    public long getPhoneNum() {
+//        return ownerPhoneNum;
+//    }
 
     public String getid() {
         return id;
+    }
+
+    public String getEmail() {
+        return Email;
     }
 
     @Override
@@ -60,9 +92,8 @@ public class Parking {
                 ", houseNum=" + houseNum +
                 ", price=" + price +
                 ", avHours='" + avHours + '\'' +
-                ", ownerPhoneNum=" + ownerPhoneNum +
                 ", id='" + id + '\'' +
-                ", renterPhoneNum=" + renterPhoneNum +
+                ", email=" + Email +
                 '}';
     }
 }

@@ -7,11 +7,11 @@
     tools:context=".RentUser.RentUser">
 
     <EditText
-        android:id="@+id/PhoneNumber"
+        android:id="@+id/Email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@id/City"
-        android:hint="Phone Number" />
+        android:hint="Email" />
 
     <EditText
         android:id="@+id/City"

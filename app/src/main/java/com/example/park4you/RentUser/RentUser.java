@@ -3,6 +3,7 @@ package com.example.park4you.RentUser;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -19,14 +20,15 @@ import java.util.HashMap;
 public class RentUser extends AppCompatActivity {
 
     private DatabaseReference databaseReference;
-    private EditText phoneNumText, cityText, streetText, houseNumText, avHoursText,priceText;
+    private EditText EmailText, cityText, streetText, houseNumText, avHoursText,priceText;
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.rent_user);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         databaseReference = FirebaseDatabase.getInstance().getReference();
-        phoneNumText = findViewById(R.id.PhoneNumber);
+        EmailText = findViewById(R.id.Email);
         cityText = findViewById(R.id.City);
         streetText = findViewById(R.id.Street);
         houseNumText = findViewById(R.id.HouseNumber);
@@ -46,7 +48,7 @@ public class RentUser extends AppCompatActivity {
         int houseNum = Integer.parseInt(houseNumText.getText().toString());
         double price = Double.parseDouble(priceText.getText().toString());
         String avHours = avHoursText.getText().toString();
-        String phoneNum = phoneNumText.getText().toString();
+        String email = EmailText.getText().toString();
         HashMap<String, Object> hashMap = new HashMap<>();
         hashMap.put("id", key);
         hashMap.put("avHours", avHours);
@@ -54,7 +56,7 @@ public class RentUser extends AppCompatActivity {
         hashMap.put("houseNum", houseNum);
         hashMap.put("price", price);
         hashMap.put("street", street);
-        hashMap.put("phoneNum", phoneNum);
+        hashMap.put("email", email);
         assert key != null;
         reference.child(city).child(key).setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override

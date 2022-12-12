@@ -146,6 +146,32 @@
                     android:textSize="20sp"/>
 
             </LinearLayout>
+
+            <LinearLayout
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Email:"
+                    android:textColor="@color/black"
+                    android:textSize="26sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textEmail"
+                    android:layout_marginLeft="8dp"
+                    android:text="email"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"/>
+
+            </LinearLayout>
             <LinearLayout
 
                 android:layout_width="wrap_content"
@@ -171,31 +197,7 @@
                     android:textSize="20sp"/>
 
             </LinearLayout>
-            <LinearLayout
 
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Owner Phone Number:"
-                    android:textColor="@color/black"
-                    android:textSize="26sp"
-                    android:textStyle="bold"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/textPhoneNum"
-                    android:layout_marginLeft="8dp"
-                    android:text="Phone"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"/>
-
-            </LinearLayout>
 
             <Button
                 android:id="@+id/rentButton"

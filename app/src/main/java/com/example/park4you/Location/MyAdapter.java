@@ -38,7 +38,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         holder.houseNumber.setText(Integer.toString(parking.getHouseNum()));
         holder.avHours.setText(parking.getAvHours());
         holder.pricePerHour.setText(Double.toString(parking.getPrice()));
-        holder.phoneNumber.setText(Long.toString(parking.getPhoneNum()));
+        holder.email.setText(parking.getEmail());
         holder.id.setText(parking.getid());
     }
 
@@ -48,7 +48,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
-        TextView cityName, streetName, houseNumber, avHours, pricePerHour, phoneNumber, id;
+        TextView cityName, streetName, houseNumber, avHours, pricePerHour, email, id;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -57,7 +57,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             houseNumber = itemView.findViewById(R.id.textHouseNum);
             avHours = itemView.findViewById(R.id.textAvailableHours);
             pricePerHour = itemView.findViewById(R.id.textPrice);
-            phoneNumber = itemView.findViewById(R.id.textPhoneNum);
+            email = itemView.findViewById(R.id.textEmail);
             id = itemView.findViewById(R.id.id);
         }
     }
