@@ -39,6 +39,7 @@ public class ParkingList extends AppCompatActivity {
     Button rentButt;
     String name;
     String city;
+    int pos = 0;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,8 +65,6 @@ public class ParkingList extends AppCompatActivity {
 //                    if (dataSnapshot.exists()) {
                     Parking parking = dataSnapshot.getValue(Parking.class);
                     list.add(parking);
-                    System.out.println("62!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-                    System.out.println("62 : parking " + parking);
 //                    }
                 }
                 myAdapter.notifyDataSetChanged();
@@ -79,8 +78,8 @@ public class ParkingList extends AppCompatActivity {
         textView = findViewById(R.id.textCity);
         city = textView.getText().toString();
         TextView textID = findViewById(R.id.id);
-        String ID = textID.getText().toString();
-        System.out.println("id " + ID);
+        String id = textID.getText().toString();
+        System.out.println("id " + id);
 //        String avHours = findViewById(R.id.textAvailableHours).toString();
 //        int houseNum = Integer.parseInt(findViewById(R.id.textHouseNum).toString());
 //        int houseNum = Integer.parseInt(findViewById(R.id.textHouseNum).toString());
@@ -91,7 +90,6 @@ public class ParkingList extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Rent Confirmation");
         builder.setMessage("Are you sure you want to rent this parking?");
-//        builder.setPositiveButton("Yes", null);
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
@@ -107,36 +105,20 @@ public class ParkingList extends AppCompatActivity {
                             System.out.println(dataSnapshot.getKey());
                             Parking park = dataSnapshot.getValue(Parking.class);
                             assert park != null;
-                            if (park.getid().equals(ID)) {
+                            if (park.getid().equals(id)) {
+                                pos = list.indexOf(park);
                                 dataSnapshot.getRef().removeValue();
-//                                database.child(city).child(park.getStreet()).removeValue();
-//                            dataSnapshot.getRef().removeValue();
+                                list.remove(pos);
+                                myAdapter.notifyItemRemoved(pos);
+                                }
                             }
                         }
-                    }
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
 
                     }
                 });
-//                DatabaseReference dR = FirebaseDatabase.getInstance().getReference("Addresses").child(p.getNomPlace());
-//                dR.removeValue();
-//                Query query = database.orderByChild("city").equalTo(city);
-//                query.addListenerForSingleValueEvent(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                        for(DataSnapshot dataSnapshot : snapshot.getChildren()){
-//                            System.out.println("datasnap ");
-////                            dataSnapshot.getRef().removeValue();
-//                        }
-//                    }
-
-//                    @Override
-//                    public void onCancelled(@NonNull DatabaseError error) {
-//                        Log.e(TAG, "onCancelled", error.toException());
-//                    }
-//                });
             }
         });
         builder.setNegativeButton("No", null);

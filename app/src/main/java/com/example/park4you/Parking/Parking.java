@@ -52,15 +52,17 @@ public class Parking {
         return id;
     }
 
-//    @Override
-//    public String toString() {
-//        return "Parking{" +
-//                "city='" + city + '\'' +
-//                ", street='" + street + '\'' +
-//                ", houseNum=" + houseNum +
-//                ", price=" + price +
-//                ", avHours='" + avHours + '\'' +
-//                ", phoneNum=" + ownerPhoneNum +
-//                '}';
-//    }
+    @Override
+    public String toString() {
+        return "Parking{" +
+                "city='" + city + '\'' +
+                ", street='" + street + '\'' +
+                ", houseNum=" + houseNum +
+                ", price=" + price +
+                ", avHours='" + avHours + '\'' +
+                ", ownerPhoneNum=" + ownerPhoneNum +
+                ", id='" + id + '\'' +
+                ", renterPhoneNum=" + renterPhoneNum +
+                '}';
+    }
 }
