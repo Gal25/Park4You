@@ -12,6 +12,10 @@
         app:showAsAction= "never"/>
 
     <item android:id = "@+id/item3"
-        android:title="Item3"
+        android:title="Choose Parking"
+        app:showAsAction= "never"/>
+
+    <item android:id = "@+id/item4"
+        android:title="Add a new parking"
         app:showAsAction= "never"/>
 </menu>

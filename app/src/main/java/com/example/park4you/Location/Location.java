@@ -1,11 +1,16 @@
 package com.example.park4you.Location;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.park4you.Parking.ParkingList;
 import com.example.park4you.R;
@@ -36,5 +41,37 @@ public class Location extends AppCompatActivity {
     public void ProfileUser(View view){
         Intent intent = new Intent(Location.this, UserProfile.class);
         startActivity(intent);
+    }
+
+
+    //menu
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.item2:
+                Intent intent = new Intent(Location.this, UserProfile.class);
+                startActivity(intent);
+                return true;
+            case R.id.item3:
+                Intent intent1 = new Intent(this, Location.class);
+                startActivity(intent1);
+                return true;
+            case R.id.item4:
+                Intent intent2 = new Intent(this, RentUser.class);
+                startActivity(intent2);
+                return true;
+
+            default: return super.onOptionsItemSelected(item);
+        }
+
     }
 }
