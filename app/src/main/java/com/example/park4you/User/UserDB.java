@@ -36,6 +36,7 @@ public class UserDB extends AppCompatActivity {
     private String email;
     private String password;
     private User user;
+    private String id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,9 +54,10 @@ public class UserDB extends AppCompatActivity {
     public void registerButton(View view){
         String username = textName.getText().toString();
         String phone = textPhone.getText().toString();
+        id = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
         email = textEmail.getText().toString();
         password = passwordEditText.getText().toString();
-        user = new User(email, username,password, phone);
+        user = new User(email, username,password, phone, id);
         registerUser();
 
     }
@@ -81,8 +83,8 @@ public class UserDB extends AppCompatActivity {
                 });
     }
     public void updateUI() {
-        String userid = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
-        mDatabase.child(userid).setValue(user);
+//        String userid = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
+        mDatabase.child(id).setValue(user);
         Intent loginIntent = new Intent(this, Login.class);
         startActivity(loginIntent);
     }

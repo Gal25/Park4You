@@ -1,9 +1,11 @@
 package com.example.park4you.Location;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -22,7 +24,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         this.context = context;
         this.list = list;
     }
-
+//    public Context getContext() {
+//        return context;
+//    }
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -31,7 +35,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, @SuppressLint("RecyclerView") int position) {
         Parking parking = list.get(position);
         holder.cityName.setText(parking.getCity());
         holder.streetName.setText(parking.getStreet());
@@ -49,7 +53,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
         TextView cityName, streetName, houseNumber, avHours, pricePerHour, email, id;
-
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             cityName = itemView.findViewById(R.id.textCity);
@@ -58,7 +61,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             avHours = itemView.findViewById(R.id.textAvailableHours);
             pricePerHour = itemView.findViewById(R.id.textPrice);
             email = itemView.findViewById(R.id.textEmail);
-            id = itemView.findViewById(R.id.id);
+            id = itemView.findViewById(R.id.park_id);
         }
     }
 

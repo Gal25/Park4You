@@ -1,5 +1,7 @@
 package com.example.park4you.Parking;
 
+import java.util.Objects;
+
 public class Parking {
     String city;
     String street;
@@ -84,6 +86,15 @@ public class Parking {
         return Email;
     }
 
+    @Override
+    public boolean equals(Object obj)
+    {
+        if (obj == null)
+            return false;
+        if (obj == this)
+            return true;
+        return Objects.equals(this.getid(), ((Parking) obj).getid());
+    }
     @Override
     public String toString() {
         return "Parking{" +

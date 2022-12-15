@@ -10,6 +10,7 @@ public class User {
     String email;
     String UserName;
     String phoneNum;
+    String id;
     private String password;
     public List<Order> Orders;
 
@@ -28,11 +29,12 @@ public class User {
         this.password = password;
     }
 
-    public User(String email, String UserName, String password, String phoneNum) {
+    public User(String email, String UserName, String password, String phoneNum, String id) {
         this.email = email;
         this.UserName = UserName;
         this.phoneNum = phoneNum;
         this.password = password;
+        this.id = id;
 
     }
     public User(String email, String UserName,  String phoneNum) {
@@ -86,4 +88,11 @@ public class User {
 
     }
 
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getId() {
+        return this.id;
+    }
 }

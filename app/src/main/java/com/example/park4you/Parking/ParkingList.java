@@ -20,11 +20,17 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.park4you.Location.Location;
+import com.example.park4you.Order.customers_orders;
+import com.example.park4you.Order.owners_orders;
 import com.example.park4you.Location.MyAdapter;
 import com.example.park4you.R;
 import com.example.park4you.RentUser.RentUser;
+import com.example.park4you.User.UserProfile;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -41,10 +47,9 @@ public class ParkingList extends AppCompatActivity {
     MyAdapter myAdapter;
     ArrayList<Parking> list;
     TextView textView;
-    Button rentButt;
-    String name;
     String city;
-    int pos = 0;
+    customers_orders customers_orders;
+    owners_orders owners_orders;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,23 +60,19 @@ public class ParkingList extends AppCompatActivity {
         database = FirebaseDatabase.getInstance().getReference().child("Addresses");
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        customers_orders = new customers_orders();
+        owners_orders = new owners_orders();
         list = new ArrayList<>();
         myAdapter = new MyAdapter(this,list);
         recyclerView.setAdapter(myAdapter);
-//        TextView textV = findViewById(R.id.id);
         String cityName = getIntent().getStringExtra("City Name");
-//        String email = getIntent().getStringExtra("Email");
-//        String Key = textV.getText().toString();
         database.child(cityName).addValueEventListener(new ValueEventListener() {
-            //            @SuppressLint("NotifyDataSetChanged")
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()) {
-//                    if (dataSnapshot.exists()) {
                     Parking parking = dataSnapshot.getValue(Parking.class);
                     list.add(parking);
-//                    }
                 }
                 myAdapter.notifyDataSetChanged();
             }
@@ -83,16 +84,10 @@ public class ParkingList extends AppCompatActivity {
     public void rentButton(View view){
         textView = findViewById(R.id.textCity);
         city = textView.getText().toString();
-        TextView textID = findViewById(R.id.id);
-        String id = textID.getText().toString();
-        System.out.println("id " + id);
-//        String avHours = findViewById(R.id.textAvailableHours).toString();
-//        int houseNum = Integer.parseInt(findViewById(R.id.textHouseNum).toString());
-//        int houseNum = Integer.parseInt(findViewById(R.id.textHouseNum).toString());
-//        String phoneNum = findViewById(R.id.textPhoneNum).toString();
-//        int price = Integer.parseInt(findViewById(R.id.textPrice).toString());
-//        Parking p = new Parking(city, street, houseNum, price, avHours, phoneNum);
-//        list.setOnItemLongClickListener()
+        View v2 =recyclerView.findContainingItemView(view);
+        assert v2 != null;
+        textView = v2.findViewById(R.id.park_id);
+        String id = textView.getText().toString();
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Rent Confirmation");
         builder.setMessage("Are you sure you want to rent this parking?");
@@ -101,24 +96,33 @@ public class ParkingList extends AppCompatActivity {
             public void onClick(DialogInterface dialogInterface, int i) {
 
                 database.child(city).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @SuppressLint("NotifyDataSetChanged")
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         for(DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                            System.out.println(dataSnapshot.getKey());
                             Parking park = dataSnapshot.getValue(Parking.class);
+                            int pos=0;
                             assert park != null;
                             if (park.getid().equals(id)) {
-                                pos = list.indexOf(park);
+                                customers_orders.create_order(park);
+                                owners_orders.create_order(park);
+                                for (int i = 0; i < list.size(); i++){
+                                    if (list.get(i).equals(park)){
+                                        pos = i;
+                                    }
+                                }
                                 dataSnapshot.getRef().removeValue();
                                 list.remove(pos);
                                 myAdapter.notifyItemRemoved(pos);
-                                }
+                                break;
                             }
+                            Intent intent = new Intent(ParkingList.this, Location.class);
+                            startActivity(intent);
                         }
-
+                    }
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-
+                        Toast.makeText(ParkingList.this, "Cancelled", Toast.LENGTH_SHORT).show();
                     }
                 });
             }
@@ -126,34 +130,5 @@ public class ParkingList extends AppCompatActivity {
         builder.setNegativeButton("No", null);
         AlertDialog dialog = builder.create();
         dialog.show();
-    }
-    public void newParking(Parking p) {
-        DatabaseReference reference_ow = FirebaseDatabase.getInstance().getReference("Owner Parking");
-        DatabaseReference reference_cus = FirebaseDatabase.getInstance().getReference("Customer`s Parking");
-        AccountManager am = AccountManager.get(this); // "this" references the current Context
-        System.out.println("am " + am);
-//        System.out.println(this.);
-//        String city = cityText.getText().toString();
-//        String key = reference.child(city).push().getKey();
-//        String street = streetText.getText().toString();
-//        int houseNum = Integer.parseInt(houseNumText.getText().toString());
-//        double price = Double.parseDouble(priceText.getText().toString());
-//        String avHours = avHoursText.getText().toString();
-//        String phoneNum = phoneNumText.getText().toString();
-//        HashMap<String, Object> hashMap = new HashMap<>();
-//        hashMap.put("id", key);
-//        hashMap.put("avHours", avHours);
-//        hashMap.put("city", city);
-//        hashMap.put("houseNum", houseNum);
-//        hashMap.put("price", price);
-//        hashMap.put("street", street);
-//        hashMap.put("phoneNum", phoneNum);
-//        assert key != null;
-//        reference.child(city).child(key).setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
-//            @Override
-//            public void onComplete(@NonNull Task<Void> task) {
-//                Toast.makeText(RentUser.this, "Data Saved", Toast.LENGTH_SHORT).show();
-//            }
-//        });
     }
 }

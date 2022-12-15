@@ -69,7 +69,6 @@ public class Login extends AppCompatActivity {
     }
 
     public void regButton(View view){
-
         loginUserAccount();
 
     }
