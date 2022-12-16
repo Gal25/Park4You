@@ -31,7 +31,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/textCity"
+                android:id="@+id/textCityU"
                 android:layout_marginLeft="8dp"
                 android:text="City"
                 android:textColor="@color/black"
@@ -56,7 +56,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/textStreet"
+                android:id="@+id/textStreetU"
                 android:layout_marginLeft="8dp"
                 android:text="Street"
                 android:textColor="@color/black"
@@ -90,7 +90,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/textHouseNum"
+                android:id="@+id/textHouseNumU"
                 android:layout_marginLeft="8dp"
                 android:text="House Number"
                 android:textColor="@color/black"
@@ -115,7 +115,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/textAvailableHours"
+                android:id="@+id/textAvailableHoursU"
                 android:layout_marginLeft="8dp"
                 android:text="Hours"
                 android:textColor="@color/black"
@@ -141,7 +141,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/textEmail"
+                android:id="@+id/textEmailU"
                 android:layout_marginLeft="8dp"
                 android:text="email"
                 android:textColor="@color/black"
@@ -166,7 +166,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/textPrice"
+                android:id="@+id/textPriceU"
                 android:layout_marginLeft="8dp"
                 android:text="Price"
                 android:textColor="@color/black"

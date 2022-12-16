@@ -10,7 +10,7 @@ public class Parking {
     String avHours;
     String email;
     String id;
-    String custEmail;
+//    String custEmail;
 
     public void setCity(String city) {
         this.city = city;
@@ -33,22 +33,22 @@ public class Parking {
     }
 
     public void setEmail(String email) {
-        email = email;
+        this.email = email;
     }
 
     public void setId(String id) {
         this.id = id;
     }
 
-    public Parking(String city, double price, String street, String avHours, String id, String Email, int houseNum, String custEmail) {
+    public Parking(String city, double price, String street, String avHours, String id, String email, int houseNum) {
         this.city = city;
         this.street = street;
         this.houseNum = houseNum;
         this.price = price;
         this.avHours = avHours;
-        this.email = Email;
+        this.email = email;
         this.id=id;
-        this.custEmail = custEmail;
+//        this.custEmail = custEmail;
     }
 
     public Parking(){
@@ -86,9 +86,9 @@ public class Parking {
         return email;
     }
 
-    public String getCustEmail() {
-        return custEmail;
-    }
+//    public String getCustEmail() {
+//        return custEmail;
+//    }
 
     @Override
     public boolean equals(Object obj)

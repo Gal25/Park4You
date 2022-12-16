@@ -71,6 +71,7 @@ public class ParkingList extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    System.out.println(dataSnapshot);
                     Parking parking = dataSnapshot.getValue(Parking.class);
                     list.add(parking);
                 }

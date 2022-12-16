@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.park4you.Location.MyAdapter;
+import com.example.park4you.Order.Order;
 import com.example.park4you.Parking.Parking;
 import com.example.park4you.R;
 import android.content.Context;
@@ -17,9 +18,9 @@ import java.util.ArrayList;
 
 public class UserParkingsAdapter extends RecyclerView.Adapter<UserParkingsAdapter.MyViewHolder>{
     Context context;
-    ArrayList<Parking> list;
+    ArrayList<Order> list;
 
-    public UserParkingsAdapter(Context context, ArrayList<Parking> list) {
+    public UserParkingsAdapter(Context context, ArrayList<Order> list) {
         this.context = context;
         this.list = list;
     }
@@ -33,13 +34,13 @@ public class UserParkingsAdapter extends RecyclerView.Adapter<UserParkingsAdapte
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        Parking parking = list.get(position);
-        holder.cityName.setText(parking.getCity());
-        holder.streetName.setText(parking.getStreet());
-        holder.houseNumber.setText(Integer.toString(parking.getHouseNum()));
-        holder.avHours.setText(parking.getAvHours());
-        holder.pricePerHour.setText(Double.toString(parking.getPrice()));
-        holder.email.setText(parking.getEmail());
+        Order order = list.get(position);
+        holder.cityName.setText(order.getCity());
+        holder.streetName.setText(order.getStreet());
+        holder.houseNumber.setText(Integer.toString(order.getHouseNum()));
+        holder.avHours.setText(order.getAvHours());
+        holder.pricePerHour.setText(Double.toString(order.getPrice()));
+        holder.ownerEmail.setText(order.getOwnerEmail());
     }
 
     @Override
@@ -49,15 +50,16 @@ public class UserParkingsAdapter extends RecyclerView.Adapter<UserParkingsAdapte
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
 
-        TextView cityName, streetName, houseNumber, avHours, pricePerHour, email, id;
+        TextView cityName, streetName, houseNumber, avHours, pricePerHour, ownerEmail;
+
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            cityName = itemView.findViewById(R.id.textCity);
-            streetName = itemView.findViewById(R.id.textStreet);
-            houseNumber = itemView.findViewById(R.id.textHouseNum);
-            avHours = itemView.findViewById(R.id.textAvailableHours);
-            pricePerHour = itemView.findViewById(R.id.textPrice);
-            email = itemView.findViewById(R.id.textEmail);
+            cityName = itemView.findViewById(R.id.textCityU);
+            streetName = itemView.findViewById(R.id.textStreetU);
+            houseNumber = itemView.findViewById(R.id.textHouseNumU);
+            avHours = itemView.findViewById(R.id.textAvailableHoursU);
+            pricePerHour = itemView.findViewById(R.id.textPriceU);
+            ownerEmail = itemView.findViewById(R.id.textEmailU);
         }
     }
 }

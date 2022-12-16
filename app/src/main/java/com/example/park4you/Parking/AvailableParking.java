@@ -31,20 +31,6 @@ public class AvailableParking extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.available_parking);
 
-//        TextView textViewCityName = findViewById(R.id.cityName);
-//        String cityName = getIntent().getExtras().getString("City Name");
-//        textViewCityName.setText("Available Parking In " + cityName);
-//        TextView textViewDetails = findViewById(R.id.parkingDetails);
-
     }
 
-//    public Parking getParkingFromFireBase(QueryDocumentSnapshot doc){
-//        String city = doc.getString("city");
-//        String street = doc.getString("street");
-//        int houseNum = Integer.parseInt(doc.getString("houseNum"));
-//        String avHours = doc.getString("avHours");
-//        double price = doc.getDouble("price");
-//        long phoneNum = Long.parseLong(doc.getString("price"));
-//        return new Parking(city, street, houseNum, price, avHours, phoneNum);
-//    }
 }

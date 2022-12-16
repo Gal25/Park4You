@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.example.park4you.Location.MyAdapter;
+import com.example.park4you.Order.Order;
 import com.example.park4you.Parking.Parking;
 import com.example.park4you.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -25,11 +26,10 @@ import java.util.ArrayList;
 public class UserParkingList extends AppCompatActivity {
     RecyclerView recyclerView;
     DatabaseReference database;
-    MyAdapter myAdapter;
-    ArrayList<Parking> list;
-    TextView textView;
+    ArrayList<Order> list;
     FirebaseUser firebaseUser;
     FirebaseAuth auto;
+    UserParkingsAdapter userParkingsAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +43,7 @@ public class UserParkingList extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         list = new ArrayList<>();
-        UserParkingsAdapter userParkingsAdapter = new UserParkingsAdapter(this, list);
+        userParkingsAdapter = new UserParkingsAdapter(this, list);
         recyclerView.setAdapter(userParkingsAdapter);
         database.child(firebaseUser.getUid()).addValueEventListener(new ValueEventListener() {
             @SuppressLint("NotifyDataSetChanged")
@@ -51,8 +51,9 @@ public class UserParkingList extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
                     System.out.println(dataSnapshot);
-                    Parking parking = dataSnapshot.getValue(Parking.class);
-                    list.add(parking);
+                    Order order = dataSnapshot.getValue(Order.class);
+                    System.out.println(order);
+                    list.add(order);
                 }
                 userParkingsAdapter.notifyDataSetChanged();
             }

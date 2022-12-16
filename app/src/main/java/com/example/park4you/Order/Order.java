@@ -4,91 +4,116 @@ import androidx.annotation.NonNull;
 
 public class Order {
 
-    String order_id;
-    String time;
-    String year,day,month;
-    String OwnerPhoneNum;
-    String ClientPhoneNum;
+    String city;
+    String street;
+    int houseNum;
+    double price;
+    String avHours;
+    String emailOwner;
+    String id;
+    String emailCustomer;
+    String parkingId;
 
+    public Order(){
 
-    public Order(){}
-
-    public Order(String order_id, String time, String year, String day, String month, String OwnerPhone, String ClientPhone){
-        this.ClientPhoneNum = ClientPhone;
-        this.order_id = order_id;
-        this.time = time;
-        this.month = month;
-        this.OwnerPhoneNum = OwnerPhone;
-        this.day = day;
-        this.year = year;
+    }
+    public Order(String ownerEmail, int houseNum, String city, double price, String id, String custEmail, String parkingId, String avHours, String street) {
+        this.city = city;
+        this.street = street;
+        this.houseNum = houseNum;
+        this.price = price;
+        this.avHours = avHours;
+        this.emailOwner = ownerEmail;
+        this.id = id;
+        this.emailCustomer = custEmail;
+        this.parkingId = parkingId;
     }
 
-    public String getOrder_id() {
-        return order_id;
+    public String getCity() {
+        return city;
     }
 
-    public void setOrder_id(String order_id) {
-        this.order_id = order_id;
+    public void setCity(String city) {
+        this.city = city;
     }
 
-    public String getTime() {
-        return time;
+    public String getStreet() {
+        return street;
     }
 
-    public void setTime(String time) {
-        this.time = time;
+    public void setStreet(String street) {
+        this.street = street;
     }
 
-    public String getYear() {
-        return year;
+    public int getHouseNum() {
+        return houseNum;
     }
 
-    public void setYear(String year) {
-        this.year = year;
+    public void setHouseNum(int houseNum) {
+        this.houseNum = houseNum;
     }
 
-    public String getDay() {
-        return day;
+    public double getPrice() {
+        return price;
     }
 
-    public void setDay(String day) {
-        this.day = day;
+    public void setPrice(double price) {
+        this.price = price;
     }
 
-    public String getMonth() {
-        return month;
+    public String getAvHours() {
+        return avHours;
     }
 
-    public void setMonth(String month) {
-        this.month = month;
+    public void setAvHours(String avHours) {
+        this.avHours = avHours;
     }
 
-    public String getOwnerPhoneNum() {
-        return OwnerPhoneNum;
+    public String getOwnerEmail() {
+        return emailOwner;
     }
 
-    public void setOwnerPhoneNum(String ownerPhoneNum) {
-        OwnerPhoneNum = ownerPhoneNum;
+    public void setOwnerEmail(String ownerEmail) {
+        this.emailOwner = ownerEmail;
     }
 
-    public String getClientPhoneNum() {
-        return ClientPhoneNum;
+    public String getId() {
+        return id;
     }
 
-    public void setClientPhoneNum(String clientPhoneNum) {
-        ClientPhoneNum = clientPhoneNum;
+    public void setId(String id) {
+        this.id = id;
     }
+
+    public String getCustEmail() {
+        return emailCustomer;
+    }
+
+    public void setCustEmail(String custEmail) {
+        this.emailCustomer = custEmail;
+    }
+
+    public String getParkingId() {
+        return parkingId;
+    }
+
+    public void setParkingId(String parkingId) {
+        this.parkingId = parkingId;
+    }
+
     @NonNull
     @Override
     public String toString() {
-        return "Order ID:" + getOrder_id()+
-                "\nHour:" + getTime() +
-                "\nDate: " + getDay() +  "." + getMonth() + "." + getYear() +
-                "\nOwner Phone Number: "+getOwnerPhoneNum() +
-                "\nClient Phone Number:" + getClientPhoneNum();
+        return "Order{" +
+                "city='" + city + '\'' +
+                ", street='" + street + '\'' +
+                ", houseNum=" + houseNum +
+                ", price=" + price +
+                ", avHours='" + avHours + '\'' +
+                ", ownerEmail='" + emailOwner + '\'' +
+                ", id='" + id + '\'' +
+                ", custEmail='" + emailCustomer + '\'' +
+                ", parkingId='" + parkingId + '\'' +
+                '}';
     }
-
-
-
-
 }

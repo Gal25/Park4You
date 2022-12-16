@@ -19,6 +19,6 @@
         android:title="Add a new parking"
         app:showAsAction= "never"/>
     <item android:id = "@+id/item5"
-        android:title="Your Parking"
+        android:title="Park Spots You Rented"
         app:showAsAction= "never"/>
 </menu>
