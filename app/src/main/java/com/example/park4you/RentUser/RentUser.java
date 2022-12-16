@@ -13,8 +13,10 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.park4you.Location.Addresses;
 import com.example.park4you.Location.Location;
 import com.example.park4you.R;
+import com.example.park4you.User.UserParkingList;
 import com.example.park4you.User.UserProfile;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -99,6 +101,10 @@ public class RentUser extends AppCompatActivity {
             case R.id.item4:
                 Intent intent2 = new Intent(this, RentUser.class);
                 startActivity(intent2);
+                return true;
+            case R.id.item5:
+                Intent intent3 = new Intent(this, UserParkingList.class);
+                startActivity(intent3);
                 return true;
 
 

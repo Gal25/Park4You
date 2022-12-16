@@ -13,9 +13,16 @@
         android:theme="@style/Theme.Park4You"
         tools:targetApi="31">
         <activity
-            android:name=".Parking.ParkingList"
-            android:parentActivityName=".Location.Location"
+            android:name=".User.UserParkingList"
             android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Parking.ParkingList"
+            android:exported="false"
+            android:parentActivityName=".Location.Location">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -29,8 +36,8 @@
         </activity>
         <activity
             android:name=".RentUser.RentUser"
-            android:parentActivityName=".Location.Location"
-            android:exported="true">
+            android:exported="true"
+            android:parentActivityName=".Location.Location">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

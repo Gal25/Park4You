@@ -41,14 +41,14 @@ public class Parking {
         this.id = id;
     }
 
-    public Parking(String city, double price, String street, String avHours, String ID, String Email, int houseNum) {
+    public Parking(String city, double price, String street, String avHours, String id, String Email, int houseNum) {
         this.city = city;
         this.street = street;
         this.houseNum = houseNum;
         this.price = price;
         this.avHours = avHours;
         this.Email = Email;
-        this.id=ID;
+        this.id=id;
     }
 
     public Parking(){

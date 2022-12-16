@@ -105,7 +105,7 @@ public class ParkingList extends AppCompatActivity {
                             assert park != null;
                             if (park.getid().equals(id)) {
                                 customers_orders.create_order(park);
-                                owners_orders.create_order(park);
+//                                owners_orders.create_order(park);
                                 for (int i = 0; i < list.size(); i++){
                                     if (list.get(i).equals(park)){
                                         pos = i;

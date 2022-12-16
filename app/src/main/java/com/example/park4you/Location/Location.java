@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.example.park4you.Parking.ParkingList;
 import com.example.park4you.R;
 import com.example.park4you.RentUser.RentUser;
+import com.example.park4you.User.UserParkingList;
 import com.example.park4you.User.UserProfile;
 
 public class Location extends AppCompatActivity {
@@ -69,7 +70,10 @@ public class Location extends AppCompatActivity {
                 Intent intent2 = new Intent(this, RentUser.class);
                 startActivity(intent2);
                 return true;
-
+            case R.id.item5:
+                Intent intent3 = new Intent(this, UserParkingList.class);
+                startActivity(intent3);
+                return true;
             default: return super.onOptionsItemSelected(item);
         }
 
