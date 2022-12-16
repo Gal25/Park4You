@@ -8,10 +8,9 @@ public class Parking {
     int houseNum;
     double price;
     String avHours;
-//    long ownerPhoneNum;
-    String Email;
+    String email;
     String id;
-
+    String custEmail;
 
     public void setCity(String city) {
         this.city = city;
@@ -34,21 +33,22 @@ public class Parking {
     }
 
     public void setEmail(String email) {
-        Email = email;
+        email = email;
     }
 
     public void setId(String id) {
         this.id = id;
     }
 
-    public Parking(String city, double price, String street, String avHours, String id, String Email, int houseNum) {
+    public Parking(String city, double price, String street, String avHours, String id, String Email, int houseNum, String custEmail) {
         this.city = city;
         this.street = street;
         this.houseNum = houseNum;
         this.price = price;
         this.avHours = avHours;
-        this.Email = Email;
+        this.email = Email;
         this.id=id;
+        this.custEmail = custEmail;
     }
 
     public Parking(){
@@ -83,7 +83,11 @@ public class Parking {
     }
 
     public String getEmail() {
-        return Email;
+        return email;
+    }
+
+    public String getCustEmail() {
+        return custEmail;
     }
 
     @Override
@@ -104,7 +108,7 @@ public class Parking {
                 ", price=" + price +
                 ", avHours='" + avHours + '\'' +
                 ", id='" + id + '\'' +
-                ", email=" + Email +
+                ", email=" + email +
                 '}';
     }
 }

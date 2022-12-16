@@ -35,6 +35,7 @@ public class UserParkingList extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_parking_list);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         auto = FirebaseAuth.getInstance();
         firebaseUser = auto.getCurrentUser();
         recyclerView = findViewById(R.id.userParkingList);
@@ -49,7 +50,7 @@ public class UserParkingList extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
-                    System.out.println("-------- 52 -------");
+                    System.out.println(dataSnapshot);
                     Parking parking = dataSnapshot.getValue(Parking.class);
                     list.add(parking);
                 }
