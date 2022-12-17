@@ -83,6 +83,7 @@ public class ParkingList extends AppCompatActivity {
         });
     }
     public void rentButton(View view){
+
         textView = findViewById(R.id.textCity);
         city = textView.getText().toString();
         View v2 =recyclerView.findContainingItemView(view);
@@ -95,18 +96,19 @@ public class ParkingList extends AppCompatActivity {
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-
                 database.child(city).addListenerForSingleValueEvent(new ValueEventListener() {
                     @SuppressLint("NotifyDataSetChanged")
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         for(DataSnapshot dataSnapshot : snapshot.getChildren()) {
                             Parking park = dataSnapshot.getValue(Parking.class);
-                            int pos=0;
                             assert park != null;
+
+                            int pos=0;
+
                             if (park.getid().equals(id)) {
+                                owners_orders.create_order(park);
                                 customers_orders.create_order(park);
-//                                owners_orders.create_order(park);
                                 for (int i = 0; i < list.size(); i++){
                                     if (list.get(i).equals(park)){
                                         pos = i;

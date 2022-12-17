@@ -8,11 +8,11 @@ import java.util.List;
 
 public class User {
     String email;
-    String UserName;
+    String userName;
     String phoneNum;
     String id;
     private String password;
-    public List<Order> Orders;
+
 
 
     public String getPassword() {
@@ -29,9 +29,9 @@ public class User {
         this.password = password;
     }
 
-    public User(String email, String UserName, String password, String phoneNum, String id) {
+    public User(String email, String userName, String password, String phoneNum, String id) {
         this.email = email;
-        this.UserName = UserName;
+        this.userName = userName;
         this.phoneNum = phoneNum;
         this.password = password;
         this.id = id;
@@ -39,7 +39,7 @@ public class User {
     }
     public User(String email, String UserName,  String phoneNum) {
         this.email = email;
-        this.UserName = UserName;
+        this.userName = UserName;
         this.phoneNum = phoneNum;
 
     }
@@ -47,10 +47,6 @@ public class User {
 //        email = "";
 //        UserName= "";
 //        phoneNum = "";
-    }
-
-    public void addOrder(Order o) {
-        this.Orders.add(o);
     }
 
     public String getPhoneNum() {
@@ -70,23 +66,13 @@ public class User {
     }
 
     public String getUserName() {
-        return UserName;
+        return userName;
     }
 
     public void setUserName(String userName) {
-        UserName = userName;
+        this.userName = userName;
     }
 
-    @NonNull
-    @Override
-    public String toString() {
-        StringBuilder ans= new StringBuilder();
-        for (Order o : Orders) {
-            ans.append(o.toString());
-        }
-        return ans.toString();
-
-    }
 
     public void setId(String id) {
         this.id = id;

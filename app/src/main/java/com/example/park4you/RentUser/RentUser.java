@@ -20,13 +20,17 @@ import com.example.park4you.User.UserParkingList;
 import com.example.park4you.User.UserProfile;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
+import java.util.Objects;
 
 public class RentUser extends AppCompatActivity {
-
+    FirebaseUser firebaseUser;
+    FirebaseAuth auto;
     private DatabaseReference databaseReference;
     private EditText EmailText, cityText, streetText, houseNumText, avHoursText,priceText;
     @SuppressLint("MissingInflatedId")
@@ -34,6 +38,7 @@ public class RentUser extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.rent_user);
+        auto = FirebaseAuth.getInstance();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         databaseReference = FirebaseDatabase.getInstance().getReference();
         EmailText = findViewById(R.id.Email);
@@ -65,6 +70,7 @@ public class RentUser extends AppCompatActivity {
         hashMap.put("price", price);
         hashMap.put("street", street);
         hashMap.put("email", email);
+        hashMap.put("ownerID", Objects.requireNonNull(auto.getCurrentUser()).getUid());
         assert key != null;
         reference.child(city).child(key).setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override

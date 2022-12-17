@@ -51,9 +51,9 @@ public class UserParkingList extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
                     System.out.println(dataSnapshot);
-                    Order order = dataSnapshot.getValue(Order.class);
-                    System.out.println(order);
-                    list.add(order);
+                    Order o = dataSnapshot.getValue(Order.class);
+                    System.out.println(o);
+                    list.add(o);
                 }
                 userParkingsAdapter.notifyDataSetChanged();
             }

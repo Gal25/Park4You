@@ -2,12 +2,14 @@ package com.example.park4you.Order;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.park4you.Parking.Parking;
 import com.example.park4you.User.User;
+import com.example.park4you.User.UserDB;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -26,26 +28,28 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.HashMap;
 
 public class owners_orders extends AppCompatActivity {
-    FirebaseDatabase db = FirebaseDatabase.getInstance();
-    DatabaseReference database_user = db.getReference("Users");
+//    FirebaseDatabase db = FirebaseDatabase.getInstance();
+    DatabaseReference database_user ;
+//    = db.getReference("Users");
     FirebaseUser firebaseUser;
     FirebaseAuth auto;
     String ownerId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+//        UserRecord user = auto1.getUserByEmail(p.getEmail());
+
     }
 
 
     public void create_order(Parking p){
-
         auto = FirebaseAuth.getInstance();
-//        UserRecord user = auto1.getUserByEmail(p.getEmail());
         firebaseUser = auto.getCurrentUser();
-        String id = find_user(p.getEmail());
-        System.out.println("41 - id " + id);
-        DatabaseReference reference_owner= FirebaseDatabase.getInstance().getReference("Owner`s Parking").child(id);
         database_user = FirebaseDatabase.getInstance().getReference("Users");
+
+        DatabaseReference reference_owner= FirebaseDatabase.getInstance().getReference("Owner`s Parking").child(p.getStreet());
+
         String key = database_user.push().getKey();
         String key_customer  = reference_owner.push().getKey();
         HashMap<String, Object> hashMap_customer = new HashMap<>();
@@ -65,26 +69,19 @@ public class owners_orders extends AppCompatActivity {
             }
         });
     }
-    public String find_user(String mail){
+    public void find_user(String mail){
         System.out.println("------- 69 -------");
-        database_user.addValueEventListener(new ValueEventListener() {
-            @SuppressLint("NotifyDataSetChanged")
+        System.out.println("email   76"+mail);
+        database_user.orderByChild("email").equalTo(mail).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                System.out.println("------ 73 ------");
-                for(DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    User user = dataSnapshot.getValue(User.class);
-                    assert user != null;
-                    if (user.getEmail().equals(mail)){
-                        ownerId =  user.getId();
-                    }
-                }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                User user = task.getResult().getValue(User.class);
+                assert user != null;
+                ownerId = user.getId();
+                System.out.println("------- 82 -------" + user);
             }
         });
-        return ownerId;
+
  }
 
 

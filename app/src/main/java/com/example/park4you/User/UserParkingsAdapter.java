@@ -40,7 +40,7 @@ public class UserParkingsAdapter extends RecyclerView.Adapter<UserParkingsAdapte
         holder.houseNumber.setText(Integer.toString(order.getHouseNum()));
         holder.avHours.setText(order.getAvHours());
         holder.pricePerHour.setText(Double.toString(order.getPrice()));
-        holder.ownerEmail.setText(order.getOwnerEmail());
+        holder.ownerEmail.setText(order.getEmailOwner());
     }
 
     @Override

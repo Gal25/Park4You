@@ -14,23 +14,51 @@ public class Order {
     String emailCustomer;
     String parkingId;
 
-    public Order(){
 
-    }
-    public Order(String ownerEmail, int houseNum, String city, double price, String id, String custEmail, String parkingId, String avHours, String street) {
+
+
+    public Order(String city, String street, int houseNum, double price, String avHours, String emailOwner, String id, String emailCustomer, String parkingId) {
         this.city = city;
         this.street = street;
         this.houseNum = houseNum;
         this.price = price;
         this.avHours = avHours;
-        this.emailOwner = ownerEmail;
+        this.emailOwner = emailOwner;
         this.id = id;
-        this.emailCustomer = custEmail;
+        this.emailCustomer = emailCustomer;
         this.parkingId = parkingId;
     }
 
+    public Order(){
+    }
+
+    public Order(String city,double price,String street, String avHours,String id,String emailOwner, int houseNum) {
+        this.city = city;
+        this.street = street;
+        this.houseNum = houseNum;
+        this.price = price;
+        this.avHours = avHours;
+        this.emailOwner = emailOwner;
+        this.id = id;
+    }
+    public String getEmailOwner() {
+        return emailOwner;
+    }
+
+    public void setEmailOwner(String emailOwner) {
+        this.emailOwner = emailOwner;
+    }
+
+    public String getEmailCustomer() {
+        return emailCustomer;
+    }
+
+    public void setEmailCustomer(String emailCustomer) {
+        this.emailCustomer = emailCustomer;
+    }
+
     public String getCity() {
-        return city;
+        return this.city;
     }
 
     public void setCity(String city) {
@@ -69,28 +97,12 @@ public class Order {
         this.avHours = avHours;
     }
 
-    public String getOwnerEmail() {
-        return emailOwner;
-    }
-
-    public void setOwnerEmail(String ownerEmail) {
-        this.emailOwner = ownerEmail;
-    }
-
     public String getId() {
         return id;
     }
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public String getCustEmail() {
-        return emailCustomer;
-    }
-
-    public void setCustEmail(String custEmail) {
-        this.emailCustomer = custEmail;
     }
 
     public String getParkingId() {
@@ -101,7 +113,6 @@ public class Order {
         this.parkingId = parkingId;
     }
 
-    @NonNull
     @Override
     public String toString() {
         return "Order{" +

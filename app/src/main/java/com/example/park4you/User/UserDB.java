@@ -13,6 +13,7 @@ import com.example.park4you.LoginUser.Login;
 import com.example.park4you.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -33,10 +34,13 @@ public class UserDB extends AppCompatActivity {
     private static final String USERS = "Users";
     private String TAG = "Init user";
     private FirebaseAuth mAuth;
+    FirebaseUser firebaseUser;
     private String email;
     private String password;
+    private  String username;
+    private String phone;
     private User user;
-    private String id;
+    public String id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,27 +52,33 @@ public class UserDB extends AppCompatActivity {
         passwordEditText = findViewById(R.id.passwordUser);
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         mDatabase = database.getReference(USERS);
-        mAuth = FirebaseAuth.getInstance();
+
 
     }
     public void registerButton(View view){
-        String username = textName.getText().toString();
-        String phone = textPhone.getText().toString();
-        id = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
+        mAuth = FirebaseAuth.getInstance();
+        firebaseUser = mAuth.getCurrentUser();
+        username = textName.getText().toString();
+        phone = textPhone.getText().toString();
+//        id = firebaseUser.getUid();
         email = textEmail.getText().toString();
         password = passwordEditText.getText().toString();
-        user = new User(email, username,password, phone, id);
+
         registerUser();
 
     }
 
     public void registerUser() {
-        System.out.println(password);
+        System.out.println("111" +firebaseUser.getUid());
+
+        //if it is not successful check if there are the same user in auto firebase
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+                            id = task.getResult().getUser().getUid();
+                            user = new User(email, username,password, phone, id);
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "createUserWithEmail:success");
 //                            FirebaseUser user = mAuth.getCurrentUser();

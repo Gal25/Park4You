@@ -28,6 +28,8 @@ public class UserProfile extends AppCompatActivity {
     private TextView textViewemail, textViewUserName, textViewphoneNum;
     private String email, UserName, phoneNum;
     DatabaseReference database;
+    UserDB userDB;
+    FirebaseAuth auto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,30 +39,22 @@ public class UserProfile extends AppCompatActivity {
         textViewUserName = findViewById(R.id.textViewName);
         textViewphoneNum = findViewById(R.id.textViewPhoneNum);
         database = FirebaseDatabase.getInstance().getReference("Users");
-        FirebaseAuth auto = FirebaseAuth.getInstance();
-        FirebaseUser firebaseUser = auto.getCurrentUser();
-
-        if( firebaseUser == null){
-            Toast.makeText(UserProfile.this, "Somthing went wrong! User's details are not available at this moment",
-                    Toast.LENGTH_LONG).show();
-
-        }
-        else {
-            showUserProfile(firebaseUser);
-        }
+        auto = FirebaseAuth.getInstance();
+        showUserProfile();
 
     }
 
-    private void showUserProfile(FirebaseUser firebaseUser) {
+    private void showUserProfile() {
+        FirebaseUser firebaseUser = auto.getCurrentUser();
         String userID = firebaseUser.getUid();
-        System.out.println(userID);
-
         //extracting user from database
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
         ref.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                     User user = snapshot.getValue(User.class);
+                    System.out.println(user);
+
                     if (user != null) {
                         UserName = user.getUserName();
                         email = firebaseUser.getEmail();
@@ -68,6 +62,10 @@ public class UserProfile extends AppCompatActivity {
                         textViewemail.setText(email);
                         textViewphoneNum.setText(phoneNum);
                         textViewUserName.setText(UserName);
+                    }
+                    else{
+                        Toast.makeText(UserProfile.this, "user null!",
+                                Toast.LENGTH_LONG).show();
                     }
                 }
 
@@ -118,7 +116,10 @@ public class UserProfile extends AppCompatActivity {
                 Intent intent2 = new Intent(this, RentUser.class);
                 startActivity(intent2);
                 return true;
-
+            case R.id.item5:
+                Intent intent3 = new Intent(this, UserParkingList.class);
+                startActivity(intent3);
+                return true;
 
             default: return super.onOptionsItemSelected(item);
         }
