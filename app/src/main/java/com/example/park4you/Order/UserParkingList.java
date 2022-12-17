@@ -4,12 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.widget.TextView;
-
-
 import com.example.park4you.R;
 import com.example.park4you.User.UserParkingsAdapter;
 import com.google.firebase.auth.FirebaseAuth;
@@ -21,6 +17,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Map;
 import java.util.Objects;
 
 public class UserParkingList extends AppCompatActivity {
@@ -45,28 +43,24 @@ public class UserParkingList extends AppCompatActivity {
         list = new ArrayList<>();
         userParkingsAdapter = new UserParkingsAdapter(this, list);
         recyclerView.setAdapter(userParkingsAdapter);
-        System.out.println("uid:"+auto.getUid());
 
         database.child(Objects.requireNonNull(auto.getUid())).addValueEventListener(new ValueEventListener() {
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    Map<String, Object> newPost = (Map<String, Object>) dataSnapshot.getValue();
+                    assert newPost != null;
+                    Collection<Object> arr = newPost.values();
+                    String email_owner = (String) arr.toArray()[0];
+                    int houseNum = Integer.parseInt(arr.toArray()[1].toString());
+                    String city = (String) arr.toArray()[2];
+                    double price = Double.parseDouble(arr.toArray()[3].toString());
+                    String emailCustomer = (String)arr.toArray()[5];
+                    String avHours = (String)arr.toArray()[7];
+                    String street = (String)arr.toArray()[8];
 
-                    System.out.println(dataSnapshot);
-                    Order o = dataSnapshot.getValue(Order.class);
-                    assert o != null;
-                    String emailOwner = o.getEmailOwner();
-                    int houseNum = o.getHouseNum();
-                    String city = o.getCity();
-                    double price = o.getPrice();
-                    String id = o.getId();
-                    String emailCustomer = o.getEmailCustomer();
-                    String parkingId = o.getParkingId();
-                    String avHours = o.getAvHours();
-                    String street = o.getStreet();
-
-                    Order order = new Order(emailOwner,houseNum,city,price,id,emailCustomer,parkingId,avHours,street);
+                    Order order = new Order(email_owner ,houseNum ,city,price ,emailCustomer ,avHours ,street);
                     System.out.println(order);
                     list.add(order);
                 }

@@ -4,16 +4,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.example.park4you.Location.MyAdapter;
 import com.example.park4you.Order.Order;
-import com.example.park4you.Parking.Parking;
 import com.example.park4you.R;
 import android.content.Context;
-
 import java.util.ArrayList;
 
 public class UserParkingsAdapter extends RecyclerView.Adapter<UserParkingsAdapter.MyViewHolder>{
@@ -41,9 +36,7 @@ public class UserParkingsAdapter extends RecyclerView.Adapter<UserParkingsAdapte
         holder.avHours.setText(order.getAvHours());
         holder.pricePerHour.setText(Double.toString(order.getPrice()));
         holder.ownerEmail.setText(order.getEmailOwner());
-        holder.customerEmail.setText(order.getEmailOwner());
-        holder.OrderId.setText(order.getEmailOwner());
-        holder.ParkingId.setText(order.getEmailOwner());
+        holder.customerEmail.setText(order.getEmailCustomer());
     }
 
     @Override
@@ -64,8 +57,6 @@ public class UserParkingsAdapter extends RecyclerView.Adapter<UserParkingsAdapte
             pricePerHour = itemView.findViewById(R.id.textPriceU);
             ownerEmail = itemView.findViewById(R.id.textEmailU);
             customerEmail = itemView.findViewById(R.id.textCustomerEmailU);
-            OrderId = itemView.findViewById(R.id.textOrderIdU);
-            ParkingId = itemView.findViewById(R.id.textParkingIdU);
         }
     }
 }

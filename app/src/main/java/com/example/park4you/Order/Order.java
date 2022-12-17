@@ -2,6 +2,8 @@ package com.example.park4you.Order;
 
 import androidx.annotation.NonNull;
 
+import java.util.Collection;
+
 public class Order {
 
     public String city;
@@ -13,6 +15,7 @@ public class Order {
     public String id;
     public String emailCustomer;
     public String parkingId;
+
 
     public void setEmailOwner(String emailOwner) {
         this.emailOwner = emailOwner;
@@ -41,8 +44,7 @@ public class Order {
     public void setParkingId(String parkingId) {
         this.parkingId = parkingId;
     }
-
-    public Order(String emailOwner,int houseNum, String city,double price,String id,String emailCustomer,String parkingId, String avHours,String street ) {
+    public Order(String emailOwner,int houseNum, String city,double price ,String emailCustomer , String avHours ,String street) {
         this.emailOwner = emailOwner;
         this.houseNum = houseNum;
         this.city = city;
