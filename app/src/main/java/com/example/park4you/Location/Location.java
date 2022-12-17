@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 
+import com.example.park4you.Order.OwnerParkingList;
 import com.example.park4you.Parking.ParkingList;
 import com.example.park4you.R;
 import com.example.park4you.RentUser.RentUser;
@@ -72,6 +73,10 @@ public class Location extends AppCompatActivity {
             case R.id.item5:
                 Intent intent3 = new Intent(this, UserParkingList.class);
                 startActivity(intent3);
+                return true;
+            case R.id.item6:
+                Intent intent4 = new Intent(this, OwnerParkingList.class);
+                startActivity(intent4);
                 return true;
             default: return super.onOptionsItemSelected(item);
         }

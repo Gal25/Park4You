@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.park4you.Location.Location;
+import com.example.park4you.Order.OwnerParkingList;
 import com.example.park4you.R;
 import com.example.park4you.Order.UserParkingList;
 import com.example.park4you.User.UserProfile;
@@ -110,6 +111,10 @@ public class RentUser extends AppCompatActivity {
             case R.id.item5:
                 Intent intent3 = new Intent(this, UserParkingList.class);
                 startActivity(intent3);
+                return true;
+            case R.id.item6:
+                Intent intent4 = new Intent(this, OwnerParkingList.class);
+                startActivity(intent4);
                 return true;
 
 

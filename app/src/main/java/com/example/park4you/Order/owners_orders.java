@@ -50,12 +50,15 @@ public class owners_orders extends AppCompatActivity {
         String key = database_user.push().getKey();
         String key_customer  = reference_owner.push().getKey();
         HashMap<String, Object> hashMap_customer = new HashMap<>();
-        hashMap_customer.put("email owner ", p.getEmail());
-        hashMap_customer.put("email customer ", firebaseUser.getEmail());
+        hashMap_customer.put("emailOwner ", p.getEmail());
+        hashMap_customer.put("emailCustomer ", firebaseUser.getEmail());
         hashMap_customer.put("id ", key_customer);
-        hashMap_customer.put("parking city ", p.getCity());
+        hashMap_customer.put("parkingCity ", p.getCity());
         hashMap_customer.put("street ", p.getStreet());
-        hashMap_customer.put("parking id ", p.getid());
+        hashMap_customer.put("parkingId ", p.getid());
+        hashMap_customer.put("houseNum ", p.getHouseNum());
+        hashMap_customer.put("price ", p.getPrice());
+        hashMap_customer.put("avHours ", p.getAvHours());
 
         assert key != null;
         assert key_customer != null;
