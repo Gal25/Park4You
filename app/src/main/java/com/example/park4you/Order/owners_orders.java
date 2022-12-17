@@ -28,9 +28,9 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.HashMap;
 
 public class owners_orders extends AppCompatActivity {
-//    FirebaseDatabase db = FirebaseDatabase.getInstance();
+    //    FirebaseDatabase db = FirebaseDatabase.getInstance();
     DatabaseReference database_user ;
-//    = db.getReference("Users");
+    //    = db.getReference("Users");
     FirebaseUser firebaseUser;
     FirebaseAuth auto;
     String ownerId;
@@ -46,7 +46,7 @@ public class owners_orders extends AppCompatActivity {
         auto = FirebaseAuth.getInstance();
         firebaseUser = auto.getCurrentUser();
         database_user = FirebaseDatabase.getInstance().getReference("Users");
-        DatabaseReference reference_owner= FirebaseDatabase.getInstance().getReference("Owner`s Parking").child(p.getOwnerID());
+        DatabaseReference reference_owner= FirebaseDatabase.getInstance().getReference("Owners Parking").child(p.getOwnerID());
         String key = database_user.push().getKey();
         String key_customer  = reference_owner.push().getKey();
         HashMap<String, Object> hashMap_customer = new HashMap<>();
@@ -100,7 +100,7 @@ public class owners_orders extends AppCompatActivity {
 //            }
 //        });
 
- }
+    }
 
 
 }

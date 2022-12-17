@@ -35,11 +35,12 @@ public class OwnerParkingList extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_owner_parking_list);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         recyclerView = findViewById(R.id.ownerParkingList);
         auto = FirebaseAuth.getInstance();
         firebaseUser = auto.getCurrentUser();
-        database = FirebaseDatabase.getInstance().getReference("Owner's Parking");
+        database = FirebaseDatabase.getInstance().getReference("Owners Parking");
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         list = new ArrayList<>();

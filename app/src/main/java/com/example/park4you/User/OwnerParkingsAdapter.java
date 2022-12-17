@@ -53,13 +53,13 @@ public class OwnerParkingsAdapter extends RecyclerView.Adapter<OwnerParkingsAdap
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            cityName = itemView.findViewById(R.id.textCityU);
-            streetName = itemView.findViewById(R.id.textStreetU);
-            houseNumber = itemView.findViewById(R.id.textHouseNumU);
-            avHours = itemView.findViewById(R.id.textAvailableHoursU);
-            pricePerHour = itemView.findViewById(R.id.textPriceU);
-            ownerEmail = itemView.findViewById(R.id.textEmailU);
-            customerEmail = itemView.findViewById(R.id.textCustomerEmailU);
+            cityName = itemView.findViewById(R.id.textCityO);
+            streetName = itemView.findViewById(R.id.textStreetO);
+            houseNumber = itemView.findViewById(R.id.textHouseNumO);
+            avHours = itemView.findViewById(R.id.textAvailableHoursO);
+            pricePerHour = itemView.findViewById(R.id.textPriceO);
+            ownerEmail = itemView.findViewById(R.id.textEmailO);
+            customerEmail = itemView.findViewById(R.id.textCustomerEmailO);
         }
     }
 }
