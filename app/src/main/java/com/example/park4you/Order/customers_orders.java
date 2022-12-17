@@ -36,7 +36,7 @@ public class customers_orders extends AppCompatActivity {
         auto = FirebaseAuth.getInstance();
         firebaseUser = auto.getCurrentUser();
         assert firebaseUser != null;
-        DatabaseReference reference_cus = FirebaseDatabase.getInstance().getReference("Customer`s Parking").child(firebaseUser.getUid());
+        DatabaseReference reference_cus = FirebaseDatabase.getInstance().getReference("Customers Parking").child(firebaseUser.getUid());
         database_user = FirebaseDatabase.getInstance().getReference("Users");
         String key = database_user.push().getKey();
         String key_customer  = reference_cus.push().getKey();

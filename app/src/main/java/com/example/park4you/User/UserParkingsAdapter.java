@@ -41,6 +41,9 @@ public class UserParkingsAdapter extends RecyclerView.Adapter<UserParkingsAdapte
         holder.avHours.setText(order.getAvHours());
         holder.pricePerHour.setText(Double.toString(order.getPrice()));
         holder.ownerEmail.setText(order.getEmailOwner());
+        holder.customerEmail.setText(order.getEmailOwner());
+        holder.OrderId.setText(order.getEmailOwner());
+        holder.ParkingId.setText(order.getEmailOwner());
     }
 
     @Override
@@ -50,7 +53,7 @@ public class UserParkingsAdapter extends RecyclerView.Adapter<UserParkingsAdapte
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
 
-        TextView cityName, streetName, houseNumber, avHours, pricePerHour, ownerEmail;
+        TextView cityName, streetName, houseNumber, avHours, pricePerHour, ownerEmail, customerEmail, OrderId, ParkingId;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -60,6 +63,9 @@ public class UserParkingsAdapter extends RecyclerView.Adapter<UserParkingsAdapte
             avHours = itemView.findViewById(R.id.textAvailableHoursU);
             pricePerHour = itemView.findViewById(R.id.textPriceU);
             ownerEmail = itemView.findViewById(R.id.textEmailU);
+            customerEmail = itemView.findViewById(R.id.textCustomerEmailU);
+            OrderId = itemView.findViewById(R.id.textOrderIdU);
+            ParkingId = itemView.findViewById(R.id.textParkingIdU);
         }
     }
 }

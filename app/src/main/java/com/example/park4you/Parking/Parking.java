@@ -6,12 +6,22 @@ public class Parking {
     String city;
     String street;
     int houseNum;
+
+
+
     double price;
     String avHours;
     String email;
     String id;
+    String ownerID;
 //    String custEmail;
+    public String getOwnerID() {
+        return ownerID;
+    }
 
+    public void setOwnerID(String ownerID) {
+        this.ownerID = ownerID;
+    }
     public void setCity(String city) {
         this.city = city;
     }
@@ -40,7 +50,7 @@ public class Parking {
         this.id = id;
     }
 
-    public Parking(String city, double price, String street, String avHours, String id, String email, int houseNum) {
+    public Parking(String city, double price, String street, String avHours, String id, String email, int houseNum, String ownerID) {
         this.city = city;
         this.street = street;
         this.houseNum = houseNum;
@@ -48,7 +58,7 @@ public class Parking {
         this.avHours = avHours;
         this.email = email;
         this.id=id;
-//        this.custEmail = custEmail;
+        this.ownerID = ownerID;
     }
 
     public Parking(){

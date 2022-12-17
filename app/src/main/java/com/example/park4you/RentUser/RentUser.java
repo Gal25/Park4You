@@ -13,10 +13,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.park4you.Location.Addresses;
 import com.example.park4you.Location.Location;
 import com.example.park4you.R;
-import com.example.park4you.User.UserParkingList;
+import com.example.park4you.Order.UserParkingList;
 import com.example.park4you.User.UserProfile;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;

@@ -38,7 +38,6 @@ public class owners_orders extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-//        UserRecord user = auto1.getUserByEmail(p.getEmail());
 
     }
 
@@ -47,9 +46,7 @@ public class owners_orders extends AppCompatActivity {
         auto = FirebaseAuth.getInstance();
         firebaseUser = auto.getCurrentUser();
         database_user = FirebaseDatabase.getInstance().getReference("Users");
-
-        DatabaseReference reference_owner= FirebaseDatabase.getInstance().getReference("Owner`s Parking").child(p.getStreet());
-
+        DatabaseReference reference_owner= FirebaseDatabase.getInstance().getReference("Owner`s Parking").child(p.getOwnerID());
         String key = database_user.push().getKey();
         String key_customer  = reference_owner.push().getKey();
         HashMap<String, Object> hashMap_customer = new HashMap<>();
@@ -72,15 +69,33 @@ public class owners_orders extends AppCompatActivity {
     public void find_user(String mail){
         System.out.println("------- 69 -------");
         System.out.println("email   76"+mail);
-        database_user.orderByChild("email").equalTo(mail).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        database_user.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onComplete(@NonNull Task<DataSnapshot> task) {
-                User user = task.getResult().getValue(User.class);
-                assert user != null;
-                ownerId = user.getId();
-                System.out.println("------- 82 -------" + user);
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+
+                    System.out.println(dataSnapshot);
+                    User o = dataSnapshot.getValue(User.class);
+                    if(o.getEmail().equals(mail)){
+                        ownerId = o.getId();
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
+//        {
+//            @Override
+//            public void onComplete(@NonNull Task<DataSnapshot> task) {
+//                User user = task.getResult().getValue(User.class);
+//                assert user != null;
+//                ownerId = user.getId();
+//                System.out.println("------- 82 -------" + user);
+//            }
+//        });
 
  }
 
