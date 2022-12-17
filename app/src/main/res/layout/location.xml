@@ -31,22 +31,4 @@
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="341dp" />
 
-
-    <Button
-        android:id="@+id/Rent"
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        android:text="Rent Your Parking"
-        android:onClick="rentButton"
-        tools:ignore="MissingConstraints" />
-
-    <Button
-        android:id="@+id/ProfileUser"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="145dp"
-        android:layout_toRightOf="@id/Rent"
-        android:onClick="ProfileUser"
-        android:text="Profile User" />
-
 </RelativeLayout>

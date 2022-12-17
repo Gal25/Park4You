@@ -60,14 +60,12 @@ public class UserParkingList extends AppCompatActivity {
                     String emailCustomer = (String)arr.toArray()[5];
                     String avHours = (String)arr.toArray()[7];
                     String street = (String)arr.toArray()[8];
-
                     Order order = new Order(email_owner ,houseNum ,city,price ,emailCustomer ,avHours ,street);
                     System.out.println(order);
                     list.add(order);
                 }
                 userParkingsAdapter.notifyDataSetChanged();
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 

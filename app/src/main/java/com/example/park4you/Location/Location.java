@@ -11,12 +11,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 
+import com.example.park4you.LoginUser.Login;
 import com.example.park4you.Order.OwnerParkingList;
 import com.example.park4you.Parking.ParkingList;
 import com.example.park4you.R;
 import com.example.park4you.RentUser.RentUser;
 import com.example.park4you.Order.UserParkingList;
 import com.example.park4you.User.UserProfile;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class Location extends AppCompatActivity {
 
@@ -25,12 +27,6 @@ public class Location extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.location);
     }
-
-    public void rentButton(View view){
-        Intent intent = new Intent(Location.this, RentUser.class);
-        startActivity(intent);
-    }
-
     public void proceedButton(View view){
         Intent intent = new Intent(Location.this, ParkingList.class);
         EditText editLocationName = findViewById(R.id.location);
@@ -38,20 +34,11 @@ public class Location extends AppCompatActivity {
         intent.putExtra("City Name", cityName);
         startActivity(intent);
     }
-
-    public void ProfileUser(View view){
-        Intent intent = new Intent(Location.this, UserProfile.class);
-        startActivity(intent);
-    }
-
-
     //menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu, menu);
-
-
         return true;
     }
 
@@ -77,6 +64,11 @@ public class Location extends AppCompatActivity {
             case R.id.item6:
                 Intent intent4 = new Intent(this, OwnerParkingList.class);
                 startActivity(intent4);
+                return true;
+            case R.id.item7:
+                FirebaseAuth.getInstance().signOut();
+                Intent intent5 = new Intent(this, Login.class);
+                startActivity(intent5);
                 return true;
             default: return super.onOptionsItemSelected(item);
         }

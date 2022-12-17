@@ -2,6 +2,7 @@ package com.example.park4you.User;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -9,8 +10,12 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.park4you.Location.Location;
 import com.example.park4you.LoginUser.Login;
+import com.example.park4you.Order.OwnerParkingList;
+import com.example.park4you.Order.UserParkingList;
 import com.example.park4you.R;
+import com.example.park4you.RentUser.RentUser;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseUser;
@@ -50,6 +55,7 @@ public class UserDB extends AppCompatActivity {
         textEmail = findViewById(R.id.EmailNewUser);
         textPhone = findViewById(R.id.PhoneNumberuUser);
         passwordEditText = findViewById(R.id.passwordUser);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         mDatabase = database.getReference(USERS);
 
@@ -93,12 +99,8 @@ public class UserDB extends AppCompatActivity {
                 });
     }
     public void updateUI() {
-//        String userid = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
         mDatabase.child(id).setValue(user);
         Intent loginIntent = new Intent(this, Login.class);
         startActivity(loginIntent);
     }
-
-
-
 }

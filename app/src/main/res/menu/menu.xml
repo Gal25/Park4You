@@ -2,12 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item android:id = "@+id/item1"
-        android:icon= "@drawable/ic_menu"
-        android:title="Item1"
-        app:showAsAction= "ifRoom"/>
-
-    <item android:id = "@+id/item2"
+     <item android:id = "@+id/item2"
         android:title="User Profile"
         app:showAsAction= "never"/>
 
@@ -23,5 +18,8 @@
         app:showAsAction= "never"/>
     <item android:id = "@+id/item6"
         android:title="Park Spots You Offer"
+        app:showAsAction= "never"/>
+    <item android:id = "@+id/item7"
+        android:title="Log out"
         app:showAsAction= "never"/>
 </menu>

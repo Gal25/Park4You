@@ -14,6 +14,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -21,6 +22,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.park4you.Location.Location;
+import com.example.park4you.LoginUser.Login;
+import com.example.park4you.Order.OwnerParkingList;
+import com.example.park4you.Order.UserParkingList;
 import com.example.park4you.Order.customers_orders;
 import com.example.park4you.Order.owners_orders;
 import com.example.park4you.Location.MyAdapter;
@@ -133,5 +137,40 @@ public class ParkingList extends AppCompatActivity {
         builder.setNegativeButton("No", null);
         AlertDialog dialog = builder.create();
         dialog.show();
+    }
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.item2:
+                Intent intent = new Intent(this, UserProfile.class);
+                startActivity(intent);
+                return true;
+
+            case R.id.item3:
+                Intent intent1 = new Intent(this, Location.class);
+                startActivity(intent1);
+                return true;
+
+            case R.id.item4:
+                Intent intent2 = new Intent(this, RentUser.class);
+                startActivity(intent2);
+                return true;
+            case R.id.item5:
+                Intent intent3 = new Intent(this, UserParkingList.class);
+                startActivity(intent3);
+                return true;
+            case R.id.item6:
+                Intent intent4 = new Intent(this, OwnerParkingList.class);
+                startActivity(intent4);
+                return true;
+            case R.id.item7:
+                FirebaseAuth.getInstance().signOut();
+                Intent intent5 = new Intent(this, Login.class);
+                startActivity(intent5);
+                return true;
+
+            default: return super.onOptionsItemSelected(item);
+        }
+
     }
 }

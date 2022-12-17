@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.park4you.Location.Location;
+import com.example.park4you.LoginUser.Login;
 import com.example.park4you.Order.OwnerParkingList;
 import com.example.park4you.R;
 import com.example.park4you.Order.UserParkingList;
@@ -116,7 +117,11 @@ public class RentUser extends AppCompatActivity {
                 Intent intent4 = new Intent(this, OwnerParkingList.class);
                 startActivity(intent4);
                 return true;
-
+            case R.id.item7:
+                FirebaseAuth.getInstance().signOut();
+                Intent intent5 = new Intent(this, Login.class);
+                startActivity(intent5);
+                return true;
 
             default: return super.onOptionsItemSelected(item);
         }
