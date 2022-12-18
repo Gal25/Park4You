@@ -6,15 +6,29 @@ public class Parking {
     String city;
     String street;
     int houseNum;
-
-
-
     double price;
     String avHours;
     String email;
     String id;
     String ownerID;
-//    String custEmail;
+
+
+
+    public Parking(String city, double price, String street, String avHours, String id, String email, int houseNum, String ownerID) {
+        this.city = city;
+        this.street = street;
+        this.houseNum = houseNum;
+        this.price = price;
+        this.avHours = avHours;
+        this.email = email;
+        this.id=id;
+        this.ownerID = ownerID;
+    }
+
+    public Parking(){
+
+    }
+
     public String getOwnerID() {
         return ownerID;
     }
@@ -49,21 +63,6 @@ public class Parking {
     public void setId(String id) {
         this.id = id;
     }
-
-    public Parking(String city, double price, String street, String avHours, String id, String email, int houseNum, String ownerID) {
-        this.city = city;
-        this.street = street;
-        this.houseNum = houseNum;
-        this.price = price;
-        this.avHours = avHours;
-        this.email = email;
-        this.id=id;
-        this.ownerID = ownerID;
-    }
-
-    public Parking(){
-
-    }
     public String getCity() {
         return city;
     }
@@ -84,10 +83,6 @@ public class Parking {
         return avHours;
     }
 
-//    public long getPhoneNum() {
-//        return ownerPhoneNum;
-//    }
-
     public String getid() {
         return id;
     }
@@ -96,9 +91,6 @@ public class Parking {
         return email;
     }
 
-//    public String getCustEmail() {
-//        return custEmail;
-//    }
 
     @Override
     public boolean equals(Object obj)

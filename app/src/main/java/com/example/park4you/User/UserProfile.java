@@ -13,6 +13,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.park4you.Location.Location;
+import com.example.park4you.LoginUser.Login;
+import com.example.park4you.Order.OwnerParkingList;
 import com.example.park4you.Order.UserParkingList;
 import com.example.park4you.R;
 import com.example.park4you.RentUser.RentUser;
@@ -29,7 +31,6 @@ public class UserProfile extends AppCompatActivity {
     private TextView textViewemail, textViewUserName, textViewphoneNum;
     private String email, UserName, phoneNum;
     DatabaseReference database;
-    UserDB userDB;
     FirebaseAuth auto;
 
     @Override
@@ -48,14 +49,13 @@ public class UserProfile extends AppCompatActivity {
     private void showUserProfile() {
         FirebaseUser firebaseUser = auto.getCurrentUser();
         String userID = firebaseUser.getUid();
+
         //extracting user from database
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
         ref.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                     User user = snapshot.getValue(User.class);
-                    System.out.println(user);
-
                     if (user != null) {
                         UserName = user.getUserName();
                         email = firebaseUser.getEmail();
@@ -73,7 +73,7 @@ public class UserProfile extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(UserProfile.this, "Somthing went wrong!",
+                Toast.makeText(UserProfile.this, "Something went wrong!",
                         Toast.LENGTH_LONG).show();
 
             }
@@ -84,11 +84,14 @@ public class UserProfile extends AppCompatActivity {
     }
 
 
+    //if the user want to return to location value
     public void returnButton(View view){
         Intent loginIntent = new Intent(this, Location.class);
         startActivity(loginIntent);
 
     }
+
+
 
     //menu
     @Override
@@ -108,19 +111,37 @@ public class UserProfile extends AppCompatActivity {
                 startActivity(intent);
                 return true;
 
+            //choose parking
             case R.id.item3:
                 Intent intent1 = new Intent(this, Location.class);
                 startActivity(intent1);
                 return true;
 
+            //add parking
             case R.id.item4:
                 Intent intent2 = new Intent(this, RentUser.class);
                 startActivity(intent2);
                 return true;
+
+            //show the user's orders
             case R.id.item5:
                 Intent intent3 = new Intent(this, UserParkingList.class);
                 startActivity(intent3);
                 return true;
+
+            //Shows the orders ordered from the owner
+            case R.id.item6:
+                Intent intent4 = new Intent(this, OwnerParkingList.class);
+                startActivity(intent4);
+                return true;
+
+            //log out
+            case R.id.item7:
+                FirebaseAuth.getInstance().signOut();
+                Intent intent5 = new Intent(this, Login.class);
+                startActivity(intent5);
+                return true;
+
 
             default: return super.onOptionsItemSelected(item);
         }

@@ -1,21 +1,20 @@
-package com.example.park4you.Location;
+package com.example.park4you.Parking;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.park4you.Parking.Parking;
 import com.example.park4you.R;
 
 import java.util.ArrayList;
 
+// this class is adapter to the screen -> to create a list of  available parking that shows in DB
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     Context context;
     ArrayList<Parking> list;

@@ -40,8 +40,13 @@ public class Login extends AppCompatActivity {
         mAuth= FirebaseAuth.getInstance();
 
     }
-    private void loginUserAccount() {
 
+    public void regButton(View view){
+        loginUserAccount();
+
+    }
+    //login with email and password and check if the user put a input
+    private void loginUserAccount() {
         password = passwordEditText.getText().toString();
         email = textEmail.getText().toString();
         if (TextUtils.isEmpty(email)) {
@@ -68,11 +73,7 @@ public class Login extends AppCompatActivity {
 
     }
 
-    public void regButton(View view){
-        loginUserAccount();
-
-    }
-
+    //if there are a new user go to add the user to DB with UserDB class
     public void newUserButton(View view){
         Intent in = new Intent(Login.this, UserDB.class);
         startActivity(in);

@@ -27,6 +27,8 @@ public class Location extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.location);
     }
+
+
     public void proceedButton(View view){
         Intent intent = new Intent(Location.this, ParkingList.class);
         EditText editLocationName = findViewById(R.id.location);
@@ -34,7 +36,10 @@ public class Location extends AppCompatActivity {
         intent.putExtra("City Name", cityName);
         startActivity(intent);
     }
-    //menu
+
+
+
+    //create menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();

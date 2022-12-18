@@ -6,8 +6,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.widget.Toast;
+
 import com.example.park4you.R;
-import com.example.park4you.User.UserParkingsAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -21,6 +22,9 @@ import java.util.Collection;
 import java.util.Map;
 import java.util.Objects;
 
+//The purpose of this class is to add the orders that the customer ordered into a list
+//and show on the screen with the adapter
+//the orders list show if the user choose that
 public class UserParkingList extends AppCompatActivity {
     RecyclerView recyclerView;
     DatabaseReference database;
@@ -50,6 +54,7 @@ public class UserParkingList extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    //take the snapshot and change it to order object
                     Map<String, Object> newPost = (Map<String, Object>) dataSnapshot.getValue();
                     assert newPost != null;
                     Collection<Object> arr = newPost.values();
@@ -68,7 +73,7 @@ public class UserParkingList extends AppCompatActivity {
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                Toast.makeText(UserParkingList.this, "Cancelled", Toast.LENGTH_SHORT).show();
             }
         });
 

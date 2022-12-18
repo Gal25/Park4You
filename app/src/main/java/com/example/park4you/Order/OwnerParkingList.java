@@ -7,10 +7,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.example.park4you.R;
-import com.example.park4you.User.OwnerParkingsAdapter;
-import com.example.park4you.User.UserParkingsAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -24,6 +23,9 @@ import java.util.Collection;
 import java.util.Map;
 import java.util.Objects;
 
+//The purpose of this class is to add the orders that the customer ordered into a list of the owner parking
+//and show on the screen with the adapter
+//the orders list show if the user choose that
 public class OwnerParkingList extends AppCompatActivity {
     RecyclerView recyclerView;
     DatabaseReference database;
@@ -31,6 +33,7 @@ public class OwnerParkingList extends AppCompatActivity {
     FirebaseUser firebaseUser;
     private FirebaseAuth auto;
     OwnerParkingsAdapter ownerParkingsAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,10 +54,9 @@ public class OwnerParkingList extends AppCompatActivity {
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                System.out.println("---- 53 ----");
-                System.out.println(snapshot);
+;
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
-                    System.out.println("---- 54 ----");
+                    //take the snapshot and change it to order object
                     Map<String, Object> newPost = (Map<String, Object>) dataSnapshot.getValue();
                     System.out.println(newPost.values());
                     assert newPost != null;
@@ -76,6 +78,7 @@ public class OwnerParkingList extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(OwnerParkingList.this, "Cancelled", Toast.LENGTH_SHORT).show();
 
             }
         });

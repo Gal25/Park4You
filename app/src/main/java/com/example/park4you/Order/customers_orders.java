@@ -29,9 +29,7 @@ public class customers_orders extends AppCompatActivity {
     }
 
 
-
-
-
+    //create a data document in database that represents the orders of the users
     public void create_order(Parking p) {
         auto = FirebaseAuth.getInstance();
         firebaseUser = auto.getCurrentUser();
@@ -56,7 +54,6 @@ public class customers_orders extends AppCompatActivity {
         reference_cus.child(key_customer).setValue(hashMap_customer).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-//                Toast.makeText(this, "Data Saved", Toast.LENGTH_SHORT).show();
             }
         });
     }

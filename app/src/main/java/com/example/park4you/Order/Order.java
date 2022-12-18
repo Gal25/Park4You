@@ -17,33 +17,6 @@ public class Order {
     public String parkingId;
 
 
-    public void setEmailOwner(String emailOwner) {
-        this.emailOwner = emailOwner;
-    }
-    public void setEmailCustomer(String emailCustomer) {
-        this.emailCustomer = emailCustomer;
-    }
-    public void setCity(String city) {
-        this.city = city;
-    }
-    public void setStreet(String street) {
-        this.street = street;
-    }
-    public void setHouseNum(int houseNum) {
-        this.houseNum = houseNum;
-    }
-    public void setPrice(double price) {
-        this.price = price;
-    }
-    public void setAvHours(String avHours) {
-        this.avHours = avHours;
-    }
-    public void setId(String id) {
-        this.id = id;
-    }
-    public void setParkingId(String parkingId) {
-        this.parkingId = parkingId;
-    }
     public Order(String emailOwner,int houseNum, String city,double price ,String emailCustomer , String avHours ,String street) {
         this.emailOwner = emailOwner;
         this.houseNum = houseNum;
@@ -58,6 +31,42 @@ public class Order {
 
     public Order(){
 
+    }
+
+    public void setEmailOwner(String emailOwner) {
+        this.emailOwner = emailOwner;
+    }
+
+    public void setEmailCustomer(String emailCustomer) {
+        this.emailCustomer = emailCustomer;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public void setHouseNum(int houseNum) {
+        this.houseNum = houseNum;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public void setAvHours(String avHours) {
+        this.avHours = avHours;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setParkingId(String parkingId) {
+        this.parkingId = parkingId;
     }
 
     public String getEmailOwner() {

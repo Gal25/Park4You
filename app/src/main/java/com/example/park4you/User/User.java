@@ -13,17 +13,6 @@ public class User {
     String id;
     private String password;
 
-
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-
     public User(String email, String password) {
         this.email = email;
         this.password = password;
@@ -44,9 +33,7 @@ public class User {
 
     }
     public User(){
-//        email = "";
-//        UserName= "";
-//        phoneNum = "";
+
     }
 
     public String getPhoneNum() {
@@ -73,12 +60,19 @@ public class User {
         this.userName = userName;
     }
 
-
     public void setId(String id) {
         this.id = id;
     }
 
     public String getId() {
         return this.id;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

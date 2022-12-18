@@ -28,12 +28,10 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.HashMap;
 
 public class owners_orders extends AppCompatActivity {
-    //    FirebaseDatabase db = FirebaseDatabase.getInstance();
     DatabaseReference database_user ;
-    //    = db.getReference("Users");
     FirebaseUser firebaseUser;
     FirebaseAuth auto;
-    String ownerId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +39,7 @@ public class owners_orders extends AppCompatActivity {
 
     }
 
-
+    //create a data document in database that represents the orders of the owners
     public void create_order(Parking p){
         auto = FirebaseAuth.getInstance();
         firebaseUser = auto.getCurrentUser();
@@ -65,42 +63,10 @@ public class owners_orders extends AppCompatActivity {
         reference_owner.child(key_customer).setValue(hashMap_customer).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-//                Toast.makeText(this, "Data Saved", Toast.LENGTH_SHORT).show();
             }
         });
     }
-    public void find_user(String mail){
-        System.out.println("------- 69 -------");
-        System.out.println("email   76"+mail);
-        database_user.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
 
-                    System.out.println(dataSnapshot);
-                    User o = dataSnapshot.getValue(User.class);
-                    if(o.getEmail().equals(mail)){
-                        ownerId = o.getId();
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-//        {
-//            @Override
-//            public void onComplete(@NonNull Task<DataSnapshot> task) {
-//                User user = task.getResult().getValue(User.class);
-//                assert user != null;
-//                ownerId = user.getId();
-//                System.out.println("------- 82 -------" + user);
-//            }
-//        });
-
-    }
 
 
 }
