@@ -48,6 +48,8 @@ public class customers_orders extends AppCompatActivity {
         hashMap_customer.put("houseNum ", p.getHouseNum());
         hashMap_customer.put("price ", p.getPrice());
         hashMap_customer.put("avHours ", p.getAvHours());
+        hashMap_customer.put("ParkingNow ", true);
+        hashMap_customer.put("OwnerId ", p.getOwnerID());
 
         assert key != null;
         assert key_customer != null;

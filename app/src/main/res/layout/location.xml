@@ -8,13 +8,39 @@
     android:background="@drawable/backround">
 
     <EditText
-        android:id="@+id/location"
+        android:id="@+id/city"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:hint="Choose Location"
+        android:hint="Choose City"
+        android:textColorHint="@color/white"
+        android:textSize="20dp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="250dp" />
+
+    <EditText
+        android:id="@+id/street"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:hint="Choose Street"
         android:textSize="20dp"
         android:textColorHint="@color/white"
+        android:layout_below="@+id/city"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="250dp" />
+
+    <EditText
+        android:id="@+id/hours"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:hint="Choose Hours"
+        android:textSize="20dp"
+        android:textColorHint="@color/white"
+        android:layout_below="@+id/street"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="250dp" />
@@ -23,7 +49,7 @@
         android:id="@+id/proceedButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/location"
+        android:layout_below="@id/hours"
         android:layout_centerInParent="true"
         android:onClick="proceedButton"
         android:text="Proceed"

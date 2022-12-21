@@ -68,8 +68,9 @@ public class OwnerParkingList extends AppCompatActivity {
                     String emailCustomer = (String)arr.toArray()[5];
                     String avHours = (String)arr.toArray()[7];
                     String street = (String)arr.toArray()[8];
-
-                    Order order = new Order(email_owner ,houseNum ,city,price ,emailCustomer ,avHours ,street);
+                    boolean parking_now = Boolean.parseBoolean(arr.toArray()[9].toString());
+                    String ownerID = (String)arr.toArray()[10];
+                    Order order = new Order(email_owner ,houseNum ,city,price ,emailCustomer ,avHours ,street, parking_now, ownerID);
                     System.out.println(order);
                     list.add(order);
                 }

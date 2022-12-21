@@ -54,9 +54,7 @@ public class RentUser extends AppCompatActivity {
 
     //When the user clicks the add button, the parking he entered is updated in the database
     // with all the details
-    public void publishButton(View view){
-        newParking();
-    }
+    public void publishButton(View view){newParking();}
     public void newParking() {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Addresses");
         String city = cityText.getText().toString();

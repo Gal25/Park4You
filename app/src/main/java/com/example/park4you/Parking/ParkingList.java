@@ -60,14 +60,21 @@ public class ParkingList extends AppCompatActivity {
         myAdapter = new MyAdapter(this,list);
         recyclerView.setAdapter(myAdapter);
         String cityName = getIntent().getStringExtra("City Name");
+        String streetName = getIntent().getStringExtra("Street Name");
+        String AvHours = getIntent().getStringExtra("AvHours");
         database.child(cityName).addValueEventListener(new ValueEventListener() {
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    System.out.println(dataSnapshot);
                     Parking parking = dataSnapshot.getValue(Parking.class);
-                    list.add(parking);
+                    assert parking != null;
+                    if (parking.street.equals(streetName)) {
+                        String hours = parking.avHours;
+                        if (checkTime(AvHours, hours)) {
+                            list.add(parking);
+                        }
+                    }
                 }
                 myAdapter.notifyDataSetChanged();
             }
@@ -76,7 +83,33 @@ public class ParkingList extends AppCompatActivity {
             }
         });
     }
+    public boolean checkTime(String hours1, String hours2){
+        char[] hou1 = hours1.toCharArray();
+        char[] hou2 = hours2.toCharArray();
 
+        if (hou1[0] > hou2[0] && hou1[1] >= hou2[1] || hou1[0] >= hou2[0] && hou1[1] > hou2[1]){
+            if (hou1[6] < hou2[6] && hou1[7] <= hou2[7] || hou1[6] <= hou2[6] && hou1[7] < hou2[7]){
+                return true;
+            }
+            else if(hou1[9] <= hou2[9] && hou1[10] <= hou2[10]){
+                return true;
+            }
+        }
+        else{
+            if(hou1[3] > hou2[3] || hou1[3] >= hou2[3] && hou1[4] >= hou2[4]){
+                if (hou1[6] < hou2[6] && hou1[7] <= hou2[7] || hou1[6] <= hou2[6] && hou1[7] < hou2[7]){
+                    return true;
+                }else{
+                    if (hou1[9] < hou2[9]){
+                        return true;
+                    }else if (hou1[9] <= hou2[9] && hou1[10] <= hou2[10]){
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
     //Choose and delete the parking from the parking list and update the parking display screen using the adapter
     public void rentButton(View view){
         textView = findViewById(R.id.textCity);

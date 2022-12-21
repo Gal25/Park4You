@@ -19,6 +19,9 @@
     <item android:id = "@+id/item6"
         android:title="Park Spots You Offer"
         app:showAsAction= "never"/>
+    <item android:id = "@+id/item8"
+    android:title="Release Parking"
+    app:showAsAction= "never"/>
     <item android:id = "@+id/item7"
         android:title="Log out"
         app:showAsAction= "never"/>

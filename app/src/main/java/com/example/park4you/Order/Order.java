@@ -15,9 +15,11 @@ public class Order {
     public String id;
     public String emailCustomer;
     public String parkingId;
+    public boolean parking_now;
+    public String ownerID;
 
 
-    public Order(String emailOwner,int houseNum, String city,double price ,String emailCustomer , String avHours ,String street) {
+    public Order(String emailOwner, int houseNum, String city, double price , String emailCustomer , String avHours , String street, boolean parking_now, String ownerID) {
         this.emailOwner = emailOwner;
         this.houseNum = houseNum;
         this.city = city;
@@ -27,6 +29,8 @@ public class Order {
         this.parkingId = parkingId;
         this.avHours = avHours;
         this.street = street;
+        this.parking_now = parking_now;
+        this.ownerID = ownerID;
     }
 
     public Order(){
@@ -69,6 +73,9 @@ public class Order {
         this.parkingId = parkingId;
     }
 
+    public void setParking_now(boolean parking_now) {
+        this.parking_now = parking_now;
+    }
     public String getEmailOwner() {
         return emailOwner;
     }
@@ -111,6 +118,9 @@ public class Order {
         return parkingId;
     }
 
+    public boolean isParking_now() {
+        return parking_now;
+    }
 
     @Override
     public String toString() {
