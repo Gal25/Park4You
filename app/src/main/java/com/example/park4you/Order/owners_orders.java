@@ -46,21 +46,21 @@ public class owners_orders extends AppCompatActivity {
         database_user = FirebaseDatabase.getInstance().getReference("Users");
         DatabaseReference reference_owner= FirebaseDatabase.getInstance().getReference("Owners Parking").child(p.getOwnerID());
         String key = database_user.push().getKey();
-        String key_customer  = reference_owner.push().getKey();
+        String key_owner  = reference_owner.push().getKey();
         HashMap<String, Object> hashMap_customer = new HashMap<>();
         hashMap_customer.put("emailOwner ", p.getEmail());
         hashMap_customer.put("emailCustomer ", firebaseUser.getEmail());
-        hashMap_customer.put("id ", key_customer);
+        hashMap_customer.put("id ", key_owner);
         hashMap_customer.put("parkingCity ", p.getCity());
         hashMap_customer.put("street ", p.getStreet());
         hashMap_customer.put("parkingId ", p.getid());
         hashMap_customer.put("houseNum ", p.getHouseNum());
         hashMap_customer.put("price ", p.getPrice());
         hashMap_customer.put("avHours ", p.getAvHours());
-
+        hashMap_customer.put("parking_now ", true);
         assert key != null;
-        assert key_customer != null;
-        reference_owner.child(key_customer).setValue(hashMap_customer).addOnCompleteListener(new OnCompleteListener<Void>() {
+        assert key_owner != null;
+        reference_owner.child(key_owner).setValue(hashMap_customer).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
             }
@@ -69,4 +69,7 @@ public class owners_orders extends AppCompatActivity {
 
 
 
-}
+
+
+
+    }
