@@ -131,7 +131,6 @@ public class Location extends AppCompatActivity {
                         assert newPost != null;
                         System.out.println("newPost.values() " + newPost.values());
                         System.out.println("snapshot.getChildrenCount() " + snapshot.getChildrenCount());
-
                         Collection<Object> arr = newPost.values();
                         String email_owner = (String) arr.toArray()[0];
                         int houseNum = Integer.parseInt(arr.toArray()[1].toString());
