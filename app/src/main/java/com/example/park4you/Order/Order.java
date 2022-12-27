@@ -37,6 +37,20 @@ public class Order {
 
     }
 
+    public Order(String email_owner, int houseNum, String city, double price, String emailCustomer, String avHours, String street,  boolean parking_now, String ownerID,String key_order, String parkingId) {
+        this.emailOwner = email_owner;
+        this.houseNum = houseNum;
+        this.city = city;
+        this.price = price;
+        this.id = key_order;
+        this.emailCustomer = emailCustomer;
+        this.parkingId = parkingId;
+        this.avHours = avHours;
+        this.street = street;
+        this.parking_now = parking_now;
+        this.ownerID = ownerID;
+    }
+
     public void setEmailOwner(String emailOwner) {
         this.emailOwner = emailOwner;
     }

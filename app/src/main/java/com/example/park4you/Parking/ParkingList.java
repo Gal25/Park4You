@@ -19,8 +19,7 @@ import com.example.park4you.Location.Location;
 import com.example.park4you.LoginUser.Login;
 import com.example.park4you.Order.OwnerParkingList;
 import com.example.park4you.Order.UserParkingList;
-import com.example.park4you.Order.customers_orders;
-import com.example.park4you.Order.owners_orders;
+import com.example.park4you.Order.ordersDB;
 import com.example.park4you.R;
 import com.example.park4you.RentUser.RentUser;
 import com.example.park4you.User.UserProfile;
@@ -40,8 +39,7 @@ public class ParkingList extends AppCompatActivity {
     ArrayList<Parking> list;
     TextView textView;
     String city;
-    customers_orders customers_orders;
-    owners_orders owners_orders;
+    ordersDB ordersDB;
 
     //Add the parking into to the parking list and update the parking display screen using the adapter
     @SuppressLint("MissingInflatedId")
@@ -54,8 +52,7 @@ public class ParkingList extends AppCompatActivity {
         database = FirebaseDatabase.getInstance().getReference().child("Addresses");
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        customers_orders = new customers_orders();
-        owners_orders = new owners_orders();
+        ordersDB = new ordersDB();
         list = new ArrayList<>();
         myAdapter = new MyAdapter(this,list);
         recyclerView.setAdapter(myAdapter);
@@ -133,8 +130,8 @@ public class ParkingList extends AppCompatActivity {
                             assert park != null;
                             int pos=0;
                             if (park.getid().equals(id)) {
-                                owners_orders.create_order(park);
-                                customers_orders.create_order(park);
+                                ordersDB.create_order_customer(park);
+                                ordersDB.create_order_owner(park);
                                 for (int i = 0; i < list.size(); i++){
                                     if (list.get(i).equals(park)){
                                         pos = i;
@@ -191,7 +188,7 @@ public class ParkingList extends AppCompatActivity {
                 startActivity(intent3);
                 return true;
 
-             //Shows the orders ordered from the owner
+            //Shows the orders ordered from the owner
             case R.id.item6:
                 Intent intent4 = new Intent(this, OwnerParkingList.class);
                 startActivity(intent4);
