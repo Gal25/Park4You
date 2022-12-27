@@ -74,7 +74,7 @@ public class UserDB extends AppCompatActivity {
 
     public void registerUser() {
 
-        //if it is not successful check if there are the same user in auto firebase
+        //if it is not successful check if there are the same user in auth firebase
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override

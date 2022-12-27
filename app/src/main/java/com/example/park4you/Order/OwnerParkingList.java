@@ -34,6 +34,8 @@ public class OwnerParkingList extends AppCompatActivity {
     private FirebaseAuth auto;
     OwnerParkingsAdapter ownerParkingsAdapter;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
