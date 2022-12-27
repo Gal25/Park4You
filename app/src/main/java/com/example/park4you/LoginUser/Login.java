@@ -27,7 +27,7 @@ public class Login extends AppCompatActivity {
 
     private EditText passwordEditText;
     private EditText textEmail;
-    private final String TAG = "Login";
+//    private final String TAG = "Login";
     private String password, email;
 
     private FirebaseAuth mAuth;
@@ -40,13 +40,8 @@ public class Login extends AppCompatActivity {
         mAuth= FirebaseAuth.getInstance();
 
     }
-
-    public void regButton(View view){
-        loginUserAccount();
-
-    }
     //login with email and password and check if the user put a input
-    private void loginUserAccount() {
+    public void regButton(View view){
         password = passwordEditText.getText().toString();
         email = textEmail.getText().toString();
         if (TextUtils.isEmpty(email)) {

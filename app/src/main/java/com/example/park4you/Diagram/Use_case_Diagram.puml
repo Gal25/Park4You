@@ -1,0 +1,63 @@
+@startuml
+'https://plantuml.com/use-case-diagram
+
+':Main Admin: as Admin
+(Use the application - user) as (Use1)
+(Use the application - owner) as (Use2)
+
+(login)as (login1)
+(login)as (login2)
+(register) as (register1)
+(register) as (register2)
+(user profile) as (profile1)
+(user profile) as (profile2)
+(add parking) as (new_parking)
+(search parking) as (search_parking1)
+(search parking) as (search_parking2)
+(select parking) as (select_parking1)
+(select parking) as (select_parking2)
+(owner parking history) as (owner_parking_history)
+(client parking history) as (client_parking_history1)
+(client parking history) as (client_parking_history2)
+(Log out) as (log_out1)
+(Log out) as (log_out2)
+(Menu) as (menu1)
+(Menu) as (menu2)
+
+User --> (Use1)
+(Use1) --> (register1)
+(Use1) --> (login1)
+(register1) --> (login1)
+(login1) --> (register1)
+(login1) --> (search_parking1)
+(search_parking1) --> (select_parking1)
+(select_parking1) --> (search_parking1)
+(search_parking1) --> (menu1)
+(menu1) --> (profile1)
+(menu1) --> (search_parking1)
+(menu1) --> (client_parking_history1)
+(menu1) --> (log_out1)
+(log_out1) --> (login1)
+note right of User : User`s cases
+
+
+Owner --> (Use2)
+(Use2) --> (register2)
+(Use2) --> (login2)
+(register2) --> (login2)
+(login2) --> (register2)
+(login2) --> (search_parking2)
+(search_parking2) --> (select_parking2)
+(select_parking2) --> (search_parking2)
+(search_parking2) --> (menu2)
+(menu2) --> (search_parking2)
+(menu2) --> (profile2)
+(menu2) --> (client_parking_history2)
+(menu2) --> (log_out2)
+(menu2) --> (new_parking)
+(menu2) --> (owner_parking_history)
+
+note right of Owner : any owner can be user
+note right of Owner : Owner`s cases
+
+@enduml

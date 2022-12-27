@@ -1,0 +1,106 @@
+@startuml
+'https://plantuml.com/object-diagram
+
+'object London
+'object Washington
+'object Berlin
+'object NewYork
+'
+'map CapitalCity {
+' UK *-> London
+' USA *--> Washington
+' Germany *---> Berlin
+'}
+'
+'NewYork --> CapitalCity::USA
+class User {
+
+    -String email : hana@gmail.com;
+    -String userName : hana;
+    -String phoneNum : 0525381648;
+    -String id : Tnxv90RN29gb6joPXusQxssg8Th1;
+    -String password : h1234567;
+}
+class Login{}
+class Location{}
+class ParkingList{}
+class ordersDB{}
+
+class Parking{
+    -String city : TLV;
+    -String street : Bazel;
+    -int houseNum : 14;
+    -double price : 23;
+    -String avHours : 9:00 - 16:00;
+    -String email : omer@gmail.com;
+    -String id : NKEYfJV73s6L1yjhAi3;
+    -String ownerID : w2DKv4PvVoSP1GIL92UchpZfsa73;
+}
+class Order {
+    -String city : TLV;
+    -String street : Bazel;
+    -int houseNum : 14;
+    -double price : 23;
+    -String avHours : 9:00 - 16:00;
+    -String emailOwner : omer@gmail.com;
+    -String id : -NKJP4GaEcgJfVu3ToOm;
+    -String emailCustomer : hana@gmail.com;
+    -String parkingId : -NKEPYlIiMmML-Ne4IRF;
+    -boolean parking_now : true;
+    -String ownerID : w2DKv4PvVoSP1GIL92UchpZfsa73;
+}
+Login <|-- User
+Location <|-- Login
+ParkingList <|-- Location
+Parking <|-- ParkingList
+ordersDB <|-- Parking
+Order <|-- ordersDB
+@enduml
+
+@startuml
+class User {
+
+    -String email : omer@gmail.com;
+    -String userName : omer;
+    -String phoneNum : 0525381648;
+    -String id : Tnxv90RN29gb6joPXusQxssg8Th1;
+    -String password : o1234567;
+}
+class Login{}
+class Location{}
+class RentUser{}
+class ParkingList{}
+class ordersDB{}
+
+class Parking{
+    -String city : TLV;
+    -String street : Bazel;
+    -int houseNum : 14;
+    -double price : 23;
+    -String avHours : 9:00 - 16:00;
+    -String email : omer@gmail.com;
+    -String id : NKEYfJV73s6L1yjhAi3;
+    -String ownerID : w2DKv4PvVoSP1GIL92UchpZfsa73;
+}
+class Order {
+    -String city : TLV;
+    -String street : Bazel;
+    -int houseNum : 14;
+    -double price : 23;
+    -String avHours : 9:00 - 16:00;
+    -String emailOwner : omer@gmail.com;
+    -String id : -NKJP4GaEcgJfVu3ToOm;
+    -String emailCustomer : hana@gmail.com;
+    -String parkingId : -NKEPYlIiMmML-Ne4IRF;
+    -boolean parking_now : true;
+    -String ownerID : w2DKv4PvVoSP1GIL92UchpZfsa73;
+}
+Login <|-- User
+Location <|-- Login
+ParkingList <|-- Location
+Parking <|-- ParkingList
+ordersDB <|-- Parking
+Order <|-- ordersDB
+RentUser <|-- Location
+Parking <|-- RentUser
+@enduml

@@ -51,6 +51,7 @@ public class Order {
         this.ownerID = ownerID;
     }
 
+
     public void setEmailOwner(String emailOwner) {
         this.emailOwner = emailOwner;
     }

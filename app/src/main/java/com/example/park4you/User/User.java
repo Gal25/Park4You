@@ -7,10 +7,10 @@ import com.example.park4you.Order.Order;
 import java.util.List;
 
 public class User {
-    String email;
-    String userName;
-    String phoneNum;
-    String id;
+    private String email;
+    private String userName;
+    private String phoneNum;
+    private String id;
     private String password;
 
     public User(String email, String password) {
@@ -35,7 +35,6 @@ public class User {
     public User(){
 
     }
-
     public String getPhoneNum() {
         return phoneNum;
     }

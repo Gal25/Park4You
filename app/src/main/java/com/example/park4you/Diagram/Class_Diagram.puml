@@ -1,0 +1,105 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+'abstract class AbstractList
+'abstract AbstractCollection
+
+
+class Location {
+    +void onCreate(Bundle savedInstanceState)
+    +void proceedButton(View view)
+}
+class Login {
+    -EditText passwordEditText;
+    -EditText textEmail;
+    -String password;
+    -String email;
+    +void onCreate(Bundle savedInstanceState)
+    +void regButton(View view)
+    +void newUserButton(View view)
+}
+class Order {
+    -String city;
+    -String street;
+    -int houseNum;
+    -double price;
+    -String avHours;
+    -String emailOwner;
+    -String id;
+    -String emailCustomer;
+    -String parkingId;
+    -boolean parking_now;
+    -String ownerID;
+
+    +Order(String emailOwner, int houseNum, String city, double price , String emailCustomer , String avHours , String street, boolean parking_now, String ownerID);
+    +Order();
+    +void setEmailOwner(String emailOwner);
+    +void setEmailCustomer(String emailCustomer);
+    +void setCity(String city);
+    +void setStreet(String street);
+    +void setHouseNum(int houseNum);
+    +void setPrice(double price);
+    +void setAvHours(String avHours);
+    +void setId(String id);
+    +void setParkingId(String parkingId);
+    +void setParking_now(boolean parking_now);
+    +String getEmailOwner();
+    +String getEmailCustomer();
+    +String getCity();
+    +String getStreet();
+    +int getHouseNum();
+    +double getPrice();
+    +String getAvHours();
+    +String getId();
+    +String getParkingId();
+    +boolean isParking_now();
+    +String toString();
+
+}
+class ordersDB{
+    -DatabaseReference database_user;
+    -FirebaseUser firebaseUser;
+    -FirebaseAuth auto;
+    -String key;
+    +void onCreate(Bundle savedInstanceState)
+    +void create_order_customer(Parking p);
+    +void create_order_owner(Parking p);
+}
+class OwnerParkingList{
+    -RecyclerView recyclerView;
+    -DatabaseReference database;
+    -ArrayList<Order> list;
+    -FirebaseUser firebaseUser;
+    -private FirebaseAuth auto;
+    -OwnerParkingsAdapter ownerParkingsAdapter;
+    +void onCreate(Bundle savedInstanceState);
+}
+
+
+
+
+
+
+class User {
+    -String email;
+    -String userName;
+    -String phoneNum;
+    -String id;
+    -String password;
+
+    +User(String email, String password);
+    +User(String email, String userName, String password, String phoneNum, String id);
+    +User(String email, String UserName,  String phoneNum);
+    +User();
+    +String getPhoneNum();
+    +void setPhoneNum(String phoneNum);
+    +String getEmail();
+    +void setEmail(String email);
+    +String getUserName();
+    +void setUserName(String userName);
+    +void setId(String id);
+    +String getId();
+    +String getPassword();
+    +void setPassword(String password);
+}
+@enduml
