@@ -20,7 +20,6 @@ import com.example.park4you.LoginUser.Login;
 import com.example.park4you.Order.OwnerParkingList;
 import com.example.park4you.Order.UserParkingList;
 import com.example.park4you.Order.ordersDB;
-import com.example.park4you.Order.owners_orders;
 import com.example.park4you.R;
 import com.example.park4you.RentUser.RentUser;
 import com.example.park4you.User.UserProfile;
@@ -41,7 +40,6 @@ public class ParkingList extends AppCompatActivity {
     TextView textView;
     String city;
     ordersDB ordersDB;
-    owners_orders owners_orders;
 
     //Add the parking into to the parking list and update the parking display screen using the adapter
     @SuppressLint("MissingInflatedId")
@@ -55,7 +53,6 @@ public class ParkingList extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         ordersDB = new ordersDB();
-        owners_orders = new owners_orders();
         list = new ArrayList<>();
         myAdapter = new MyAdapter(this,list);
         recyclerView.setAdapter(myAdapter);
@@ -191,7 +188,7 @@ public class ParkingList extends AppCompatActivity {
                 startActivity(intent3);
                 return true;
 
-             //Shows the orders ordered from the owner
+            //Shows the orders ordered from the owner
             case R.id.item6:
                 Intent intent4 = new Intent(this, OwnerParkingList.class);
                 startActivity(intent4);
