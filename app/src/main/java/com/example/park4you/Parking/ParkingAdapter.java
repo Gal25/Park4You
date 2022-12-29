@@ -15,11 +15,11 @@ import com.example.park4you.R;
 import java.util.ArrayList;
 
 // this class is adapter to the screen -> to create a list of  available parking that shows in DB
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
+public class ParkingAdapter extends RecyclerView.Adapter<ParkingAdapter.MyViewHolder> {
     Context context;
     ArrayList<Parking> list;
 
-    public MyAdapter(Context context, ArrayList<Parking> list) {
+    public ParkingAdapter(Context context, ArrayList<Parking> list) {
         this.context = context;
         this.list = list;
     }

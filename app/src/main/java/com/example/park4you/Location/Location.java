@@ -3,7 +3,6 @@ package com.example.park4you.Location;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -11,17 +10,16 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.example.park4you.LoginUser.Login;
 import com.example.park4you.Order.Order;
-import com.example.park4you.Order.OwnerParkingList;
-import com.example.park4you.Parking.MyAdapter;
-import com.example.park4you.Parking.Parking;
+import com.example.park4you.Order.PresenterOwnerOrders;
+import com.example.park4you.Parking.ParkingDB;
 import com.example.park4you.Parking.ParkingList;
+import com.example.park4you.Parking.PresenterAvailableParking;
 import com.example.park4you.R;
 import com.example.park4you.RentUser.RentUser;
-import com.example.park4you.Order.UserParkingList;
+import com.example.park4you.Order.PresentOrders;
 import com.example.park4you.User.UserProfile;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -36,9 +34,9 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 public class Location extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +46,7 @@ public class Location extends AppCompatActivity {
 
 
     public void proceedButton(View view){
-        Intent intent = new Intent(Location.this, ParkingList.class);
+        Intent intent = new Intent(Location.this, PresenterAvailableParking.class);
         EditText editCityName = findViewById(R.id.city);
         EditText editStreetName = findViewById(R.id.street);
         EditText editHoursName = findViewById(R.id.hours);
@@ -75,6 +73,7 @@ public class Location extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        String owner;
         switch (item.getItemId()){
             case R.id.item2:
                 Intent intent = new Intent(Location.this, UserProfile.class);
@@ -85,15 +84,20 @@ public class Location extends AppCompatActivity {
                 startActivity(intent1);
                 return true;
             case R.id.item4:
-                Intent intent2 = new Intent(this, RentUser.class);
+                Intent intent2 = new Intent(this, ParkingDB.class);
                 startActivity(intent2);
                 return true;
             case R.id.item5:
-                Intent intent3 = new Intent(this, UserParkingList.class);
+                Intent intent3 = new Intent(this, PresentOrders.class);
+                owner = "user";
+                intent3.putExtra("owner", owner);
                 startActivity(intent3);
+
                 return true;
             case R.id.item6:
-                Intent intent4 = new Intent(this, OwnerParkingList.class);
+                Intent intent4 = new Intent(this, PresentOrders.class);
+                owner = "owner";
+                intent4.putExtra("owner", owner);
                 startActivity(intent4);
                 return true;
             case R.id.item7:
@@ -127,6 +131,7 @@ public class Location extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     if(first_time[0]) {
+//                        Order order = dataSnapshot.getValue(Order.class);
                         Map<String, Object> newPost = (Map<String, Object>) dataSnapshot.getValue();
                         assert newPost != null;
                         System.out.println("newPost.values() " + newPost.values());
@@ -143,28 +148,51 @@ public class Location extends AppCompatActivity {
                         String ownerID = (String) arr.toArray()[9];
                         String key_order = (String) arr.toArray()[4];
                         String parking_id = (String) arr.toArray()[6];
-                        Order order = new Order(email_owner, houseNum, city, price, emailCustomer, avHours, street, parking_now, ownerID, key_order, parking_id);
-                        System.out.println("order.isParking_now() " + order.isParking_now());
-                        if (order.isParking_now()) {
+
+
+                        HashMap<String, Object> order = new HashMap<>();
+                        order.put("emailOwner ", email_owner);
+                        order.put("houseNum ", houseNum);
+                        order.put("city ", city);
+                        order.put("price ", price);
+                        order.put("emailCustomer ", emailCustomer);
+                        order.put("avHours ", avHours);
+                        order.put("street ", street);
+                        order.put("parking_now ", false);
+                        order.put("OwnerId ", ownerID);
+                        order.put("id ", key_order);
+                        order.put("parkingId ", parking_id);
+//                        Order order = new Order(email_owner, houseNum, city, price, emailCustomer, avHours, street, parking_now, ownerID, key_order, parking_id);
+//                        System.out.println("order.isParking_now() " + order.isParking_now());
+//                        if (order.isParking_now()) {
+                        if (parking_now) {
                             first_time[0] = false;
-                            order.setParking_now(false);
+//                            order.setParking_now(false);
+//                            System.out.println("dataSnapshot.getRef() " + dataSnapshot.child("parking_now").getRef().get());
+//                            System.out.println("dataSnapshot.getRef() " + dataSnapshot.child("parking_now").getRef().getKey());
+//                            System.out.println("dataSnapshot.getRef() " + dataSnapshot.child("parking_now").getValue());
+//                            dataSnapshot.child("parking_now").getRef().setValue(false);
+
                             reference_cus.child(key_order).setValue(order);
-                            owner.child(order.ownerID).child(key_order).setValue(order);
+                            owner.child(ownerID).child(key_order).setValue(order);
+
+//                            reference_cus.child(order.getId()).child("parking_now").setValue(false);
+//                            owner.child(order.getOwnerID()).child(order.getId()).child("parking_now").setValue(false);
                             System.out.println("1");
                             System.out.println("dataSnapshot " + dataSnapshot);
                             DatabaseReference reference_address = FirebaseDatabase.getInstance().getReference("Addresses");
-                            String key = reference_address.child(order.city).push().getKey();
+                            String key = reference_address.child(city).push().getKey();
                             HashMap<String, Object> hashMap = new HashMap<>();
                             hashMap.put("id", key);
-                            hashMap.put("avHours", order.avHours);
-                            hashMap.put("city", order.city);
-                            hashMap.put("houseNum", order.houseNum);
-                            hashMap.put("price", order.price);
-                            hashMap.put("street", order.street);
-                            hashMap.put("email", order.emailOwner);
-                            hashMap.put("ownerID", order.ownerID);
+                            hashMap.put("avHours", avHours);
+                            hashMap.put("city", city);
+                            hashMap.put("houseNum", houseNum);
+                            hashMap.put("price", price);
+                            hashMap.put("street", street);
+                            hashMap.put("email", email_owner);
+                            hashMap.put("ownerID", ownerID);
                             assert key != null;
-                            reference_address.child(order.city).child(key).setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            reference_address.child(city).child(key).setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                 }

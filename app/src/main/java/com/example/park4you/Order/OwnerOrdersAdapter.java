@@ -14,11 +14,11 @@ import android.content.Context;
 import java.util.ArrayList;
 
 // this class is adapter to the screen -> to create a list of owner parking that that he posted and users ordered them
-public class OwnerParkingsAdapter extends RecyclerView.Adapter<OwnerParkingsAdapter.MyViewHolder> {
+public class OwnerOrdersAdapter extends RecyclerView.Adapter<OwnerOrdersAdapter.MyViewHolder> {
     Context context;
     ArrayList<Order> list;
 
-    public OwnerParkingsAdapter(Context context, ArrayList<Order> list) {
+    public OwnerOrdersAdapter(Context context, ArrayList<Order> list) {
         this.context = context;
         this.list = list;
     }

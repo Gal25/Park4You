@@ -1,0 +1,25 @@
+@startuml
+'https://plantuml.com/state-diagram
+
+scale 350 width
+[*] --> NewOrderProcess
+
+state NewOrderProcess {
+  [*] --> User
+
+  User --> Order : Order Parking
+  Order -> Changing_Parking_Mode : When leaving the Parking
+
+state Order{
+
+state Release_Parking
+}
+}
+
+state Parking {
+Changing_Parking_Mode -> Update_Parking : The Parking is Available for everyone
+
+state Update_Parking{
+}
+}
+@enduml

@@ -1,0 +1,11 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+Alice -> Parking: Alice add new Parking
+Parking --> Bob: Bob can see Alice Parking
+
+Bob -> Parking: Bob add a new Parking
+Alice <-- Parking: Alice can see Bob Parking
+@enduml

@@ -14,8 +14,8 @@ import android.widget.Toast;
 
 import com.example.park4you.Location.Location;
 import com.example.park4you.LoginUser.Login;
-import com.example.park4you.Order.OwnerParkingList;
-import com.example.park4you.Order.UserParkingList;
+import com.example.park4you.Order.PresenterOwnerOrders;
+import com.example.park4you.Order.PresentOrders;
 import com.example.park4you.R;
 import com.example.park4you.RentUser.RentUser;
 import com.google.firebase.auth.FirebaseAuth;
@@ -45,7 +45,7 @@ public class UserProfile extends AppCompatActivity {
         showUserProfile();
 
     }
-
+    //Presenter
     private void showUserProfile() {
         FirebaseUser firebaseUser = auto.getCurrentUser();
         String userID = firebaseUser.getUid();
@@ -83,7 +83,7 @@ public class UserProfile extends AppCompatActivity {
 
     }
 
-
+    //Viewer
     //if the user want to return to location value
     public void returnButton(View view){
         Intent loginIntent = new Intent(this, Location.class);
@@ -125,13 +125,13 @@ public class UserProfile extends AppCompatActivity {
 
             //show the user's orders
             case R.id.item5:
-                Intent intent3 = new Intent(this, UserParkingList.class);
+                Intent intent3 = new Intent(this, PresentOrders.class);
                 startActivity(intent3);
                 return true;
 
             //Shows the orders ordered from the owner
             case R.id.item6:
-                Intent intent4 = new Intent(this, OwnerParkingList.class);
+                Intent intent4 = new Intent(this, PresenterOwnerOrders.class);
                 startActivity(intent4);
                 return true;
 

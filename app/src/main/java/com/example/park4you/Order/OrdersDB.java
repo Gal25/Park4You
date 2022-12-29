@@ -15,7 +15,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
 
-public class ordersDB extends AppCompatActivity {
+public class OrdersDB extends AppCompatActivity {
 
     DatabaseReference database_user;
     FirebaseUser firebaseUser;
@@ -35,7 +35,6 @@ public class ordersDB extends AppCompatActivity {
         assert firebaseUser != null;
         DatabaseReference reference_cus = FirebaseDatabase.getInstance().getReference("Customers Parking").child(firebaseUser.getUid());
         database_user = FirebaseDatabase.getInstance().getReference("Users");
-//        String key = database_user.push().getKey();
         key = reference_cus.push().getKey();
         HashMap<String, Object> hashMap_customer = new HashMap<>();
         hashMap_customer.put("emailOwner ", p.getEmail());
@@ -64,8 +63,6 @@ public class ordersDB extends AppCompatActivity {
         firebaseUser = auto.getCurrentUser();
         database_user = FirebaseDatabase.getInstance().getReference("Users");
         DatabaseReference reference_owner= FirebaseDatabase.getInstance().getReference("Owners Parking").child(p.getOwnerID());
-//        String key = database_user.push().getKey();
-//        String key_owner  = reference_owner.push().getKey();
         HashMap<String, Object> hashMap_customer = new HashMap<>();
         hashMap_customer.put("emailOwner ", p.getEmail());
         hashMap_customer.put("houseNum ", p.getHouseNum());
@@ -80,7 +77,6 @@ public class ordersDB extends AppCompatActivity {
         hashMap_customer.put("parkingId ", p.getid());
 
         assert key != null;
-//        assert key_owner != null;
         reference_owner.child(key).setValue(hashMap_customer).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {

@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.widget.Toast;
@@ -22,33 +23,36 @@ import java.util.Collection;
 import java.util.Map;
 import java.util.Objects;
 
-//The purpose of this class is to add the orders that the customer ordered into a list
+//The purpose of this class is to add the orders that the customer ordered into a list of the owner parking
 //and show on the screen with the adapter
 //the orders list show if the user choose that
-public class UserParkingList extends AppCompatActivity {
+public class PresenterOwnerOrders extends AppCompatActivity {
     RecyclerView recyclerView;
     DatabaseReference database;
     ArrayList<Order> list;
     FirebaseUser firebaseUser;
     private FirebaseAuth auto;
-    UserParkingsAdapter userParkingsAdapter;
+    OwnerOrdersAdapter ownerParkingsAdapter;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_parking_list);
+        setContentView(R.layout.activity_owner_parking_list);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-        recyclerView = findViewById(R.id.userParkingList);
+        recyclerView = findViewById(R.id.ownerParkingList);
         auto = FirebaseAuth.getInstance();
         firebaseUser = auto.getCurrentUser();
-        database = FirebaseDatabase.getInstance().getReference("Customers Parking");
+        database = FirebaseDatabase.getInstance().getReference("Owners Parking");
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         list = new ArrayList<>();
-        userParkingsAdapter = new UserParkingsAdapter(this, list);
-        recyclerView.setAdapter(userParkingsAdapter);
-
+        ownerParkingsAdapter = new OwnerOrdersAdapter(this, list);
+        recyclerView.setAdapter(ownerParkingsAdapter);
+    }
+    public void Show_Owners_Orders(){
         database.child(Objects.requireNonNull(auto.getUid())).addValueEventListener(new ValueEventListener() {
             @SuppressLint("NotifyDataSetChanged")
             @Override
@@ -68,16 +72,16 @@ public class UserParkingList extends AppCompatActivity {
                     boolean parking_now = Boolean.parseBoolean(arr.toArray()[9].toString());
                     String ownerID = (String)arr.toArray()[10];
                     Order order = new Order(email_owner ,houseNum ,city,price ,emailCustomer ,avHours ,street, parking_now, ownerID);
-                    System.out.println("order!!: " + order);
                     list.add(order);
                 }
-                userParkingsAdapter.notifyDataSetChanged();
+                ownerParkingsAdapter.notifyDataSetChanged();
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(UserParkingList.this, "Cancelled", Toast.LENGTH_SHORT).show();
+                Toast.makeText(PresenterOwnerOrders.this, "Cancelled", Toast.LENGTH_SHORT).show();
+
             }
         });
-
     }
 }

@@ -3,14 +3,14 @@ package com.example.park4you.Parking;
 import java.util.Objects;
 
 public class Parking {
-    String city;
-    String street;
-    int houseNum;
-    double price;
-    String avHours;
-    String email;
-    String id;
-    String ownerID;
+    private String city;
+    private String street;
+    private int houseNum;
+    private double price;
+    private String avHours;
+    private String email;
+    private String id;
+    private String ownerID;
 
 
 

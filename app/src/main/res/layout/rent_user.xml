@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RentUser.RentUser">
+    tools:context=".Parking.ParkingDB">
 
     <EditText
         android:id="@+id/Email"
@@ -51,7 +51,7 @@
         android:layout_below="@id/AvailableHours"/>
 
     <Button
-        android:id="@+id/LogInButton"
+        android:id="@+id/addParking"
         android:layout_width="150dp"
         android:layout_height="50dp"
         android:layout_below="@+id/Price"
@@ -59,7 +59,7 @@
         android:text="Publish"
         android:textSize="15sp"
         android:textStyle="bold"
-        android:onClick="publishButton"
+        android:onClick="addParking"
         android:layout_centerInParent="true"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="112dp"

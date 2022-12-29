@@ -2,7 +2,6 @@ package com.example.park4you.User;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -10,19 +9,13 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.park4you.Location.Location;
 import com.example.park4you.LoginUser.Login;
-import com.example.park4you.Order.OwnerParkingList;
-import com.example.park4you.Order.UserParkingList;
 import com.example.park4you.R;
-import com.example.park4you.RentUser.RentUser;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.Objects;
 
 //import android.support.annotation.NonNull;
 //import android.support.v7.app.AppCompatActivity;
@@ -71,7 +64,7 @@ public class UserDB extends AppCompatActivity {
         registerUser();
 
     }
-
+    //Presenter
     public void registerUser() {
 
         //if it is not successful check if there are the same user in auth firebase
@@ -83,7 +76,6 @@ public class UserDB extends AppCompatActivity {
                             id = task.getResult().getUser().getUid();
                             user = new User(email, username,password, phone, id);
                             // Sign in success, update UI with the signed-in user's information
-                            Log.d(TAG, "createUserWithEmail:success");
                             updateUI();
                         } else {
                             // If sign in fails, display a message to the user.
@@ -94,9 +86,10 @@ public class UserDB extends AppCompatActivity {
                     }
                 });
     }
-
+    //Viewer
     //update the UI -> go to login page and set value in our database
     public void updateUI() {
+        Log.d(TAG, "createUserWithEmail:success");
         mDatabase.child(id).setValue(user);
         Intent loginIntent = new Intent(this, Login.class);
         startActivity(loginIntent);

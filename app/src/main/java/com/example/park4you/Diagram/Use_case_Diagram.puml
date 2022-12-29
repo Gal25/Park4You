@@ -27,6 +27,9 @@
 User --> (Use1)
 (Use1) --> (register1)
 (Use1) --> (login1)
+note on link
+  Already registered
+  end note
 (register1) --> (login1)
 (login1) --> (register1)
 (login1) --> (search_parking1)

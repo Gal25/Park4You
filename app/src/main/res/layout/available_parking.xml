@@ -201,12 +201,12 @@
 
 
             <Button
-                android:id="@+id/rentButton"
+                android:id="@+id/ChooseParking"
                 android:layout_width="129dp"
                 android:layout_height="37dp"
                 android:text="Rent"
                 android:layout_gravity="top|center"
-                android:onClick="rentButton"/>
+                android:onClick="ChooseParking"/>
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
