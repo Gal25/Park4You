@@ -30,8 +30,8 @@ public class UserProfile extends AppCompatActivity {
 
     private TextView textViewemail, textViewUserName, textViewphoneNum;
     private String email, UserName, phoneNum;
-    DatabaseReference database;
-    FirebaseAuth auto;
+    private DatabaseReference database;
+    private FirebaseAuth auto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -13,6 +13,13 @@
         android:theme="@style/Theme.Park4You"
         tools:targetApi="31">
         <activity
+            android:name=".Menu.Menu"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".Order.PresenterOwnerOrders"
             android:exported="false"
             android:parentActivityName=".Location.Location">
@@ -24,6 +31,13 @@
             android:name=".Order.PresentOrders"
             android:exported="false"
             android:parentActivityName=".Location.Location">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Order.OrdersDB"
+            android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

@@ -36,6 +36,8 @@ note on link
 (search_parking1) --> (select_parking1)
 (select_parking1) --> (search_parking1)
 (search_parking1) --> (menu1)
+(select_parking1) --> (client_parking_history1)
+(select_parking1) --> (owner_parking_history)
 (menu1) --> (profile1)
 (menu1) --> (search_parking1)
 (menu1) --> (client_parking_history1)

@@ -28,7 +28,6 @@ public class Parking {
     public Parking(){
 
     }
-
     public String getOwnerID() {
         return ownerID;
     }

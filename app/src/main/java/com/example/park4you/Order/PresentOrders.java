@@ -13,6 +13,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.example.park4you.Location.Location;
+import com.example.park4you.Menu.Menu;
 import com.example.park4you.R;
 import com.example.park4you.User.UserDB;
 import com.google.firebase.auth.FirebaseAuth;
@@ -31,7 +32,7 @@ import java.util.Objects;
 //The purpose of this class is to add the orders that the customer ordered into a list
 //and show on the screen with the adapter
 //the orders list show if the user choose that
-public class PresentOrders extends AppCompatActivity {
+public class PresentOrders extends Menu {
     RecyclerView recyclerView;
     DatabaseReference database;
     ArrayList<Order> list;

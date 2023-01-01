@@ -9,6 +9,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.park4you.Menu.Menu;
 import com.example.park4you.R;
 import com.example.park4you.RentUser.RentUser;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -20,8 +21,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.HashMap;
 import java.util.Objects;
 
-public class ParkingDB extends AppCompatActivity {
-    FirebaseAuth auto;
+public class ParkingDB extends Menu {
+    private FirebaseAuth auto;
     private DatabaseReference databaseReference;
     private EditText EmailText, cityText, streetText, houseNumText, avHoursText,priceText;
 

@@ -4,21 +4,162 @@
 'abstract class AbstractList
 'abstract AbstractCollection
 
-
-class Location {
-    +void onCreate(Bundle savedInstanceState)
-    +void proceedButton(View view)
-}
-class Login {
-    -EditText passwordEditText;
-    -EditText textEmail;
-    -String password;
+class User extends UserDB, UserProfile{
     -String email;
-    +void onCreate(Bundle savedInstanceState)
-    +void regButton(View view)
-    +void newUserButton(View view)
+    -String userName;
+    -String phoneNum;
+    -String id;
+    -String password;
+
+    +User(String email, String password);
+    +User(String email, String userName, String password, String phoneNum, String id);
+    +User(String email, String UserName,  String phoneNum);
+    +User();
+    +String getPhoneNum();
+    +void setPhoneNum(String phoneNum);
+    +String getEmail();
+    +void setEmail(String email);
+    +String getUserName();
+    +void setUserName(String userName);
+    +void setId(String id);
+    +String getId();
+    +String getPassword();
+    +void setPassword(String password);
 }
-class Order {
+class UserDB{
+    -EditText passwordEditText
+    -EditText textName
+    -EditText textEmail
+    -EditText textPhone
+    -DatabaseReference mDatabase
+    -static final String USERS = "Users"
+    -String TAG = "Init user"
+    -FirebaseAuth mAuth
+    -FirebaseUser firebaseUser
+    -String email
+    -String password
+    -String username
+    -String phone
+    -User user
+    -String id
+
+    #void onCreate(Bundle savedInstanceState)
+    +void registerButton(View view)
+    +void registerUser()
+    +void updateUI()
+}
+
+class UserProfile{
+
+    -TextView textViewemail
+    -TextView textViewUserName
+    -TextView textViewphoneNum
+    -String email
+    -String UserName
+    -String phoneNum
+    -DatabaseReference database
+    -FirebaseAuth auto
+
+    #void onCreate(Bundle savedInstanceState)
+    +void showUserProfile()
+    +void returnButton(View view)
+    +boolean onCreateOptionsMenu(Menu menu)
+}
+class Parking extends ParkingAdapter, PresenterAvailableParking{
+    -String city
+    -String street;
+    -int houseNum;
+    -double price;
+    -String avHours;
+    -String email;
+    -String id;
+    -String ownerID;
+
+    +Parking(String city, double price, String street, String avHours, String id, String email, int houseNum, String ownerID)
+    +Parking()
+    +String getOwnerID()
+    +void setOwnerID(String ownerID)
+    +void setCity(String city)
+    +void setStreet(String street)
+    +void setHouseNum(int houseNum)
+    +void setPrice(double price)
+    +void setAvHours(String avHours)
+    +void setEmail(String email)
+    +void setId(String id)
+    +String getCity()
+    +String getStreet()
+    +int getHouseNum()
+    +double getPrice()
+    +String getAvHours()
+    +String getid()
+    +String getEmail()
+    +boolean equals(Object obj)
+    +String toString()
+
+}
+class ParkingAdapter extends PresenterAvailableParking{
+    -Context context
+    -ArrayList<Parking> list
+    +ParkingAdapter(Context context, ArrayList<Parking> list)
+    +MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
+    +void onBindViewHolder(@NonNull MyViewHolder holder, @SuppressLint("RecyclerView") int position)
+    +int getItemCount()
+}
+class MyViewHolder{
+        -TextView cityName
+        -TextView streetName
+        -TextView houseNumber
+        -TextView avHours
+        -TextView pricePerHour
+        -TextView email
+        -TextView id
+        +MyViewHolder(@NonNull View itemView)
+}
+ParkingAdapter +-- MyViewHolder
+class ParkingDB{
+
+    -FirebaseAuth auto;
+    -DatabaseReference databaseReference;
+    -EditText EmailText
+    -EditText cityText
+    -EditText streetText
+    -EditText houseNumText
+    -EditText avHoursText
+    -EditText priceText
+
+    #void onCreate(Bundle savedInstanceState)
+    +void addParking(View view)
+    +void newParking()
+    +void delete_parking()
+}
+'class ParkingList{
+'    -RecyclerView recyclerView
+'    -DatabaseReference database
+'    -ParkingAdapter myAdapter
+'    -ArrayList<Parking> list
+'    -TextView textView
+'    -String city
+'    -OrdersDB ordersDB
+'
+'    #void onCreate(Bundle savedInstanceState)
+'}
+class PresenterAvailableParking{
+
+    -RecyclerView recyclerView
+    -DatabaseReference database
+    -ParkingAdapter myAdapter
+    -ArrayList<Parking> list
+    -TextView textView
+    -String city
+    -OrdersDB ordersDB
+
+    #void onCreate(Bundle savedInstanceState)
+    +void Show_Parking()
+    +void ChooseParking(View view)
+    +boolean checkTime(String hours1, String hours2)
+}
+
+class Order extends OwnerOrdersAdapter, UserOrdersAdapter{
     -String city;
     -String street;
     -int houseNum;
@@ -56,50 +197,84 @@ class Order {
     +String toString();
 
 }
-class ordersDB{
+class ordersDB extends Parking{
     -DatabaseReference database_user;
     -FirebaseUser firebaseUser;
     -FirebaseAuth auto;
     -String key;
-    +void onCreate(Bundle savedInstanceState)
+    #void onCreate(Bundle savedInstanceState)
     +void create_order_customer(Parking p);
     +void create_order_owner(Parking p);
 }
-class OwnerParkingList{
-    -RecyclerView recyclerView;
-    -DatabaseReference database;
-    -ArrayList<Order> list;
-    -FirebaseUser firebaseUser;
-    -private FirebaseAuth auto;
-    -OwnerParkingsAdapter ownerParkingsAdapter;
-    +void onCreate(Bundle savedInstanceState);
+class PresentOrders extends OwnerOrdersAdapter, UserOrdersAdapter{
+    -RecyclerView recyclerView
+    -DatabaseReference database
+    -ArrayList<Order> list
+    -FirebaseUser firebaseUser
+    -FirebaseAuth auto
+    -UserOrdersAdapter OrdersUsersAdapter
+    -OwnerOrdersAdapter OrdersOwnersAdapter
+    -String owner
+
+    #void onCreate(Bundle savedInstanceState);
+    +void ShowOrders()
+    }
+class OwnerOrdersAdapter{
+    -Context context
+    -ArrayList<Order> list
+    +OwnerOrdersAdapter(Context context, ArrayList<Order> list)
+    +MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
+    +void onBindViewHolder(@NonNull MyViewHolder holder, int position)
+    +int getItemCount()
+}
+class MyViewHolder{
+        -TextView cityName
+        -TextView streetName
+        -TextView houseNumber
+        -TextView avHours
+        -TextView pricePerHour
+        -TextView ownerEmail
+        -TextView customerEmail
+        +MyViewHolder(@NonNull View itemView)
+}
+OwnerOrdersAdapter +-- MyViewHolder
+
+class UserOrdersAdapter{
+    -Context context
+    -ArrayList<Order> list
+    +UserOrdersAdapter(Context context, ArrayList<Order> list)
+    +MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
+    +void onBindViewHolder(@NonNull MyViewHolder holder, int position)
+    +int getItemCount()
+}
+class MyViewHolder{
+        -TextView cityName
+        -TextView streetName
+        -TextView houseNumber
+        -TextView avHours
+        -TextView pricePerHour
+        -TextView ownerEmail
+        -TextView customerEmail
+        +MyViewHolder(@NonNull View itemView)
+}
+UserOrdersAdapter +-- MyViewHolder
+
+class Login {
+    -EditText passwordEditText;
+    -EditText textEmail;
+    -String password;
+    -String email;
+    #void onCreate(Bundle savedInstanceState)
+    +void regButton(View view)
+    +void newUserButton(View view)
 }
 
-
-
-
-
-
-class User {
-    -String email;
-    -String userName;
-    -String phoneNum;
-    -String id;
-    -String password;
-
-    +User(String email, String password);
-    +User(String email, String userName, String password, String phoneNum, String id);
-    +User(String email, String UserName,  String phoneNum);
-    +User();
-    +String getPhoneNum();
-    +void setPhoneNum(String phoneNum);
-    +String getEmail();
-    +void setEmail(String email);
-    +String getUserName();
-    +void setUserName(String userName);
-    +void setId(String id);
-    +String getId();
-    +String getPassword();
-    +void setPassword(String password);
+class Location {
+    #void onCreate(Bundle savedInstanceState)
+    +void proceedButton(View view)
+}
+class Menu extends Location, PresentOrders, PresenterAvailableParking, ParkingDB{
+    +boolean onCreateOptionsMenu(android.view.Menu menu)
+    +boolean onOptionsItemSelected(@NonNull MenuItem item)
 }
 @enduml

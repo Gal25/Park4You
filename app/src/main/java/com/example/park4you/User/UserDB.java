@@ -32,7 +32,7 @@ public class UserDB extends AppCompatActivity {
     private static final String USERS = "Users";
     private String TAG = "Init user";
     private FirebaseAuth mAuth;
-    FirebaseUser firebaseUser;
+    private FirebaseUser firebaseUser;
     private String email;
     private String password;
     private  String username;

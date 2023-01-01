@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.park4you.Location.Location;
+import com.example.park4you.Menu.Menu;
 import com.example.park4you.Order.OrdersDB;
 import com.example.park4you.R;
 import com.google.firebase.database.DataSnapshot;
@@ -25,16 +26,16 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class PresenterAvailableParking extends AppCompatActivity {
+public class PresenterAvailableParking extends Menu {
 
 
-    RecyclerView recyclerView;
-    DatabaseReference database;
-    ParkingAdapter myAdapter;
-    ArrayList<Parking> list;
-    TextView textView;
-    String city;
-    OrdersDB ordersDB;
+    private RecyclerView recyclerView;
+    private DatabaseReference database;
+    private ParkingAdapter myAdapter;
+    private ArrayList<Parking> list;
+    private TextView textView;
+    private String city;
+    private OrdersDB ordersDB;
 
     //Add the parking into to the parking list and update the parking display screen using the adapter
     @SuppressLint("MissingInflatedId")
