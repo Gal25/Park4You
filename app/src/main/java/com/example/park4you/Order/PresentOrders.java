@@ -59,18 +59,10 @@ public class PresentOrders extends Menu {
             database = FirebaseDatabase.getInstance().getReference("Customers Parking");
             OrdersUsersAdapter = new UserOrdersAdapter(this, list);
             OrdersOwnersAdapter = new OwnerOrdersAdapter(this, list);
-//            recyclerView.setAdapter(OrdersUsersAdapter);
             recyclerView.setAdapter(OrdersUsersAdapter);
             recyclerView.setHasFixedSize(true);
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-//            System.out.println("OrdersUsersAdapter.list.size() " + OrdersUsersAdapter.list.size());
             ShowOrders();
-//            if (OrdersUsersAdapter.getItemCount() != 0){
-//                ShowOrders();
-//            }else{
-//                Log.d(TAG, "You are don`t have orders");
-//            }
 
         }else {
             setContentView(R.layout.activity_user_parking_list);
@@ -82,15 +74,6 @@ public class PresentOrders extends Menu {
             recyclerView.setHasFixedSize(true);
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
             ShowOrders();
-
-//            if (OrdersOwnersAdapter.list.size() != 0){
-//                ShowOrders();
-//            }else {
-//                Log.d(TAG, "You are don`t have orders");
-//            Intent intent = new Intent(PresentOrders.this, Location.class);
-////                Toast.makeText(PresentOrders.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
-//                startActivity(intent);
-//            }
         }
 
 
@@ -102,11 +85,9 @@ public class PresentOrders extends Menu {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     //take the snapshot and change it to order object
-//                    Order order = dataSnapshot.getValue(Order.class);
                     Map<String, Object> newPost = (Map<String, Object>) dataSnapshot.getValue();
                     assert newPost != null;
                     Collection<Object> arr = newPost.values();
-                    System.out.println("arr " + arr);
                     String email_owner = (String) arr.toArray()[0];
                     int houseNum = Integer.parseInt(arr.toArray()[1].toString());
                     String city = (String) arr.toArray()[2];

@@ -13,6 +13,7 @@ import com.example.park4you.Location.Location;
 import com.example.park4you.LoginUser.Login;
 import com.example.park4you.Order.OrdersDB;
 import com.example.park4you.Order.PresentOrders;
+import com.example.park4you.Parking.DeleteParking;
 import com.example.park4you.Parking.ParkingDB;
 import com.example.park4you.R;
 import com.example.park4you.User.UserProfile;
@@ -69,6 +70,13 @@ public class Menu extends AppCompatActivity {
                 func = "release_parking";
                 intent6.putExtra("func", func);
                 startActivity(intent6);
+//                release_parking();
+                return true;
+            case R.id.item9:
+                Intent intent7 = new Intent(this, DeleteParking.class);
+//                func = "release_parking";
+//                intent6.putExtra("func", func);
+                startActivity(intent7);
 //                release_parking();
                 return true;
             default: return super.onOptionsItemSelected(item);

@@ -66,6 +66,14 @@
                 android:value="" />
         </activity>
         <activity
+            android:name=".Parking.DeleteParking"
+            android:exported="true"
+            android:parentActivityName=".Location.Location">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".Location.Location"
             android:exported="true">
             <meta-data

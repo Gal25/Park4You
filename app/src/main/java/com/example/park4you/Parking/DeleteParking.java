@@ -1,0 +1,64 @@
+package com.example.park4you.Parking;
+
+import android.annotation.SuppressLint;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.park4you.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+public class DeleteParking extends AppCompatActivity {
+
+    private EditText textViewCity, textViewStreet, textViewHouseNum;
+
+    private DatabaseReference database;
+
+    @SuppressLint("MissingInflatedId")
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_delete_parking);
+        textViewCity = findViewById(R.id.CityName);
+        textViewStreet = findViewById(R.id.StreetName);
+        textViewHouseNum = findViewById(R.id.HouseNumber_);
+        database = FirebaseDatabase.getInstance().getReference("Addresses");
+    }
+
+    public void delete_parking(View view){
+        String city, street;
+        int houseNum;
+        city = textViewCity.getText().toString();
+        street = textViewStreet.getText().toString();
+        houseNum = Integer.parseInt(textViewHouseNum.getText().toString());
+
+        database.child(city).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    Parking parking = dataSnapshot.getValue(Parking.class);
+                    assert parking != null;
+                    if (parking.getStreet().equals(street) && parking.getHouseNum() == houseNum){
+                        dataSnapshot.getRef().removeValue();
+                        Toast.makeText(DeleteParking.this, "Parking Deleted!", Toast.LENGTH_SHORT).show();
+                        break;
+                    }
+
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+    }
+}
