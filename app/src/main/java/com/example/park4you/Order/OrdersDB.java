@@ -1,11 +1,14 @@
 package com.example.park4you.Order;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.park4you.Location.Location;
 import com.example.park4you.Parking.Parking;
+import com.example.park4you.Parking.PresenterAvailableParking;
 import com.example.park4you.Parking.Time;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -164,6 +167,8 @@ public class OrdersDB extends AppCompatActivity {
                         }
                     }
                 }
+                Intent intent = new Intent(OrdersDB.this, Location.class);
+                startActivity(intent);
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {

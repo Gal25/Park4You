@@ -121,9 +121,9 @@ public class PresenterAvailableParking extends Menu {
                                 myAdapter.notifyItemRemoved(pos);
                                 break;
                             }
-                            Intent intent = new Intent(PresenterAvailableParking.this, Location.class);
-                            startActivity(intent);
                         }
+                        Intent intent = new Intent(PresenterAvailableParking.this, Location.class);
+                        startActivity(intent);
                     }
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {

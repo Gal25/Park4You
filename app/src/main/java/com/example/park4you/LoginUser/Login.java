@@ -130,12 +130,11 @@ public class Login extends AppCompatActivity {
     }
 
     private void beginRecovery(String email) {
-        loadingBar=new ProgressDialog(this);
+        loadingBar = new ProgressDialog(this);
         loadingBar.setMessage("Sending Email....");
         loadingBar.setCanceledOnTouchOutside(false);
         loadingBar.show();
 
-//        System.out.println("139");
         // calling sendPasswordResetEmail
         // open your email and write the new
         // password and then you can login
@@ -143,59 +142,20 @@ public class Login extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 loadingBar.dismiss();
-                if(task.isSuccessful())
-                {
+                if (task.isSuccessful()) {
                     // if isSuccessful then done message will be shown
                     // and you can change the password
-                    Toast.makeText(Login.this,"Done sent",Toast.LENGTH_LONG).show();
-                }
-                else {
-                    Toast.makeText(Login.this,"Error Occurred",Toast.LENGTH_LONG).show();
+                    Toast.makeText(Login.this, "Done sent", Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(Login.this, "Error Occurred", Toast.LENGTH_LONG).show();
                 }
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
                 loadingBar.dismiss();
-                Toast.makeText(Login.this,"Error Failed",Toast.LENGTH_LONG).show();
+                Toast.makeText(Login.this, "Error Failed", Toast.LENGTH_LONG).show();
             }
         });
-//        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
-//        System.out.println("mail " + email);
-//        System.out.println("password " + password);
-//        System.out.println("user " + user);
-        // Get auth credentials from the user for re-authentication. The example below shows
-        // email and password credentials but there are multiple possible providers,
-        // such as GoogleAuthProvider or FacebookAuthProvider.
-//        AuthCredential credential = EmailAuthProvider
-//                .getCredential(email, password);
-        // Prompt the user to re-provide their sign-in credentials
-//        user.reauthenticate(credential)
-//                .addOnCompleteListener(new OnCompleteListener<Void>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<Void> task) {
-//                        Log.d(TAG, "User re-authenticated.");
-//                    }
-//                });
-//        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-//
-//        // Get auth credentials from the user for re-authentication. The example below shows
-//        // email and password credentials but there are multiple possible providers,
-//        // such as GoogleAuthProvider or FacebookAuthProvider.
-//        AuthCredential credential = EmailAuthProvider
-//                .getCredential(email, password);
-//        // Prompt the user to re-provide their sign-in credentials
-//        user.reauthenticate(credential)
-//                .addOnCompleteListener(new OnCompleteListener<Void>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<Void> task) {
-//                        Log.d(TAG, "User re-authenticated.");
-//                    }
-//                });
     }
-
-//    public void showRecoverPasswordDialog(View view) {
-//    }
-//    public Boolean validateEmail(){}
 }
