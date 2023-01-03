@@ -76,10 +76,4 @@
         tools:layout_editor_absoluteY="636dp"
         android:backgroundTint="@color/teal"/>
 
-
-
-
-
-
-
 </RelativeLayout>
