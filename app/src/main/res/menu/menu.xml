@@ -32,6 +32,9 @@
             <item android:id = "@+id/item8"
                 android:title="Release Parking"
                 app:showAsAction= "never"/>
+            <item android:id = "@+id/item10"
+                android:title="Payment"
+                app:showAsAction= "never"/>
             <item android:id = "@+id/item9"
                 android:title="Delete Parking"
                 app:showAsAction= "never"/>

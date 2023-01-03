@@ -88,7 +88,6 @@ public class Login extends AppCompatActivity {
                         }
                     }
                 });
-
     }
 
     //if there are a new user go to add the user to DB with UserDB class

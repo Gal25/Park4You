@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/light_gray"
+    tools:context=".Payment.PaymentDB">
+
+    <RelativeLayout
+        android:id="@+id/layout_head"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@color/white">
+
+        <RelativeLayout
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ProgressBar
+                android:id="@+id/title_"
+                style="?android:attr/progressBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="110dp"
+                android:elevation="10dp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="150dp"
+                android:hint="Credit Card"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/note"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginTop="60dp"
+        android:background="@color/light_gray">
+
+        <RelativeLayout
+            android:id="@+id/RL_imageView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/Note"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:hint="Secured transactions.
+                      You`ll be charged only when parking."
+            android:textAlignment="center"
+            android:layout_marginTop="10dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+            android:textColor="@android:color/black"
+            android:textStyle="bold" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+
+    <EditText
+        android:id="@+id/CreditNumber"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="150dp"
+        android:textColor="@color/black"
+        android:background="@color/white"
+        android:hint="Credit Number" />
+
+    <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:id="@+id/ExpirationDate"
+            android:hint="Expiration Date"
+            android:layout_below="@id/CreditNumber"
+            android:background="@color/white"
+            android:textColor="@color/black"
+            android:ems="10"
+            android:inputType="date"
+            tools:ignore="MissingConstraints" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:id="@+id/CVV"
+            android:hint="CVV"
+            android:textColor="@color/black"
+            android:background="@color/white"
+
+            android:layout_below="@id/ExpirationDate"
+            tools:ignore="MissingConstraints" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:id="@+id/Email_payment"
+            android:hint="Email"
+            android:textColor="@color/black"
+            android:background="@color/white"
+            android:layout_below="@id/CVV"
+            tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/SaveButton"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/CVV"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="130dp"
+        android:layout_marginBottom="1dp"
+        android:textColor="@color/light_gray"
+        android:backgroundTint="@color/light_blue"
+        android:text="Save"
+        android:onClick="SaveButton"
+        tools:ignore="UsingOnClickInXml" />
+</RelativeLayout>

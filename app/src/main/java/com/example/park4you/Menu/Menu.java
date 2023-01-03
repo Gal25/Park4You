@@ -1,15 +1,11 @@
 package com.example.park4you.Menu;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.park4you.Location.Location;
 import com.example.park4you.LoginUser.Login;
@@ -17,12 +13,13 @@ import com.example.park4you.Order.OrdersDB;
 import com.example.park4you.Order.PresentOrders;
 import com.example.park4you.Parking.DeleteParking;
 import com.example.park4you.Parking.ParkingDB;
+import com.example.park4you.Payment.PaymentDB;
 import com.example.park4you.R;
 import com.example.park4you.User.UserProfile;
-import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class Menu extends AppCompatActivity {
+
 
     //create menu
     @Override
@@ -79,6 +76,13 @@ public class Menu extends AppCompatActivity {
 //                func = "release_parking";
 //                intent6.putExtra("func", func);
                 startActivity(intent7);
+//                release_parking();
+                return true;
+            case R.id.item10:
+                Intent intent8 = new Intent(this, PaymentDB.class);
+//                func = "release_parking";
+//                intent6.putExtra("func", func);
+                startActivity(intent8);
 //                release_parking();
                 return true;
             default: return super.onOptionsItemSelected(item);

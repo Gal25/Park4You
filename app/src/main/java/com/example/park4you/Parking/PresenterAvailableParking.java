@@ -17,6 +17,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.park4you.Location.Location;
 import com.example.park4you.Menu.Menu;
 import com.example.park4you.Order.OrdersDB;
+import com.example.park4you.Order.PresenterOrderConfirmation;
+import com.example.park4you.Payment.PaymentDB;
 import com.example.park4you.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -36,6 +38,7 @@ public class PresenterAvailableParking extends Menu {
     private TextView textView;
     private String city;
     private OrdersDB ordersDB;
+    private PaymentDB paymentDB;
 
     //Add the parking into to the parking list and update the parking display screen using the adapter
     @SuppressLint("MissingInflatedId")
@@ -49,6 +52,7 @@ public class PresenterAvailableParking extends Menu {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         ordersDB = new OrdersDB();
+        paymentDB = new PaymentDB();
         list = new ArrayList<>();
         myAdapter = new ParkingAdapter(this,list);
         recyclerView.setAdapter(myAdapter);
@@ -68,7 +72,6 @@ public class PresenterAvailableParking extends Menu {
                     Parking parking = dataSnapshot.getValue(Parking.class);
                     assert parking != null;
                     if (parking.getStreet().equals(streetName)) {
-                        System.out.println("parking " + parking);
                         String hours = parking.getAvHours().toString();
                         if (checkTime(AvHours, hours)) {
                             list.add(parking);
@@ -122,8 +125,16 @@ public class PresenterAvailableParking extends Menu {
                                 break;
                             }
                         }
-                        Intent intent = new Intent(PresenterAvailableParking.this, Location.class);
-                        startActivity(intent);
+                        boolean payment = paymentDB.SearchDetails();
+                        if (payment){
+                            Intent intent = new Intent(PresenterAvailableParking.this, PresenterOrderConfirmation.class);
+                            startActivity(intent);
+                        }else{
+                            Toast.makeText(PresenterAvailableParking.this, "fill in your payment details.",
+                                    Toast.LENGTH_LONG).show();
+                            Intent intent = new Intent(PresenterAvailableParking.this, PaymentDB.class);
+                            startActivity(intent);
+                        }
                     }
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
