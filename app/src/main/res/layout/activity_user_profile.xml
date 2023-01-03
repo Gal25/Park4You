@@ -175,17 +175,6 @@
                     android:hint="loading" />
             </RelativeLayout>
 
-            <Button
-                android:id="@+id/returnButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/textViewPhoneNum"
-                android:layout_centerInParent="true"
-                android:onClick="returnButton"
-                android:text="Return"
-                tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteX="0dp"
-                tools:layout_editor_absoluteY="341dp" />
 
         </LinearLayout>
 

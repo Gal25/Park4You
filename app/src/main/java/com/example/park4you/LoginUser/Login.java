@@ -1,6 +1,7 @@
 package com.example.park4you.LoginUser;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
@@ -45,12 +46,13 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.toolbar_title);
+//        getSupportActionBar().setTitle("Login");
         ref_user = FirebaseDatabase.getInstance().getReference("Users");
-
         mAuth= FirebaseAuth.getInstance();
-        getSupportActionBar().setTitle("Login");
         forgetpass=findViewById(R.id.forgetpass);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         loginprogress=new ProgressDialog(this);
         passwordEditText = findViewById(R.id.PasswordLogIn);
         textEmail = findViewById(R.id.EmailNewUser);

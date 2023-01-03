@@ -90,7 +90,8 @@
         </activity>
         <activity
             android:name=".User.UserProfile"
-            android:exported="true">
+            android:exported="true"
+            android:parentActivityName=".Location.Location">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

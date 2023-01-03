@@ -4,8 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Parking.DeleteParking">
+    tools:context=".Parking.DeleteParking"
+    android:background="@drawable/header_backround">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/addParkingTitle"
+        android:text="Delete Parking"
+        android:textSize="35dp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:layout_margin="25dp"/>
     <EditText
         android:id="@+id/CityName"
         android:layout_width="match_parent"
@@ -13,36 +24,57 @@
         android:layout_centerVertical="true"
         android:layout_marginTop="15dp"
         android:layout_marginBottom="15dp"
-        android:hint="City" />
+        android:hint="City"
+        android:background="#30ffffff"
+        android:layout_below="@id/addParkingTitle"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
+        android:layout_margin="10dp"
+        android:padding="15dp"
+        android:drawableLeft="@drawable/ic_baseline_location_city_24"
+        android:drawablePadding="20dp"/>
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/StreetName"
         android:hint="Street"
-        android:layout_below="@id/CityName"/>
+        android:layout_below="@id/CityName"
+        android:background="#30ffffff"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
+        android:layout_margin="10dp"
+        android:padding="15dp"
+        android:drawableLeft="@drawable/ic_baseline_streetview_24"
+        android:drawablePadding="20dp"/>
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/HouseNumber_"
         android:hint="House Number"
-        android:layout_below="@id/StreetName"/>
+        android:layout_below="@id/StreetName"
+        android:background="#30ffffff"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
+        android:layout_margin="10dp"
+        android:padding="15dp"
+        android:drawableLeft="@drawable/ic_baseline_numbers_24"
+        android:drawablePadding="20dp"/>
 
     <Button
         android:id="@+id/delete_parking"
         android:layout_width="150dp"
         android:layout_height="50dp"
         android:layout_below="@+id/HouseNumber_"
-        android:background="#DDDCDC"
         android:text="Delete"
         android:textSize="15sp"
         android:textStyle="bold"
         android:onClick="delete_parking"
         android:layout_centerInParent="true"
-        tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="112dp"
-        tools:layout_editor_absoluteY="636dp" />
+        tools:layout_editor_absoluteY="636dp"
+        android:backgroundTint="@color/teal"/>
 
 
 

@@ -8,22 +8,6 @@
     android:id="@+id/container"
     android:background="@drawable/backround">
 
-<!--    <include-->
-<!--        android:id="@+id/login_toolbar"-->
-<!--        layout="@layout/activity_main" />-->
-
-    <Button
-        android:id="@+id/new_user"
-        android:layout_width="120dp"
-        android:layout_height="50dp"
-        android:background="#DDDCDC"
-        android:onClick="newUserButton"
-        android:text="new user"
-        android:textSize="12sp"
-        android:textStyle="bold"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="112dp"
-        tools:layout_editor_absoluteY="636dp" />
 
     <EditText
         android:id="@+id/EmailNewUser"
@@ -36,38 +20,10 @@
         android:textColorHint="@color/white"
         android:textSize="34sp"
         android:textStyle="bold"
-        tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="497dp" />
-    <Button
-        android:id="@+id/forgetpass"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/PasswordLogIn"
-        android:textColor="@color/white"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="581dp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:onClick="showRecoverPasswordDialog"
-        android:text="Forgot Password" />
-    <Button
-        android:id="@+id/LogInButton"
-        android:layout_width="160dp"
-        android:layout_height="60dp"
-        android:layout_below="@+id/forgetpass"
-        android:layout_centerInParent="true"
-        android:background="#DDDCDC"
-        android:onClick="regButton"
-        android:text="Log in"
-        android:textSize="34sp"
-        android:textStyle="bold"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="112dp"
-        tools:layout_editor_absoluteY="636dp" />
-
+        tools:layout_editor_absoluteY="497dp"
+        android:drawableLeft="@drawable/ic_baseline_email_24"
+        android:drawablePadding="20dp"/>
     <EditText
         android:id="@+id/PasswordLogIn"
         android:layout_width="match_parent"
@@ -81,16 +37,47 @@
         android:textColorHint="@color/white"
         android:textSize="34sp"
         android:textStyle="bold"
-    />
+        android:drawableLeft="@drawable/ic_baseline_password_24"
+        android:drawablePadding="20dp"/>
+    <Button
+        android:id="@+id/new_user"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:background="#DDDCDC"
+        android:onClick="newUserButton"
+        android:text="new user"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="112dp"
+        tools:layout_editor_absoluteY="636dp" />
+    <Button
+        android:id="@+id/forgetpass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/PasswordLogIn"
+        android:textColor="@color/white"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="581dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:onClick="showRecoverPasswordDialog"
+        android:text="Forgot Password"
+        android:background="@drawable/custom_button"/>
 
+    <Button
+        android:id="@+id/LogInButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/forgetpass"
+        android:layout_centerInParent="true"
+        android:onClick="regButton"
+        android:text="Log in"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        android:background="@drawable/custom_button" />
 
-<!--    <Button-->
-<!--        android:id="@+id/forgot_password"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="Forgot Password?"-->
-<!--        android:layout_below="@+id/LogInButton"-->
-<!--        android:layout_marginRight="70dp"-->
-<!--        android:layout_marginLeft="70dp"/>-->
 
 </RelativeLayout>

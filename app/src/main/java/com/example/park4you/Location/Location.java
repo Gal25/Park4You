@@ -1,8 +1,11 @@
 package com.example.park4you.Location;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuInflater;
@@ -23,6 +26,7 @@ import com.example.park4you.Order.PresentOrders;
 import com.example.park4you.User.UserProfile;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -37,28 +41,14 @@ import java.util.Map;
 
 public class Location extends Menu {
 
-//    private Menu menu;
-//    private android.view.Menu menu_android;
-//    private MenuItem item;
+
+    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.location);
-//        menu = new Menu();
-
-
-//        menu.onCreateOptionsMenu(menu_android);
-//        menu.onOptionsItemSelected(item);
     }
 
-    //create menu
-//    @Override
-//    public boolean onCreateOptionsMenu(android.view.Menu menu) {
-//        MenuInflater inflater = getMenuInflater();
-//        inflater.inflate(R.menu.menu, menu);
-////        this.menu.onOptionsItemSelected(item);
-//        return true;
-//    }
     public void proceedButton(View view){
         Intent intent = new Intent(Location.this, PresenterAvailableParking.class);
         EditText editCityName = findViewById(R.id.city);
