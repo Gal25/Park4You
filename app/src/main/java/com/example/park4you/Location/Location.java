@@ -13,12 +13,13 @@ import android.widget.EditText;
 import com.example.park4you.LoginUser.Login;
 import com.example.park4you.Menu.Menu;
 import com.example.park4you.Order.Order;
-import com.example.park4you.Order.PresenterOwnerOrders;
+//import com.example.park4you.Order.PresenterOwnerOrders;
 import com.example.park4you.Parking.ParkingDB;
-import com.example.park4you.Parking.ParkingList;
+//import com.example.park4you.Parking.ParkingList;
 import com.example.park4you.Parking.PresenterAvailableParking;
+import com.example.park4you.Parking.Time;
 import com.example.park4you.R;
-import com.example.park4you.RentUser.RentUser;
+//import com.example.park4you.RentUser.RentUser;
 import com.example.park4you.Order.PresentOrders;
 import com.example.park4you.User.UserProfile;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -63,15 +64,21 @@ public class Location extends Menu {
         Intent intent = new Intent(Location.this, PresenterAvailableParking.class);
         EditText editCityName = findViewById(R.id.city);
         EditText editStreetName = findViewById(R.id.street);
-        EditText editHoursName = findViewById(R.id.hours);
+        EditText editHoursStartName = findViewById(R.id.StartHours);
+        EditText editHoursEndName = findViewById(R.id.EndHours);
         String cityName = editCityName.getText().toString();
         intent.putExtra("City Name", cityName);
 
         String streetName = editStreetName.getText().toString();
         intent.putExtra("Street Name", streetName);
 
-        String AvHours = editHoursName.getText().toString();
-        intent.putExtra("AvHours", AvHours);
+        String AvHoursStart = editHoursStartName.getText().toString();
+        String AvHoursEnd = editHoursEndName.getText().toString();
+        Time time = new Time(AvHoursStart, AvHoursEnd);
+        intent.putExtra("time", time.toString());
+
+//        intent.putExtra("AvHoursStart", AvHoursStart);
+//        intent.putExtra("AvHoursEnd", AvHoursEnd);
         startActivity(intent);
     }
 }

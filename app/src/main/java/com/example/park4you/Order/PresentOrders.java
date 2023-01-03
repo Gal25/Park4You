@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.park4you.Location.Location;
 import com.example.park4you.Menu.Menu;
+import com.example.park4you.Parking.Time;
 import com.example.park4you.R;
 import com.example.park4you.User.UserDB;
 import com.google.firebase.auth.FirebaseAuth;
@@ -26,6 +27,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
@@ -93,7 +95,8 @@ public class PresentOrders extends Menu {
                     String city = (String) arr.toArray()[2];
                     double price = Double.parseDouble(arr.toArray()[3].toString());
                     String emailCustomer = (String) arr.toArray()[5];
-                    String avHours = (String) arr.toArray()[7];
+                    HashMap<String, String> map = (HashMap<String, String>) arr.toArray()[7];
+                    Time avHours = new Time(map.get("start"), map.get("end"));
                     String street = (String) arr.toArray()[10];
                     boolean parking_now = Boolean.parseBoolean(arr.toArray()[8].toString());
                     String ownerID = (String) arr.toArray()[9];
@@ -107,7 +110,7 @@ public class PresentOrders extends Menu {
                 } else if(owner.equals("owner") && !list.isEmpty()){
                     OrdersOwnersAdapter.notifyDataSetChanged();
                 }else{
-                    Toast.makeText(PresentOrders.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PresentOrders.this, "You don`t have parking here", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(PresentOrders.this, Location.class);
                     startActivity(intent);
                 }

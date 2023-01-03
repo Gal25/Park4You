@@ -34,7 +34,7 @@ public class UserOrdersAdapter extends RecyclerView.Adapter<UserOrdersAdapter.My
         holder.cityName.setText(order.getCity());
         holder.streetName.setText(order.getStreet());
         holder.houseNumber.setText(Integer.toString(order.getHouseNum()));
-        holder.avHours.setText(order.getAvHours());
+        holder.avHours.setText(order.getAvHours().toString());
         holder.pricePerHour.setText(Double.toString(order.getPrice()));
         holder.ownerEmail.setText(order.getEmailOwner());
         holder.customerEmail.setText(order.getEmailCustomer());

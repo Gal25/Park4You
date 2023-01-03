@@ -33,23 +33,35 @@
         tools:layout_editor_absoluteY="250dp" />
 
     <EditText
-        android:id="@+id/hours"
+        android:id="@+id/StartHours"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:hint="Choose Hours"
-        android:textSize="20dp"
-        android:textColorHint="@color/white"
         android:layout_below="@+id/street"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="-1dp"
+        android:hint="Beginning time"
+        android:textColorHint="@color/white"
+        android:textSize="20dp"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/EndHours"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/StartHours"
+        android:layout_centerInParent="true"
+        android:hint="End Time"
+        android:textColorHint="@color/white"
+        android:textSize="20dp"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="250dp" />
+        tools:layout_editor_absoluteX="250dp"
+        tools:layout_editor_absoluteY="0dp" />
 
     <Button
         android:id="@+id/proceedButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/hours"
+        android:layout_below="@id/EndHours"
         android:layout_centerInParent="true"
         android:onClick="proceedButton"
         android:text="Proceed"

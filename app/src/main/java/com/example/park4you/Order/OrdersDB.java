@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.park4you.Parking.Parking;
+import com.example.park4you.Parking.Time;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -116,7 +117,8 @@ public class OrdersDB extends AppCompatActivity {
                         String city = (String) arr.toArray()[2];
                         double price = Double.parseDouble(arr.toArray()[3].toString());
                         String emailCustomer = (String) arr.toArray()[5];
-                        String avHours = (String) arr.toArray()[7];
+                        HashMap<String, String> map = (HashMap<String, String>) arr.toArray()[7];
+                        Time avHours = new Time(map.get("start"), map.get("end"));
                         String street = (String) arr.toArray()[10];
                         boolean parking_now = Boolean.parseBoolean(arr.toArray()[8].toString());
                         String ownerID = (String) arr.toArray()[9];

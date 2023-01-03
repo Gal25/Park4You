@@ -39,16 +39,24 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/AvailableHours"
-        android:hint="Available Hours"
+        android:id="@+id/StartTime"
+        android:hint="Start Hours"
         android:layout_below="@id/HouseNumber"/>
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/EndTime"
+        android:hint="End Hours"
+        android:layout_below="@id/StartTime"/>
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/Price"
         android:hint="Price Per Hour"
-        android:layout_below="@id/AvailableHours"/>
+        android:layout_below="@id/EndTime"/>
 
     <Button
         android:id="@+id/addParking"

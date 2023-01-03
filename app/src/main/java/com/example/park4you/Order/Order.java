@@ -2,6 +2,8 @@ package com.example.park4you.Order;
 
 import androidx.annotation.NonNull;
 
+import com.example.park4you.Parking.Time;
+
 import java.util.Collection;
 
 public class Order {
@@ -10,7 +12,7 @@ public class Order {
     private String street;
     private int houseNum;
     private double price;
-    private String avHours;
+    private Time avHours;
     private String emailOwner;
     private String id;
     private String emailCustomer;
@@ -19,7 +21,7 @@ public class Order {
     private String ownerID;
 
 
-    public Order(String emailOwner, int houseNum, String city, double price , String emailCustomer , String avHours , String street, boolean parking_now, String ownerID) {
+    public Order(String emailOwner, int houseNum, String city, double price , String emailCustomer , Time avHours , String street, boolean parking_now, String ownerID) {
         this.emailOwner = emailOwner;
         this.houseNum = houseNum;
         this.city = city;
@@ -37,7 +39,7 @@ public class Order {
 
     }
 
-    public Order(String email_owner, int houseNum, String city, double price, String emailCustomer, String avHours, String street,  boolean parking_now, String ownerID,String key_order, String parkingId) {
+    public Order(String email_owner, int houseNum, String city, double price, String emailCustomer, Time avHours, String street,  boolean parking_now, String ownerID,String key_order, String parkingId) {
         this.emailOwner = email_owner;
         this.houseNum = houseNum;
         this.city = city;
@@ -75,7 +77,7 @@ public class Order {
         this.price = price;
     }
 
-    public void setAvHours(String avHours) {
+    public void setAvHours(Time avHours) {
         this.avHours = avHours;
     }
 
@@ -119,7 +121,7 @@ public class Order {
         return price;
     }
 
-    public String getAvHours() {
+    public Time getAvHours() {
         return avHours;
     }
 
