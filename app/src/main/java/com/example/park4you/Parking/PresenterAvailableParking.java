@@ -59,7 +59,7 @@ public class PresenterAvailableParking extends Menu {
     public void Show_Parking(){
         String cityName = getIntent().getStringExtra("City Name");
         String streetName = getIntent().getStringExtra("Street Name");
-        String AvHours = getIntent().getStringExtra("AvHours");
+        String AvHours = getIntent().getStringExtra("time");
         database.child(cityName).addValueEventListener(new ValueEventListener() {
             @SuppressLint("NotifyDataSetChanged")
             @Override
@@ -68,7 +68,8 @@ public class PresenterAvailableParking extends Menu {
                     Parking parking = dataSnapshot.getValue(Parking.class);
                     assert parking != null;
                     if (parking.getStreet().equals(streetName)) {
-                        String hours = parking.getAvHours();
+                        System.out.println("parking " + parking);
+                        String hours = parking.getAvHours().toString();
                         if (checkTime(AvHours, hours)) {
                             list.add(parking);
                         }
@@ -120,9 +121,9 @@ public class PresenterAvailableParking extends Menu {
                                 myAdapter.notifyItemRemoved(pos);
                                 break;
                             }
-                            Intent intent = new Intent(PresenterAvailableParking.this, Location.class);
-                            startActivity(intent);
                         }
+                        Intent intent = new Intent(PresenterAvailableParking.this, Location.class);
+                        startActivity(intent);
                     }
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
@@ -142,24 +143,20 @@ public class PresenterAvailableParking extends Menu {
         char[] hou1 = hours1.toCharArray();
         char[] hou2 = hours2.toCharArray();
 
-        if (hou1[0] > hou2[0] && hou1[1] >= hou2[1] || hou1[0] >= hou2[0] && hou1[1] > hou2[1]){
-            if (hou1[6] < hou2[6] && hou1[7] <= hou2[7] || hou1[6] <= hou2[6] && hou1[7] < hou2[7]){
+        if (hou1[0] > hou2[0] || hou1[0] >= hou2[0] && hou1[1] > hou2[1]){
+            if (hou1[6] < hou2[6] || hou1[6] <= hou2[6] && hou1[7] < hou2[7]){
                 return true;
             }
-            else if(hou1[9] <= hou2[9] && hou1[10] <= hou2[10]){
+            else if(hou1[9] < hou2[9] || hou1[9] <= hou2[9] && hou1[10] <= hou2[10]){
                 return true;
             }
         }
         else{
             if(hou1[3] > hou2[3] || hou1[3] >= hou2[3] && hou1[4] >= hou2[4]){
-                if (hou1[6] < hou2[6] && hou1[7] <= hou2[7] || hou1[6] <= hou2[6] && hou1[7] < hou2[7]){
+                if (hou1[6] < hou2[6] || hou1[6] <= hou2[6] && hou1[7] < hou2[7]){
                     return true;
-                }else{
-                    if (hou1[9] < hou2[9]){
-                        return true;
-                    }else if (hou1[9] <= hou2[9] && hou1[10] <= hou2[10]){
-                        return true;
-                    }
+                }else if (hou1[9] < hou2[9] ||hou1[9] <= hou2[9] && hou1[10] <= hou2[10]){
+                    return true;
                 }
             }
         }

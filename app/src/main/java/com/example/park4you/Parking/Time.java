@@ -25,4 +25,13 @@ public class Time {
     public void setEnd(String end) {
         this.end = end;
     }
+
+    @Override
+    public String toString() {
+        return start + "-" + end;
+//        return "Time{" +
+//                "start='" + start + '\'' +
+//                ", end='" + end + '\'' +
+//                '}';
+    }
 }

@@ -4,45 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Parking.ParkingDB"
-    android:background="@drawable/header_backround">
+    tools:context=".Parking.ParkingDB">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/addParkingTitle"
-        android:text="Add a new Parking"
-        android:textSize="35dp"
-        android:textStyle="bold"
-        android:textColor="@color/white"
-        android:gravity="center"
-        android:layout_margin="25dp"/>
     <EditText
         android:id="@+id/Email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Email"
-        android:background="#30ffffff"
-        android:layout_below="@id/addParkingTitle"
-        android:textColorHint="@color/white"
-        android:textColor="@color/white"
-        android:layout_margin="10dp"
-        android:padding="15dp"
-        android:drawableLeft="@drawable/ic_baseline_email_24"
-        android:drawablePadding="20dp"/>
+        android:layout_above="@id/City"
+        android:hint="Email" />
 
     <EditText
         android:id="@+id/City"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#30ffffff"
-        android:layout_below="@id/Email"
-        android:textColorHint="@color/white"
-        android:textColor="@color/white"
-        android:layout_margin="10dp"
-        android:padding="15dp"
-        android:drawableLeft="@drawable/ic_baseline_location_city_24"
-        android:drawablePadding="20dp"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
         android:hint="City" />
 
     <EditText
@@ -50,68 +27,41 @@
         android:layout_height="wrap_content"
         android:id="@+id/Street"
         android:hint="Street"
-        android:layout_below="@id/City"
-        android:background="#30ffffff"
-        android:textColorHint="@color/white"
-        android:textColor="@color/white"
-        android:layout_margin="10dp"
-        android:padding="15dp"
-        android:drawableLeft="@drawable/ic_baseline_streetview_24"
-        android:drawablePadding="20dp"/>
+        android:layout_below="@id/City"/>
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/HouseNumber"
         android:hint="House Number"
-        android:layout_below="@id/Street"
-        android:background="#30ffffff"
-        android:textColorHint="@color/white"
-        android:textColor="@color/white"
-        android:layout_margin="10dp"
-        android:padding="15dp"
-        android:drawableLeft="@drawable/ic_baseline_numbers_24"
-        android:drawablePadding="20dp" />
+        android:layout_below="@id/Street"/>
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/AvailableHours"
         android:hint="Available Hours"
-        android:layout_below="@id/HouseNumber"
-        android:background="#30ffffff"
-        android:textColorHint="@color/white"
-        android:textColor="@color/white"
-        android:layout_margin="10dp"
-        android:padding="15dp"
-        android:drawableLeft="@drawable/ic_baseline_hourglass_full_24"
-        android:drawablePadding="20dp" />
+        android:layout_below="@id/HouseNumber"/>
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/Price"
         android:hint="Price Per Hour"
-        android:layout_below="@id/AvailableHours"
-        android:background="#30ffffff"
-        android:textColorHint="@color/white"
-        android:textColor="@color/white"
-        android:layout_margin="10dp"
-        android:padding="15dp"
-        android:drawableLeft="@drawable/ic_baseline_price_change_24"
-        android:drawablePadding="20dp" />
+        android:layout_below="@id/AvailableHours"/>
 
     <Button
         android:id="@+id/addParking"
         android:layout_width="150dp"
         android:layout_height="50dp"
         android:layout_below="@+id/Price"
-        android:layout_centerInParent="true"
-        android:backgroundTint="@color/teal_700"
-        android:onClick="addParking"
+        android:background="#DDDCDC"
         android:text="Publish"
         android:textSize="15sp"
         android:textStyle="bold"
+        android:onClick="addParking"
+        android:layout_centerInParent="true"
+        tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="112dp"
         tools:layout_editor_absoluteY="636dp" />
 

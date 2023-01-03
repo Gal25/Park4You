@@ -37,7 +37,7 @@ public class ParkingAdapter extends RecyclerView.Adapter<ParkingAdapter.MyViewHo
         holder.cityName.setText(parking.getCity());
         holder.streetName.setText(parking.getStreet());
         holder.houseNumber.setText(Integer.toString(parking.getHouseNum()));
-        holder.avHours.setText(parking.getAvHours());
+        holder.avHours.setText(parking.getAvHours().toString());
         holder.pricePerHour.setText(Double.toString(parking.getPrice()));
         holder.email.setText(parking.getEmail());
         holder.id.setText(parking.getid());

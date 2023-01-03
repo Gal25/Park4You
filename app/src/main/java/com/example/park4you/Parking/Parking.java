@@ -7,14 +7,14 @@ public class Parking {
     private String street;
     private int houseNum;
     private double price;
-    private String avHours;
+    private Time avHours;
     private String email;
     private String id;
     private String ownerID;
 
 
 
-    public Parking(String city, double price, String street, String avHours, String id, String email, int houseNum, String ownerID) {
+    public Parking(String city, double price, String street, Time avHours, String id, String email, int houseNum, String ownerID) {
         this.city = city;
         this.street = street;
         this.houseNum = houseNum;
@@ -51,7 +51,7 @@ public class Parking {
         this.price = price;
     }
 
-    public void setAvHours(String avHours) {
+    public void setAvHours(Time avHours) {
         this.avHours = avHours;
     }
 
@@ -78,7 +78,7 @@ public class Parking {
         return price;
     }
 
-    public String getAvHours() {
+    public Time getAvHours() {
         return avHours;
     }
 

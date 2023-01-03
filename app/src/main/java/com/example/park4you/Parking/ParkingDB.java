@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.park4you.Menu.Menu;
 import com.example.park4you.R;
-import com.example.park4you.RentUser.RentUser;
+//import com.example.park4you.RentUser.RentUser;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -27,7 +27,7 @@ import java.util.Objects;
 public class ParkingDB extends Menu {
     private FirebaseAuth auto;
     private DatabaseReference databaseReference;
-    private EditText EmailText, cityText, streetText, houseNumText, avHoursText,priceText;
+    private EditText EmailText, cityText, streetText, houseNumText, AvStartHoursText, AvEndHoursText, priceText;
 
 
     @SuppressLint("MissingInflatedId")
@@ -42,7 +42,8 @@ public class ParkingDB extends Menu {
         cityText = findViewById(R.id.City);
         streetText = findViewById(R.id.Street);
         houseNumText = findViewById(R.id.HouseNumber);
-        avHoursText = findViewById(R.id.AvailableHours);
+        AvStartHoursText = findViewById(R.id.StartTime);
+        AvEndHoursText = findViewById(R.id.EndTime);
         priceText = findViewById(R.id.Price);
 
     }
@@ -59,7 +60,9 @@ public class ParkingDB extends Menu {
         String street = streetText.getText().toString();
         int houseNum = Integer.parseInt(houseNumText.getText().toString());
         double price = Double.parseDouble(priceText.getText().toString());
-        String avHours = avHoursText.getText().toString();
+        String start = AvStartHoursText.getText().toString();
+        String end = AvEndHoursText.getText().toString();
+        Time avHours = new Time(start, end);
         String email = EmailText.getText().toString();
         HashMap<String, Object> hashMap = new HashMap<>();
         hashMap.put("id", key);
@@ -70,6 +73,7 @@ public class ParkingDB extends Menu {
         hashMap.put("street", street);
         hashMap.put("email", email);
         hashMap.put("ownerID", Objects.requireNonNull(auto.getCurrentUser()).getUid());
+        System.out.println("hashmap " + hashMap);
         assert key != null;
         reference.child(city).child(key).setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override

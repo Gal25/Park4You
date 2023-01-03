@@ -83,6 +83,16 @@ public class UserProfile extends AppCompatActivity {
 
     }
 
+    //Viewer
+    //if the user want to return to location value
+    public void returnButton(View view){
+        Intent loginIntent = new Intent(this, Location.class);
+        startActivity(loginIntent);
+
+    }
+
+
+
     //menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
