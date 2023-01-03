@@ -12,7 +12,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="@color/silver">
         <LinearLayout
 
             android:layout_width="wrap_content"
@@ -26,7 +27,9 @@
                 android:text="City:"
                 android:textColor="@color/black"
                 android:textSize="26sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:drawableLeft="@drawable/ic_baseline_location_city_24"
+                android:drawablePadding="20dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -51,7 +54,9 @@
                 android:text="Street:"
                 android:textColor="@color/black"
                 android:textSize="26sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:drawableLeft="@drawable/ic_baseline_streetview_24"
+                android:drawablePadding="20dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -60,7 +65,8 @@
                 android:layout_marginLeft="8dp"
                 android:text="Street"
                 android:textColor="@color/black"
-                android:textSize="20sp"/>
+                android:textSize="20sp"
+                />
 
         </LinearLayout>
         <LinearLayout
@@ -85,7 +91,9 @@
                 android:text="House Number:"
                 android:textColor="@color/black"
                 android:textSize="26sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:drawableLeft="@drawable/ic_baseline_numbers_24"
+                android:drawablePadding="20dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -94,7 +102,8 @@
                 android:layout_marginLeft="8dp"
                 android:text="House Number"
                 android:textColor="@color/black"
-                android:textSize="20sp"/>
+                android:textSize="20sp"
+                />
 
         </LinearLayout>
         <LinearLayout
@@ -110,7 +119,9 @@
                 android:text="Available Hours:"
                 android:textColor="@color/black"
                 android:textSize="26sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:drawableLeft="@drawable/ic_baseline_hourglass_full_24"
+                android:drawablePadding="20dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -136,7 +147,9 @@
                 android:text="Owner Email:"
                 android:textColor="@color/black"
                 android:textSize="26sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:drawableLeft="@drawable/ic_baseline_email_24"
+                android:drawablePadding="20dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -161,7 +174,9 @@
                 android:text="Price Per Hour:"
                 android:textColor="@color/black"
                 android:textSize="26sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:drawableLeft="@drawable/ic_baseline_price_change_24"
+                android:drawablePadding="20dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -186,7 +201,9 @@
                 android:text="Customer Email:"
                 android:textColor="@color/black"
                 android:textSize="26sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:drawableLeft="@drawable/ic_baseline_email_24"
+                android:drawablePadding="20dp"/>
 
             <TextView
                 android:layout_width="wrap_content"

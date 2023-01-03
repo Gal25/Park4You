@@ -4,14 +4,18 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
     <androidx.cardview.widget.CardView
         android:id="@+id/all"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:context=".Parking.AvailableParking"
-        app:cardElevation="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
         app:cardCornerRadius="8dp"
-        android:layout_margin="16dp">
+        app:cardElevation="8dp"
+        tools:context=".Parking.AvailableParking">
 
 
         <LinearLayout
@@ -21,6 +25,7 @@
             android:layout_marginLeft="16dp"
             android:orientation="vertical"
             android:background="@color/silver">
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -30,23 +35,24 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_baseline_location_city_24"
+                    android:drawablePadding="20dp"
                     android:text="City:"
                     android:textColor="@color/black"
                     android:textSize="26sp"
-                    android:textStyle="bold"
-                    android:drawableLeft="@drawable/ic_baseline_location_city_24"
-                    android:drawablePadding="20dp"/>
+                    android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/textCity"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textCity"
                     android:layout_marginLeft="8dp"
                     android:text="City"
                     android:textColor="@color/black"
-                    android:textSize="20sp"/>
+                    android:textSize="20sp" />
 
             </LinearLayout>
+
             <LinearLayout
 
                 android:layout_width="wrap_content"
@@ -57,23 +63,24 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_baseline_streetview_24"
+                    android:drawablePadding="20dp"
                     android:text="Street:"
                     android:textColor="@color/black"
                     android:textSize="26sp"
-                    android:textStyle="bold"
-                    android:drawableLeft="@drawable/ic_baseline_streetview_24"
-                    android:drawablePadding="20dp"/>
+                    android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/textStreet"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textStreet"
                     android:layout_marginLeft="8dp"
                     android:text="Street"
                     android:textColor="@color/black"
-                    android:textSize="20sp"/>
+                    android:textSize="20sp" />
 
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/layout_id"
                 android:layout_width="wrap_content"
@@ -111,23 +118,24 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_baseline_numbers_24"
+                    android:drawablePadding="20dp"
                     android:text="House Number:"
                     android:textColor="@color/black"
                     android:textSize="26sp"
-                    android:textStyle="bold"
-                    android:drawableLeft="@drawable/ic_baseline_numbers_24"
-                    android:drawablePadding="20dp"/>
+                    android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/textHouseNum"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textHouseNum"
                     android:layout_marginLeft="8dp"
                     android:text="House Number"
                     android:textColor="@color/black"
-                    android:textSize="20sp"/>
+                    android:textSize="20sp" />
 
             </LinearLayout>
+
             <LinearLayout
 
                 android:layout_width="wrap_content"
@@ -138,21 +146,21 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_baseline_hourglass_full_24"
+                    android:drawablePadding="20dp"
                     android:text="Available Hours:"
                     android:textColor="@color/black"
                     android:textSize="26sp"
-                    android:textStyle="bold"
-                    android:drawableLeft="@drawable/ic_baseline_hourglass_full_24"
-                    android:drawablePadding="20dp"/>
+                    android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/textAvailableHours"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textAvailableHours"
                     android:layout_marginLeft="8dp"
                     android:text="Hours"
                     android:textColor="@color/black"
-                    android:textSize="20sp"/>
+                    android:textSize="20sp" />
 
             </LinearLayout>
 
@@ -166,23 +174,24 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_baseline_email_24"
+                    android:drawablePadding="20dp"
                     android:text="Email:"
                     android:textColor="@color/black"
                     android:textSize="26sp"
-                    android:textStyle="bold"
-                    android:drawableLeft="@drawable/ic_baseline_email_24"
-                    android:drawablePadding="20dp"/>
+                    android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/textEmail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textEmail"
                     android:layout_marginLeft="8dp"
                     android:text="email"
                     android:textColor="@color/black"
-                    android:textSize="20sp"/>
+                    android:textSize="20sp" />
 
             </LinearLayout>
+
             <LinearLayout
 
                 android:layout_width="wrap_content"
@@ -193,21 +202,21 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_baseline_price_change_24"
+                    android:drawablePadding="20dp"
                     android:text="Price Per Hour:"
                     android:textColor="@color/black"
                     android:textSize="26sp"
-                    android:textStyle="bold"
-                    android:drawableLeft="@drawable/ic_baseline_price_change_24"
-                    android:drawablePadding="20dp"/>
+                    android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/textPrice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textPrice"
                     android:layout_marginLeft="8dp"
                     android:text="Price"
                     android:textColor="@color/black"
-                    android:textSize="20sp"/>
+                    android:textSize="20sp" />
 
             </LinearLayout>
 
@@ -216,11 +225,11 @@
                 android:id="@+id/ChooseParking"
                 android:layout_width="129dp"
                 android:layout_height="37dp"
-                android:text="Rent"
                 android:layout_gravity="top|center"
+                android:backgroundTint="@color/FloralWhite"
                 android:onClick="ChooseParking"
-                android:textColor="@color/black"
-                android:backgroundTint="@color/FloralWhite"/>
+                android:text="Rent"
+                android:textColor="@color/black" />
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>

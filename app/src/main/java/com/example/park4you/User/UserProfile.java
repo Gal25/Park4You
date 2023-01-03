@@ -14,10 +14,10 @@ import android.widget.Toast;
 
 import com.example.park4you.Location.Location;
 import com.example.park4you.LoginUser.Login;
-import com.example.park4you.Order.PresenterOwnerOrders;
+//import com.example.park4you.Order.PresenterOwnerOrders;
 import com.example.park4you.Order.PresentOrders;
 import com.example.park4you.R;
-import com.example.park4you.RentUser.RentUser;
+//import com.example.park4you.RentUser.RentUser;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -118,10 +118,10 @@ public class UserProfile extends AppCompatActivity {
                 return true;
 
             //add parking
-            case R.id.item4:
-                Intent intent2 = new Intent(this, RentUser.class);
-                startActivity(intent2);
-                return true;
+//            case R.id.item4:
+//                Intent intent2 = new Intent(this, RentUser.class);
+//                startActivity(intent2);
+//                return true;
 
             //show the user's orders
             case R.id.item5:
@@ -130,10 +130,10 @@ public class UserProfile extends AppCompatActivity {
                 return true;
 
             //Shows the orders ordered from the owner
-            case R.id.item6:
-                Intent intent4 = new Intent(this, PresenterOwnerOrders.class);
-                startActivity(intent4);
-                return true;
+//            case R.id.item6:
+//                Intent intent4 = new Intent(this, PresenterOwnerOrders.class);
+//                startActivity(intent4);
+//                return true;
 
             //log out
             case R.id.item7:
