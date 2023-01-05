@@ -14,6 +14,7 @@ public class Payment {
         Email = email;
     }
 
+    public Payment(){}
 
     public String getCardNumber() {
         return CardNumber;

@@ -39,6 +39,7 @@ public class PresenterAvailableParking extends Menu {
     private String city;
     private OrdersDB ordersDB;
     private PaymentDB paymentDB;
+    private Boolean payment;
 
     //Add the parking into to the parking list and update the parking display screen using the adapter
     @SuppressLint("MissingInflatedId")
@@ -57,6 +58,7 @@ public class PresenterAvailableParking extends Menu {
         myAdapter = new ParkingAdapter(this,list);
         recyclerView.setAdapter(myAdapter);
         Show_Parking();
+
     }
 
 
@@ -91,12 +93,15 @@ public class PresenterAvailableParking extends Menu {
 
     //Choose and delete the parking from the parking list and update the parking display screen using the adapter
     public void ChooseParking(View view){
+        final boolean[] check = {false};
         textView = findViewById(R.id.textCity);
         city = textView.getText().toString();
         View v2 =recyclerView.findContainingItemView(view);
         assert v2 != null;
         textView = v2.findViewById(R.id.park_id);
         String id = textView.getText().toString();
+        payment = paymentDB.SearchDetails();
+
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Rent Confirmation");
         builder.setMessage("Are you sure you want to rent this parking?");
@@ -111,6 +116,7 @@ public class PresenterAvailableParking extends Menu {
                             Parking park = dataSnapshot.getValue(Parking.class);
                             assert park != null;
                             int pos=0;
+                            check[0] = true;
                             if (park.getid().equals(id)) {
                                 ordersDB.create_order_customer(park);
                                 ordersDB.create_order_owner(park);
@@ -125,17 +131,24 @@ public class PresenterAvailableParking extends Menu {
                                 break;
                             }
                         }
-                        boolean payment = paymentDB.SearchDetails();
-                        if (payment){
-                            Intent intent = new Intent(PresenterAvailableParking.this, PresenterOrderConfirmation.class);
-                            startActivity(intent);
-                        }else{
-                            Toast.makeText(PresenterAvailableParking.this, "fill in your payment details.",
-                                    Toast.LENGTH_LONG).show();
-                            Intent intent = new Intent(PresenterAvailableParking.this, PaymentDB.class);
-                            startActivity(intent);
+                        if(check[0]) {
+                            if (payment) {
+                                System.out.println("true 146!!!!!!!!");
+                                Intent intent = new Intent(PresenterAvailableParking.this, PresenterOrderConfirmation.class);
+                                startActivity(intent);
+                            } else {
+                                System.out.println("false 150!!!!!!!!");
+
+                                Toast.makeText(PresenterAvailableParking.this, "fill in your payment details.",
+                                        Toast.LENGTH_LONG).show();
+                                Intent intent = new Intent(PresenterAvailableParking.this, PaymentDB.class);
+                                startActivity(intent);
+                            }
                         }
+                        System.out.println("check[0]"+ check[0]);
+
                     }
+
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
                         Toast.makeText(PresenterAvailableParking.this, "Cancelled", Toast.LENGTH_SHORT).show();
@@ -146,6 +159,9 @@ public class PresenterAvailableParking extends Menu {
         builder.setNegativeButton("No", null);
         AlertDialog dialog = builder.create();
         dialog.show();
+
+
+
     }
 
 

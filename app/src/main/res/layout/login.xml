@@ -73,11 +73,11 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/forgetpass"
         android:layout_centerInParent="true"
+        android:background="@drawable/custom_button"
         android:onClick="regButton"
         android:text="Log in"
         android:textSize="34sp"
-        android:textStyle="bold"
-        android:background="@drawable/custom_button" />
+        android:textStyle="bold" />
 
 
 </RelativeLayout>

@@ -11,11 +11,13 @@ import androidx.annotation.NonNull;
 import com.example.park4you.Location.Location;
 import com.example.park4you.Menu.Menu;
 import com.example.park4you.Order.PresenterOrderConfirmation;
+import com.example.park4you.Parking.PresenterAvailableParking;
 import com.example.park4you.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseError;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -71,30 +73,69 @@ public class PaymentDB extends Menu {
         startActivity(intent);
     }
 
-    public boolean SearchDetails() {
-        final boolean[] receive = new boolean[1];
-//        receive[0] = true;
+    public Boolean SearchDetails() {
+        boolean[] receive = new boolean[1];
+        receive[0] = false;
         FirebaseAuth auth;
         auth = FirebaseAuth.getInstance();
-        System.out.println("**********************************************************************************************");
+        FirebaseUser firebaseUser = auth.getCurrentUser();
+        System.out.println("**");
         System.out.println("mAuth.getUid() " + auth.getUid());
-        System.out.println("**********************************************************************************************");
+        System.out.println("**");
         reference = FirebaseDatabase.getInstance().getReference("PaymentDetails");
-        reference.child(auth.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+        reference.child(auth.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot snapshot) {
-                System.out.println("snapshot " + snapshot);
-                receive[0] = snapshot.getValue() != null;
-                System.out.println("recieve!!!!!!!!!!!!!!*** " + receive[0]);
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    System.out.println("snapshot " + snapshot);
+                    Payment payment = snapshot.getValue(Payment.class);
+
+                    assert payment != null;
+                    assert firebaseUser != null;
+                    if (payment.getEmail().equals(firebaseUser.getEmail())) {
+                        receive[0] = true;
+                    }
+                    System.out.println("recieve!!!!!!!!!!!!!!*** " + receive[0]);
+//                }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                receive[0] = false;
-                System.out.println("100!!!!!!!!!!!!");
+//                receive[0] = false;
+                System.out.println("1h00!!!!!!!!!!!!");
             }
         });
-        System.out.println("recieve!!!!!!!!!!!!!!1 " + receive[0]);
         return receive[0];
     }
+//    public boolean SearchDetails() {
+//        final boolean[] receive = new boolean[1];
+//        FirebaseAuth auth;
+//        auth = FirebaseAuth.getInstance();
+//        FirebaseUser firebaseUser = auth.getCurrentUser();
+//        System.out.println("**********************************************************************************************");
+//        System.out.println("mAuth.getUid() " + auth.getUid());
+//        System.out.println("**********************************************************************************************");
+//        reference = FirebaseDatabase.getInstance().getReference("PaymentDetails");
+//
+//        reference.child(auth.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot snapshot) {
+//                System.out.println("snapshot " + snapshot);
+//                Payment payment = snapshot.getValue(Payment.class);
+//                if(payment.getEmail().equals(firebaseUser.getEmail())) {
+//                    receive[0] = true;
+//                    System.out.println("recieve!!!!!!!!!!!!!!*** " + receive[0]);
+//                }
+//
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+////                receive[0] = false;
+//                System.out.println("100!!!!!!!!!!!!");
+//            }
+//        });
+//        System.out.println("recieve!!!!!!!!!!!!!!1 " + receive[0]);
+//        return receive[0];
+//    }
 }
