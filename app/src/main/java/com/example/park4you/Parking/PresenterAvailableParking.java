@@ -20,6 +20,8 @@ import com.example.park4you.Order.OrdersDB;
 import com.example.park4you.Order.PresenterOrderConfirmation;
 import com.example.park4you.Payment.PaymentDB;
 import com.example.park4you.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -27,6 +29,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class PresenterAvailableParking extends Menu {
 
@@ -39,8 +42,8 @@ public class PresenterAvailableParking extends Menu {
     private String city;
     private OrdersDB ordersDB;
     private PaymentDB paymentDB;
-    private Boolean payment;
-
+    private boolean payment;
+    private final boolean[] receive = new boolean[1];
     //Add the parking into to the parking list and update the parking display screen using the adapter
     @SuppressLint("MissingInflatedId")
     @Override
@@ -58,7 +61,6 @@ public class PresenterAvailableParking extends Menu {
         myAdapter = new ParkingAdapter(this,list);
         recyclerView.setAdapter(myAdapter);
         Show_Parking();
-
     }
 
 
@@ -93,15 +95,15 @@ public class PresenterAvailableParking extends Menu {
 
     //Choose and delete the parking from the parking list and update the parking display screen using the adapter
     public void ChooseParking(View view){
-        final boolean[] check = {false};
         textView = findViewById(R.id.textCity);
         city = textView.getText().toString();
+        boolean[] check = {false};
         View v2 =recyclerView.findContainingItemView(view);
         assert v2 != null;
         textView = v2.findViewById(R.id.park_id);
         String id = textView.getText().toString();
-        payment = paymentDB.SearchDetails();
 
+        SearchDetails();
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Rent Confirmation");
         builder.setMessage("Are you sure you want to rent this parking?");
@@ -116,10 +118,10 @@ public class PresenterAvailableParking extends Menu {
                             Parking park = dataSnapshot.getValue(Parking.class);
                             assert park != null;
                             int pos=0;
-                            check[0] = true;
                             if (park.getid().equals(id)) {
                                 ordersDB.create_order_customer(park);
                                 ordersDB.create_order_owner(park);
+                                check[0] = true;
                                 for (int i = 0; i < list.size(); i++){
                                     if (list.get(i).equals(park)){
                                         pos = i;
@@ -128,27 +130,11 @@ public class PresenterAvailableParking extends Menu {
                                 dataSnapshot.getRef().removeValue();
                                 list.remove(pos);
                                 myAdapter.notifyItemRemoved(pos);
+                                intent(check, receive[0]);
                                 break;
                             }
                         }
-                        if(check[0]) {
-                            if (payment) {
-                                System.out.println("true 146!!!!!!!!");
-                                Intent intent = new Intent(PresenterAvailableParking.this, PresenterOrderConfirmation.class);
-                                startActivity(intent);
-                            } else {
-                                System.out.println("false 150!!!!!!!!");
-
-                                Toast.makeText(PresenterAvailableParking.this, "fill in your payment details.",
-                                        Toast.LENGTH_LONG).show();
-                                Intent intent = new Intent(PresenterAvailableParking.this, PaymentDB.class);
-                                startActivity(intent);
-                            }
-                        }
-                        System.out.println("check[0]"+ check[0]);
-
                     }
-
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
                         Toast.makeText(PresenterAvailableParking.this, "Cancelled", Toast.LENGTH_SHORT).show();
@@ -159,12 +145,51 @@ public class PresenterAvailableParking extends Menu {
         builder.setNegativeButton("No", null);
         AlertDialog dialog = builder.create();
         dialog.show();
-
-
-
     }
 
+    //Go to order confirmation when the customer's payment details appear
+    public void intent(boolean[] check, boolean payment){
+        System.out.println("144 check "  + check[0]);
+        if(check[0]) {
+            if (payment) {
+                Intent intent = new Intent(PresenterAvailableParking.this, PresenterOrderConfirmation.class);
+                startActivity(intent);
+            } else {
+                Toast.makeText(PresenterAvailableParking.this, "fill in your payment details.",
+                        Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(PresenterAvailableParking.this, PaymentDB.class);
+                startActivity(intent);
+            }
+        }
+    }
 
+    //Check if the customer has payment details
+    public void SearchDetails() {
+        final Object[] value = new Object[1];
+        DatabaseReference reference2;
+        reference2 = FirebaseDatabase.getInstance().getReference("PaymentDetails");
+        FirebaseAuth auth;
+        auth = FirebaseAuth.getInstance();
+        reference2.child(auth.getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                value[0] = snapshot.getValue();
+                if (value[0] != null){
+                    receive[0] = true;
+                    payment = true;
+                    return;
+                }else{
+                    receive[0] = false;
+                    payment = false;
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Handle error
+            }
+        });
+    }
 
     public boolean checkTime(String hours1, String hours2){
         char[] hou1 = hours1.toCharArray();

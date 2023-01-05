@@ -37,6 +37,8 @@ public class PaymentDB extends Menu {
     private String CreditNumber, ExpirationDate, CVV, Email;
     private FirebaseAuth mAuth;
     private DatabaseReference reference;
+    private DatabaseReference reference2;
+
 
 
     @Override
@@ -73,69 +75,4 @@ public class PaymentDB extends Menu {
         startActivity(intent);
     }
 
-    public Boolean SearchDetails() {
-        boolean[] receive = new boolean[1];
-        receive[0] = false;
-        FirebaseAuth auth;
-        auth = FirebaseAuth.getInstance();
-        FirebaseUser firebaseUser = auth.getCurrentUser();
-        System.out.println("**");
-        System.out.println("mAuth.getUid() " + auth.getUid());
-        System.out.println("**");
-        reference = FirebaseDatabase.getInstance().getReference("PaymentDetails");
-        reference.child(auth.getUid()).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    System.out.println("snapshot " + snapshot);
-                    Payment payment = snapshot.getValue(Payment.class);
-
-                    assert payment != null;
-                    assert firebaseUser != null;
-                    if (payment.getEmail().equals(firebaseUser.getEmail())) {
-                        receive[0] = true;
-                    }
-                    System.out.println("recieve!!!!!!!!!!!!!!*** " + receive[0]);
-//                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-//                receive[0] = false;
-                System.out.println("1h00!!!!!!!!!!!!");
-            }
-        });
-        return receive[0];
-    }
-//    public boolean SearchDetails() {
-//        final boolean[] receive = new boolean[1];
-//        FirebaseAuth auth;
-//        auth = FirebaseAuth.getInstance();
-//        FirebaseUser firebaseUser = auth.getCurrentUser();
-//        System.out.println("**********************************************************************************************");
-//        System.out.println("mAuth.getUid() " + auth.getUid());
-//        System.out.println("**********************************************************************************************");
-//        reference = FirebaseDatabase.getInstance().getReference("PaymentDetails");
-//
-//        reference.child(auth.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot snapshot) {
-//                System.out.println("snapshot " + snapshot);
-//                Payment payment = snapshot.getValue(Payment.class);
-//                if(payment.getEmail().equals(firebaseUser.getEmail())) {
-//                    receive[0] = true;
-//                    System.out.println("recieve!!!!!!!!!!!!!!*** " + receive[0]);
-//                }
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-////                receive[0] = false;
-//                System.out.println("100!!!!!!!!!!!!");
-//            }
-//        });
-//        System.out.println("recieve!!!!!!!!!!!!!!1 " + receive[0]);
-//        return receive[0];
-//    }
 }

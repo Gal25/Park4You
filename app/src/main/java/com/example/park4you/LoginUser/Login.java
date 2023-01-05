@@ -88,8 +88,6 @@ public class Login extends AppCompatActivity {
                             startActivity(intent);
                         }
                         else {
-                            FirebaseUser firebaseUser = mAuth.getCurrentUser();
-                            assert firebaseUser != null;
                             Toast.makeText(getApplicationContext(), "Login failed! Please try again later", Toast.LENGTH_LONG).show();
 
                         }
