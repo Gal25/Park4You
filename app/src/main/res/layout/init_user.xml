@@ -18,61 +18,74 @@
         android:textColor="@color/white"
         android:gravity="center"
         android:layout_margin="25dp"/>
+
     <EditText
         android:id="@+id/NameNewUser"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Name"
-        android:background="#30ffffff"
         android:layout_below="@id/signUpTitle"
-        android:textColorHint="@color/white"
-        android:textColor="@color/white"
-        android:layout_margin="10dp"
-        android:padding="15dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="#30ffffff"
         android:drawableLeft="@drawable/ic_baseline_person_outline_24"
-        android:drawablePadding="20dp"/>
+        android:drawablePadding="20dp"
+        android:hint="Name"
+        android:padding="15dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white" />
 
     <EditText
         android:id="@+id/EmailNewUser"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Email"
         android:layout_below="@id/NameNewUser"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
         android:background="#30ffffff"
-        android:textColorHint="@color/white"
-        android:textColor="@color/white"
-        android:layout_margin="10dp"
-        android:padding="15dp"
         android:drawableLeft="@drawable/ic_baseline_email_24"
-        android:drawablePadding="20dp"/>
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/passwordUser"
-        android:hint="Password"
-        android:layout_below="@id/EmailNewUser"
-        android:background="#30ffffff"
-        android:textColorHint="@color/white"
-        android:textColor="@color/white"
-        android:layout_margin="10dp"
+        android:drawablePadding="20dp"
+        android:hint="Email"
         android:padding="15dp"
-        android:drawableLeft="@drawable/ic_baseline_password_24"
-        android:drawablePadding="20dp"/>
+        android:textColor="@color/white"
+        android:textColorHint="@color/white" />
 
     <EditText
+        android:id="@+id/passwordUser"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/PhoneNumberuUser"
-        android:hint="Phone Number"
-        android:layout_below="@id/passwordUser"
+        android:layout_below="@id/EmailNewUser"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
         android:background="#30ffffff"
-        android:textColorHint="@color/white"
+        android:drawableLeft="@drawable/ic_baseline_password_24"
+        android:drawablePadding="20dp"
+        android:hint="Password"
+        android:padding="15dp"
         android:textColor="@color/white"
-        android:layout_margin="10dp"
-        android:padding="10dp"
+        android:textColorHint="@color/white" />
+
+    <EditText
+        android:id="@+id/PhoneNumberuUser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/passwordUser"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="#30ffffff"
         android:drawableLeft="@drawable/ic_baseline_local_phone_24"
-        android:drawablePadding="20dp"/>
+        android:drawablePadding="20dp"
+        android:hint="Phone Number"
+        android:padding="10dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white" />
     <Button
         android:id="@+id/LogInButton"
         android:layout_width="wrap_content"

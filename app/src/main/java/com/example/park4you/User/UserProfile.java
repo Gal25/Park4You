@@ -28,7 +28,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class UserProfile extends AppCompatActivity {
 
-    private TextView textViewemail, textViewUserName, textViewphoneNum;
+    private TextView textViewemail, textViewUserNameTop, textViewUserNameBot,  textViewphoneNum;
     private String email, UserName, phoneNum;
     private DatabaseReference database;
     private FirebaseAuth auto;
@@ -38,7 +38,8 @@ public class UserProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
         textViewemail = findViewById(R.id.textViewEmail);
-        textViewUserName = findViewById(R.id.textViewName);
+        textViewUserNameTop = findViewById(R.id.textViewNameTop);
+        textViewUserNameBot = findViewById(R.id.textViewNameBot);
         textViewphoneNum = findViewById(R.id.textViewPhoneNum);
         database = FirebaseDatabase.getInstance().getReference("Users");
         auto = FirebaseAuth.getInstance();
@@ -62,7 +63,8 @@ public class UserProfile extends AppCompatActivity {
                         phoneNum = user.getPhoneNum();
                         textViewemail.setText(email);
                         textViewphoneNum.setText(phoneNum);
-                        textViewUserName.setText(UserName);
+                        textViewUserNameTop.setText(UserName);
+                        textViewUserNameBot.setText(UserName);
                     }
                     else{
                         Toast.makeText(UserProfile.this, "user null!",
