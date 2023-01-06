@@ -13,23 +13,20 @@
         android:id="@+id/EmailNewUser"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:layout_marginTop="400dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginTop="300dp"
         android:hint="Email"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         android:textSize="34sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="497dp"
         android:drawableLeft="@drawable/ic_baseline_email_24"
         android:drawablePadding="20dp"/>
     <EditText
         android:id="@+id/PasswordLogIn"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:layout_marginTop="500dp"
-        android:layout_marginBottom="40dp"
+        android:layout_below="@id/EmailNewUser"
+        android:layout_marginBottom="20dp"
         android:ems="10"
         android:textColor="@color/white"
         android:inputType="textPassword"
@@ -39,41 +36,34 @@
         android:textStyle="bold"
         android:drawableLeft="@drawable/ic_baseline_password_24"
         android:drawablePadding="20dp"/>
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/new_user"
         android:layout_width="120dp"
         android:layout_height="50dp"
-        android:background="#DDDCDC"
         android:onClick="newUserButton"
         android:text="new user"
         android:textSize="12sp"
         android:textStyle="bold"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="112dp"
-        tools:layout_editor_absoluteY="636dp" />
-    <Button
+        android:backgroundTint="@color/blue"/>
+
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/forgetpass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/PasswordLogIn"
-        android:textColor="@color/white"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="581dp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
+        android:layout_below="@+id/LogInButton"
+        android:backgroundTint="@color/teal"
         android:onClick="showRecoverPasswordDialog"
         android:text="Forgot Password"
-        android:background="@drawable/custom_button"/>
+        android:textColor="@color/white"
+        android:layout_margin="40dp"/>
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/LogInButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/forgetpass"
+        android:layout_below="@+id/PasswordLogIn"
         android:layout_centerInParent="true"
-        android:background="@drawable/custom_button"
+        android:backgroundTint="@color/blue"
         android:onClick="regButton"
         android:text="Log in"
         android:textSize="34sp"

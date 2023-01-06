@@ -45,7 +45,8 @@
 
         <activity
             android:name=".Order.PresenterOrderConfirmation"
-            android:exported="true">
+            android:exported="true"
+            android:parentActivityName=".Location.Location">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
 
