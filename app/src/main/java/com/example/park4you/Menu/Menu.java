@@ -21,7 +21,10 @@ import com.google.firebase.auth.FirebaseAuth;
 public class Menu extends AppCompatActivity {
 
 
-    //create menu
+    /*
+    This class creates the menu which appears at the top right of the screen.
+    It has many options for the user like profile and parking details and more.
+     */
     @Override
     public boolean onCreateOptionsMenu(android.view.Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -51,7 +54,6 @@ public class Menu extends AppCompatActivity {
                 owner = "user";
                 intent3.putExtra("owner", owner);
                 startActivity(intent3);
-
                 return true;
             case R.id.item6:
                 Intent intent4 = new Intent(this, PresentOrders.class);
@@ -69,21 +71,14 @@ public class Menu extends AppCompatActivity {
                 func = "release_parking";
                 intent6.putExtra("func", func);
                 startActivity(intent6);
-//                release_parking();
                 return true;
             case R.id.item9:
                 Intent intent7 = new Intent(this, DeleteParking.class);
-//                func = "release_parking";
-//                intent6.putExtra("func", func);
                 startActivity(intent7);
-//                release_parking();
                 return true;
             case R.id.item10:
                 Intent intent8 = new Intent(this, PaymentDB.class);
-//                func = "release_parking";
-//                intent6.putExtra("func", func);
                 startActivity(intent8);
-//                release_parking();
                 return true;
             default: return super.onOptionsItemSelected(item);
         }

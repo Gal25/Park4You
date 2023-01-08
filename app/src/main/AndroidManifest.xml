@@ -13,6 +13,13 @@
         android:theme="@style/Theme.Park4You"
         tools:targetApi="31">
         <activity
+            android:name=".Menu.Drawer"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".Menu.Menu"
             android:exported="false">
             <meta-data
@@ -42,21 +49,20 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity
             android:name=".Order.PresenterOrderConfirmation"
             android:exported="true"
             android:parentActivityName=".Location.Location">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity
             android:name=".Parking.PresenterAvailableParking"
             android:exported="true"
@@ -105,7 +111,7 @@
             android:name=".User.UserDB"
             android:exported="true"
             android:parentActivityName=".LoginUser.Login">
-        <meta-data
+            <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>

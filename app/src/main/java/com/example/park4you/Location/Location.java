@@ -3,9 +3,11 @@ package com.example.park4you.Location;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.ContentFrameLayout;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuInflater;
@@ -14,6 +16,7 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.example.park4you.LoginUser.Login;
+import com.example.park4you.Menu.Drawer;
 import com.example.park4you.Menu.Menu;
 import com.example.park4you.Order.Order;
 //import com.example.park4you.Order.PresenterOwnerOrders;
@@ -39,10 +42,10 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import android.widget.FrameLayout;
 
 public class Location extends Menu {
-
-
+//    ActivityLocationBinding activityLocationBinding;
     @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +54,9 @@ public class Location extends Menu {
     }
 
     public void proceedButton(View view){
+        /*
+        This function will get the data of a parking the user wants to search for and will direct him using the intent to the parking.
+         */
         Intent intent = new Intent(Location.this, PresenterAvailableParking.class);
         EditText editCityName = findViewById(R.id.city);
         EditText editStreetName = findViewById(R.id.street);
