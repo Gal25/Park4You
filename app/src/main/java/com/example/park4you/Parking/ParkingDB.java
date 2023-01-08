@@ -23,7 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
 import java.util.Objects;
-
+//This class saves a new parking entered by a user to the database
 public class ParkingDB extends Menu {
     private FirebaseAuth auto;
     private DatabaseReference databaseReference;
@@ -47,11 +47,8 @@ public class ParkingDB extends Menu {
         priceText = findViewById(R.id.Price);
 
     }
-    //Presenter
-    //When the user clicks the add button, the parking he entered is updated in the database
-    // with all the details
     public void addParking(View view){ newParking(); }
-
+    //This will get all the data from the edit texts and save it to a Parking object to the database
     public void newParking() {
 
     DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Addresses");

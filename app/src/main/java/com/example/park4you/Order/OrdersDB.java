@@ -129,7 +129,7 @@ public class OrdersDB extends AppCompatActivity {
                         String parking_id = (String) arr.toArray()[6];
 
 
-                        HashMap<String, Object> order = new HashMap<>();
+                        HashMap<String, Object> order = new HashMap<>(); //construct the order
                         order.put("emailOwner ", email_owner);
                         order.put("houseNum ", houseNum);
                         order.put("city ", city);

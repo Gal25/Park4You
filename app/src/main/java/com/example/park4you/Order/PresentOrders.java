@@ -80,6 +80,7 @@ public class PresentOrders extends Menu {
 
 
     }
+    // This function will show all the orders of a user have rented and all the orders of an owner who got his parking rented
     public void ShowOrders(){
         database.child(firebaseUser.getUid()).addValueEventListener(new ValueEventListener() {
             @SuppressLint("NotifyDataSetChanged")

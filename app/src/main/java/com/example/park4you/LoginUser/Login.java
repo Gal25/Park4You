@@ -142,9 +142,7 @@ public class Login extends AppCompatActivity {
         loadingBar.setCanceledOnTouchOutside(false);
         loadingBar.show();
 
-        // calling sendPasswordResetEmail
-        // open your email and write the new
-        // password and then you can login
+        // calling sendPasswordResetEmail open your email and write the new password and then you can login
         mAuth.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {

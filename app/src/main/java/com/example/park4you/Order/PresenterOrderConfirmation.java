@@ -6,7 +6,7 @@ import com.example.park4you.Menu.Menu;
 import com.example.park4you.R;
 
 public class PresenterOrderConfirmation extends Menu {
-
+    //simple class to show page of an order confirmation
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -49,7 +49,7 @@ public class PaymentDB extends Menu {
         mAuth = FirebaseAuth.getInstance();
 //        reference = FirebaseDatabase.getInstance().getReference("PaymentDetails");
     }
-
+    //This will get all the payment info from the user and saves it to the database
     public void SaveButton(View view) {
 
         creditNumber = findViewById(R.id.CreditNumber);

@@ -72,7 +72,7 @@ public class PresenterAvailableParking extends Menu {
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                for(DataSnapshot dataSnapshot : snapshot.getChildren()) { //in this for loop we find by city street and hour the all the park spots the user matched with his search
                     Parking parking = dataSnapshot.getValue(Parking.class);
                     assert parking != null;
                     if (parking.getStreet().equals(streetName)) {
@@ -119,8 +119,8 @@ public class PresenterAvailableParking extends Menu {
                             assert park != null;
                             int pos=0;
                             if (park.getid().equals(id)) {
-                                ordersDB.create_order_customer(park);
-                                ordersDB.create_order_owner(park);
+                                ordersDB.create_order_customer(park); //add the parking to the user's parking database
+                                ordersDB.create_order_owner(park); //add the parking to the owner's parking database
                                 check[0] = true;
                                 for (int i = 0; i < list.size(); i++){
                                     if (list.get(i).equals(park)){
@@ -128,7 +128,7 @@ public class PresenterAvailableParking extends Menu {
                                     }
                                 }
                                 dataSnapshot.getRef().removeValue();
-                                list.remove(pos);
+                                list.remove(pos); //remove it from the list after rent
                                 myAdapter.notifyItemRemoved(pos);
                                 intent(check, receive[0]);
                                 break;
@@ -149,7 +149,6 @@ public class PresenterAvailableParking extends Menu {
 
     //Go to order confirmation when the customer's payment details appear
     public void intent(boolean[] check, boolean payment){
-        System.out.println("144 check "  + check[0]);
         if(check[0]) {
             if (payment) {
                 Intent intent = new Intent(PresenterAvailableParking.this, PresenterOrderConfirmation.class);
@@ -190,7 +189,8 @@ public class PresenterAvailableParking extends Menu {
             }
         });
     }
-
+    // this checks if the start hour and the end hour of the parking the user wishes to rent correspond to the actual time the owner of the
+    //parking wishes to rent it
     public boolean checkTime(String hours1, String hours2){
         char[] hou1 = hours1.toCharArray();
         char[] hou2 = hours2.toCharArray();

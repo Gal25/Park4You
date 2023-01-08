@@ -36,7 +36,7 @@ public class DeleteParking extends AppCompatActivity {
         textViewHouseNum = findViewById(R.id.HouseNumber_);
         database = FirebaseDatabase.getInstance().getReference("Addresses");
     }
-
+    //This functon will delete a published parking by the owner from the database in case the owner does not want to rent it to others anymore
     public void delete_parking(View view){
         String city, street;
         int houseNum;
