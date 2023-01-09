@@ -40,9 +40,14 @@ public class PresenterAvailableParking extends Menu {
     private ArrayList<Parking> list;
     private TextView textView;
     private String city;
+    private  String id;
     private OrdersDB ordersDB;
+    View v2;
+    private ParkingDB ParkingDB;
+
     private PaymentDB paymentDB;
     private boolean payment;
+
     private final boolean[] receive = new boolean[1];
     //Add the parking into to the parking list and update the parking display screen using the adapter
     @SuppressLint("MissingInflatedId")
@@ -57,6 +62,7 @@ public class PresenterAvailableParking extends Menu {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         ordersDB = new OrdersDB();
         paymentDB = new PaymentDB();
+        ParkingDB = new ParkingDB();
         list = new ArrayList<>();
         myAdapter = new ParkingAdapter(this,list);
         recyclerView.setAdapter(myAdapter);
@@ -98,10 +104,10 @@ public class PresenterAvailableParking extends Menu {
         textView = findViewById(R.id.textCity);
         city = textView.getText().toString();
         boolean[] check = {false};
-        View v2 =recyclerView.findContainingItemView(view);
+        v2 =recyclerView.findContainingItemView(view);
         assert v2 != null;
         textView = v2.findViewById(R.id.park_id);
-        String id = textView.getText().toString();
+        id = textView.getText().toString();
 
         SearchDetails();
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -110,36 +116,20 @@ public class PresenterAvailableParking extends Menu {
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                database.child(city).addListenerForSingleValueEvent(new ValueEventListener() {
-                    @SuppressLint("NotifyDataSetChanged")
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        for(DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                            Parking park = dataSnapshot.getValue(Parking.class);
-                            assert park != null;
-                            int pos=0;
-                            if (park.getid().equals(id)) {
-                                ordersDB.create_order_customer(park); //add the parking to the user's parking database
-                                ordersDB.create_order_owner(park); //add the parking to the owner's parking database
-                                check[0] = true;
-                                for (int i = 0; i < list.size(); i++){
-                                    if (list.get(i).equals(park)){
-                                        pos = i;
-                                    }
-                                }
-                                dataSnapshot.getRef().removeValue();
-                                list.remove(pos); //remove it from the list after rent
-                                myAdapter.notifyItemRemoved(pos);
-                                intent(check, receive[0]);
-                                break;
-                            }
-                        }
-                    }
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(PresenterAvailableParking.this, "Cancelled", Toast.LENGTH_SHORT).show();
-                    }
-                });
+                if (payment) {
+                    System.out.println("System.out.println(payment);"+payment);
+                    DeleteAfterPayment();
+                    Intent intent = new Intent(PresenterAvailableParking.this, PresenterOrderConfirmation.class);
+                    startActivity(intent);                }
+                else{
+                    System.out.println("123");
+                    Toast.makeText(PresenterAvailableParking.this, "fill in your payment details.",
+                            Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(PresenterAvailableParking.this, PaymentDB.class);
+                    startActivity(intent);
+                    DeleteAfterPayment();
+
+                }
             }
         });
         builder.setNegativeButton("No", null);
@@ -148,18 +138,11 @@ public class PresenterAvailableParking extends Menu {
     }
 
     //Go to order confirmation when the customer's payment details appear
-    public void intent(boolean[] check, boolean payment){
-        if(check[0]) {
-            if (payment) {
-                Intent intent = new Intent(PresenterAvailableParking.this, PresenterOrderConfirmation.class);
-                startActivity(intent);
-            } else {
-                Toast.makeText(PresenterAvailableParking.this, "fill in your payment details.",
-                        Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(PresenterAvailableParking.this, PaymentDB.class);
-                startActivity(intent);
-            }
-        }
+    public void DeleteAfterPayment(){
+        ParkingDB = new ParkingDB();
+        int pos=ParkingDB.DeleteParking(city, id, list);
+        list.remove(pos); //remove it from the list after rent
+        myAdapter.notifyItemRemoved(pos);
     }
 
     //Check if the customer has payment details

@@ -10,6 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.park4you.Menu.Menu;
+import com.example.park4you.Order.Order;
+import com.example.park4you.Order.OrdersDB;
 import com.example.park4you.R;
 //import com.example.park4you.RentUser.RentUser;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -21,11 +23,16 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Objects;
 //This class saves a new parking entered by a user to the database
 public class ParkingDB extends Menu {
     private FirebaseAuth auto;
+//    private String city;
+    private OrdersDB ordersDB;
+    private ParkingAdapter myAdapter;
+    private ArrayList<Parking> list;
     private DatabaseReference databaseReference;
     private EditText EmailText, cityText, streetText, houseNumText, AvStartHoursText, AvEndHoursText, priceText;
 
@@ -45,6 +52,7 @@ public class ParkingDB extends Menu {
         AvStartHoursText = findViewById(R.id.StartTime);
         AvEndHoursText = findViewById(R.id.EndTime);
         priceText = findViewById(R.id.Price);
+
 
     }
     public void addParking(View view){ newParking(); }
@@ -79,5 +87,42 @@ public class ParkingDB extends Menu {
             }
         });
     }
+
+    public int DeleteParking(String city, String id, ArrayList<Parking> list){
+        ordersDB = new OrdersDB();
+        final int[] pos = {0};
+        DatabaseReference database = FirebaseDatabase.getInstance().getReference().child("Addresses");
+        database.child(city).addListenerForSingleValueEvent(new ValueEventListener() {
+            @SuppressLint("NotifyDataSetChanged")
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    Parking park = dataSnapshot.getValue(Parking.class);
+                    assert park != null;
+//                    int pos=0;
+                    if (park.getid().equals(id)) {
+                        System.out.println("list  "+list);
+                        ordersDB.create_order_customer(park); //add the parking to the user's parking database
+                        ordersDB.create_order_owner(park); //add the parking to the owner's parking database
+//                        check[0] = true;
+                        for (int i = 0; i < list.size(); i++){
+                            if (list.get(i).equals(park)){
+                                pos[0] = i;
+                            }
+                        }
+                        dataSnapshot.getRef().removeValue();
+
+                        break;
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(ParkingDB.this, "Cancelled", Toast.LENGTH_SHORT).show();
+            }
+        });
+        return pos[0];
+    }
+
 
 }

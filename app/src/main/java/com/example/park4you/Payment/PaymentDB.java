@@ -38,6 +38,7 @@ public class PaymentDB extends Menu {
     private FirebaseAuth mAuth;
     private DatabaseReference reference;
     private DatabaseReference reference2;
+    private PresenterAvailableParking presenterAvailableParking;
 
 
 
@@ -49,9 +50,10 @@ public class PaymentDB extends Menu {
         mAuth = FirebaseAuth.getInstance();
 //        reference = FirebaseDatabase.getInstance().getReference("PaymentDetails");
     }
+
     //This will get all the payment info from the user and saves it to the database
     public void SaveButton(View view) {
-
+        presenterAvailableParking = new PresenterAvailableParking();
         creditNumber = findViewById(R.id.CreditNumber);
         expirationDate = findViewById(R.id.ExpirationDate);
         cvv = findViewById(R.id.CVV);
@@ -73,6 +75,7 @@ public class PaymentDB extends Menu {
         });
         Intent intent = new Intent(this, PresenterOrderConfirmation.class); //order Confirmishiadadms
         startActivity(intent);
+
     }
 
 }
