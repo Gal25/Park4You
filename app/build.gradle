@@ -16,7 +16,9 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
-
+    buildFeatures{
+        viewBinding true
+    }
     buildTypes {
         release {
             minifyEnabled false
@@ -28,6 +30,8 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 }
+
+
 
 dependencies {
 
