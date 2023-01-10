@@ -4,31 +4,29 @@
     <item android:id = "@+id/item2"
         android:title="User Profile"
         app:showAsAction= "never"/>
+    <item android:id = "@+id/item3"
+        android:title="Choose Parking"
+        app:showAsAction= "never"/>
+    <item android:id = "@+id/item4"
+        android:title="Add a new parking"
+        app:showAsAction= "never"/>
+    <item android:id = "@+id/item5"
+        android:title="Park Spots You Rented"
+        app:showAsAction= "never"/>
+    <item android:id = "@+id/item6"
+        android:title="Park Spots You Offer"
+        app:showAsAction= "never"/>
+    <item android:id = "@+id/item8"
+        android:title="Release Parking"
+        app:showAsAction= "never"/>
+    <item android:id = "@+id/item10"
+        android:title="Payment"
+        app:showAsAction= "never"/>
+    <item android:id = "@+id/item9"
+        android:title="Delete Parking"
+        app:showAsAction= "never"/>
     <item android:id = "@+id/item7"
         android:title="Log out"
         app:showAsAction= "never"/>
-
-            <item android:id = "@+id/item3"
-                android:title="Choose Parking"
-                app:showAsAction= "never"/>
-
-            <item android:id = "@+id/item4"
-                android:title="Add a new parking"
-                app:showAsAction= "never"/>
-            <item android:id = "@+id/item5"
-                android:title="Park Spots You Rented"
-                app:showAsAction= "never"/>
-            <item android:id = "@+id/item6"
-                android:title="Park Spots You Offer"
-                app:showAsAction= "never"/>
-            <item android:id = "@+id/item8"
-                android:title="Release Parking"
-                app:showAsAction= "never"/>
-            <item android:id = "@+id/item10"
-                android:title="Payment"
-                app:showAsAction= "never"/>
-            <item android:id = "@+id/item9"
-                android:title="Delete Parking"
-                app:showAsAction= "never"/>
 
 </menu>
