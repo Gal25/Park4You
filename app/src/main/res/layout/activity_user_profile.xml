@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".User.UserProfile">
+    tools:context=".User.UserProfile"
+    android:background="@drawable/header_backround">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -14,7 +15,6 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="180dp"
-            android:background="@drawable/header_backround"
             android:padding="70dp">
 
             <ImageView
@@ -28,10 +28,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="loading"
+                android:textColor="@color/white"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="10dp"
                 android:layout_toEndOf="@id/image_profile"
-                android:textSize="20sp"
+                android:textSize="30sp"
                 android:id="@+id/textViewNameTop"/>
 
         </RelativeLayout>
@@ -39,8 +40,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="16dp"
-            android:background="@drawable/header_backround">
+            android:padding="16dp">
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

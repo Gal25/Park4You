@@ -67,13 +67,12 @@
         android:layout_width="150dp"
         android:layout_height="50dp"
         android:layout_below="@+id/HouseNumber_"
+        android:layout_margin="30dp"
+        android:layout_centerInParent="true"
+        android:backgroundTint="@color/teal"
+        android:onClick="delete_parking"
         android:text="Delete"
         android:textSize="15sp"
-        android:textStyle="bold"
-        android:onClick="delete_parking"
-        android:layout_centerInParent="true"
-        tools:layout_editor_absoluteX="112dp"
-        tools:layout_editor_absoluteY="636dp"
-        android:backgroundTint="@color/teal"/>
+        android:textStyle="bold" />
 
 </RelativeLayout>

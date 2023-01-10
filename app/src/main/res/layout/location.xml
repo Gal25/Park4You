@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Location.Location"
-    android:background="@drawable/backround">
+    android:background="@drawable/park4you_backround">
 
     <EditText
         android:id="@+id/city"
@@ -69,6 +69,7 @@
         android:layout_centerInParent="true"
         android:onClick="proceedButton"
         android:text="Proceed"
+        android:backgroundTint="@color/teal"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="341dp" />

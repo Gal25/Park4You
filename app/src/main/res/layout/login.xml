@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".LoginUser.Login"
     android:id="@+id/container"
-    android:background="@drawable/backround">
+    android:background="@drawable/park4you_backround">
 
 
     <EditText
@@ -44,7 +44,7 @@
         android:text="new user"
         android:textSize="12sp"
         android:textStyle="bold"
-        android:backgroundTint="@color/blue"/>
+        android:backgroundTint="@color/teal"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/forgetpass"
@@ -55,7 +55,7 @@
         android:layout_marginTop="40dp"
         android:layout_marginEnd="40dp"
         android:layout_marginBottom="40dp"
-        android:backgroundTint="@color/light_blue"
+        android:backgroundTint="@color/purple_700"
         android:onClick="showRecoverPasswordDialog"
         android:text="Forgot Password"
         android:textColor="@color/white" />
@@ -66,7 +66,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/PasswordLogIn"
         android:layout_centerInParent="true"
-        android:backgroundTint="@color/blue"
+        android:backgroundTint="@color/teal"
         android:onClick="regButton"
         android:text="Log in"
         android:textSize="34sp"

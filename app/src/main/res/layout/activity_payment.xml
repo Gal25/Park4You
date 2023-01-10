@@ -6,17 +6,12 @@
     android:background="@drawable/header_backround"
     tools:context=".Payment.PaymentDB">
 
-    <RelativeLayout
-        android:id="@+id/layout_head"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:background="@color/white">
+
 
         <RelativeLayout
             android:id="@+id/title"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/header_backround">
+            android:layout_height="wrap_content">
 
 
             <TextView
@@ -32,14 +27,12 @@
                 android:textStyle="bold" />
         </RelativeLayout>
 
-    </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/note"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:layout_marginTop="60dp"
-        android:background="@color/light_gray">
+        android:layout_marginTop="60dp">
 
         <RelativeLayout
             android:id="@+id/RL_imageView"
@@ -56,7 +49,7 @@
             android:textAlignment="center"
             android:layout_marginTop="10dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-            android:textStyle="bold" />
+            android:textColor="@color/white"/>
         </RelativeLayout>
     </RelativeLayout>
 
@@ -65,9 +58,9 @@
         android:id="@+id/CreditNumber"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginTop="150dp"
-        android:textColor="@color/black"
-        android:background="@color/gray"
+        android:layout_marginTop="200dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
         android:hint="Credit Number" />
 
     <EditText
@@ -76,8 +69,8 @@
             android:id="@+id/ExpirationDate"
             android:hint="Expiration Date"
             android:layout_below="@id/CreditNumber"
-            android:background="@color/gray"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
+        android:textColorHint="@color/white"
             android:ems="10"
             android:inputType="date"
             tools:ignore="MissingConstraints" />
@@ -86,9 +79,8 @@
         android:layout_height="50dp"
         android:id="@+id/CVV"
         android:hint="CVV"
-        android:textColor="@color/black"
-        android:background="@color/gray"
-
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
         android:layout_below="@id/ExpirationDate"
         tools:ignore="MissingConstraints" />
 
@@ -97,8 +89,8 @@
         android:layout_height="50dp"
         android:id="@+id/Email_payment"
         android:hint="Email"
-        android:textColor="@color/black"
-        android:background="@color/gray"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
         android:layout_below="@id/CVV"
         tools:ignore="MissingConstraints" />
 
@@ -111,7 +103,7 @@
         android:layout_centerVertical="true"
         android:layout_marginTop="130dp"
         android:layout_marginBottom="1dp"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:backgroundTint="@color/teal"
         android:text="Save"
         android:onClick="SaveButton"
