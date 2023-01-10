@@ -123,15 +123,15 @@
         android:layout_width="150dp"
         android:layout_height="50dp"
         android:layout_below="@+id/Price"
+        android:layout_centerInParent="true"
+        android:backgroundTint="@color/teal_700"
+        android:onClick="addParking"
         android:text="Publish"
         android:textSize="15sp"
         android:textStyle="bold"
-        android:onClick="addParking"
-        android:layout_centerInParent="true"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="112dp"
-        tools:layout_editor_absoluteY="636dp"
-        android:backgroundTint="@color/teal_700"/>
+        tools:layout_editor_absoluteY="636dp" />
 
 
 

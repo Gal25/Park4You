@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_signup"
+    android:background="@drawable/header_backround"
     tools:context=".User.UserDB">
 
 
@@ -86,18 +86,22 @@
         android:padding="10dp"
         android:textColor="@color/white"
         android:textColorHint="@color/white" />
+
     <Button
         android:id="@+id/LogInButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#DDDCDC"
-        android:layout_centerInParent="true"
         android:layout_below="@+id/PhoneNumberuUser"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="@color/teal"
         android:onClick="registerButton"
         android:text="Register"
         android:textSize="20sp"
-        android:textStyle="bold"
-        android:layout_margin="20dp"/>
+        android:textStyle="bold" />
 
 
 </RelativeLayout>
