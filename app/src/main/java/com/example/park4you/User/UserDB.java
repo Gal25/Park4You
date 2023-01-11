@@ -39,6 +39,7 @@ public class UserDB extends AppCompatActivity {
     private String phone;
     private User user;
     public String id;
+    private PresenterUser presenterUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,8 +65,13 @@ public class UserDB extends AppCompatActivity {
         registerUser();
 
     }
-    //Presenter
+
     public void registerUser() {
+//        FirebaseDatabase database = FirebaseDatabase.getInstance();
+//        mDatabase = database.getReference(USERS);
+//        mAuth = FirebaseAuth.getInstance();
+//        firebaseUser = mAuth.getCurrentUser();
+//        presenterUser = new PresenterUser();
 
         //if it is not successful check if there are the same user in auth firebase
         mAuth.createUserWithEmailAndPassword(email, password)
@@ -76,6 +82,8 @@ public class UserDB extends AppCompatActivity {
                             id = task.getResult().getUser().getUid();
                             user = new User(email, username,password, phone, id);
                             // Sign in success, update UI with the signed-in user's information
+//                            Log.d(TAG, "createUserWithEmail:success");
+//                            mDatabase.child(id).setValue(user);
                             updateUI();
                         } else {
                             // If sign in fails, display a message to the user.
@@ -86,12 +94,15 @@ public class UserDB extends AppCompatActivity {
                     }
                 });
     }
-    //Viewer
-    //update the UI -> go to login page and set value in our database
+//    //Viewer
+//    //update the UI -> go to login page and set value in our database
     public void updateUI() {
         Log.d(TAG, "createUserWithEmail:success");
         mDatabase.child(id).setValue(user);
         Intent loginIntent = new Intent(this, Login.class);
         startActivity(loginIntent);
     }
+
+
+
 }

@@ -73,7 +73,13 @@ public class PaymentDB extends Menu {
                 Toast.makeText(PaymentDB.this, "Details Saved!", Toast.LENGTH_SHORT).show();
             }
         });
-        Intent intent = new Intent(this, PresenterOrderConfirmation.class); //order Confirmishiadadms
+        String cityName = getIntent().getStringExtra("City Name");
+        String streetName = getIntent().getStringExtra("Street Name");
+        String AvHours = getIntent().getStringExtra("time");
+        Intent intent = new Intent(this, PresenterAvailableParking.class); //order Confirmishiadadms
+        intent.putExtra("City Name", cityName);
+        intent.putExtra("Street Name", streetName);
+        intent.putExtra("time", AvHours);
         startActivity(intent);
 
     }

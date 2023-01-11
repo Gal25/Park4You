@@ -41,10 +41,11 @@ public class PresenterAvailableParking extends Menu {
     private TextView textView;
     private String city;
     private  String id;
+    private String streetName;
     private OrdersDB ordersDB;
     View v2;
     private ParkingDB ParkingDB;
-
+    private String AvHours;
     private PaymentDB paymentDB;
     private boolean payment;
 
@@ -72,8 +73,8 @@ public class PresenterAvailableParking extends Menu {
 
     public void Show_Parking(){
         String cityName = getIntent().getStringExtra("City Name");
-        String streetName = getIntent().getStringExtra("Street Name");
-        String AvHours = getIntent().getStringExtra("time");
+        streetName = getIntent().getStringExtra("Street Name");
+        AvHours = getIntent().getStringExtra("time");
         database.child(cityName).addValueEventListener(new ValueEventListener() {
             @SuppressLint("NotifyDataSetChanged")
             @Override
@@ -117,7 +118,6 @@ public class PresenterAvailableParking extends Menu {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 if (payment) {
-                    System.out.println("System.out.println(payment);"+payment);
                     DeleteAfterPayment();
                     Intent intent = new Intent(PresenterAvailableParking.this, PresenterOrderConfirmation.class);
                     startActivity(intent);                }
@@ -126,8 +126,10 @@ public class PresenterAvailableParking extends Menu {
                     Toast.makeText(PresenterAvailableParking.this, "fill in your payment details.",
                             Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(PresenterAvailableParking.this, PaymentDB.class);
+                    intent.putExtra("City Name", city);
+                    intent.putExtra("Street Name", streetName);
+                    intent.putExtra("time", AvHours);
                     startActivity(intent);
-                    DeleteAfterPayment();
 
                 }
             }

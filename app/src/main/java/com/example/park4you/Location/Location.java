@@ -69,9 +69,6 @@ public class Location extends Menu {
         String AvHoursEnd = editHoursEndName.getText().toString();
         Time time = new Time(AvHoursStart, AvHoursEnd);
         intent.putExtra("time", time.toString());
-
-//        intent.putExtra("AvHoursStart", AvHoursStart);
-//        intent.putExtra("AvHoursEnd", AvHoursEnd);
         startActivity(intent);
     }
 }

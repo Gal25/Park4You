@@ -1,5 +1,7 @@
 package com.example.park4you.LoginUser;
 
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,14 +14,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.example.park4you.APIClient;
 import com.example.park4you.R;
 import com.example.park4you.Location.Location;
+import com.example.park4you.ServerStrings;
+//import com.example.park4you.User.PresenterUser;
 import com.example.park4you.User.User;
 import com.example.park4you.User.UserDB;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -34,8 +40,22 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+import okhttp3.MediaType;
+
+import com.example.park4you.User.User;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 
 
 public class Login extends AppCompatActivity {
@@ -47,6 +67,8 @@ public class Login extends AppCompatActivity {
     private FirebaseAuth mAuth;
     Button forgetpass;
     public ProgressDialog loginprogress;
+    private final APIClient client = new APIClient();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,7 +83,42 @@ public class Login extends AppCompatActivity {
         loginprogress=new ProgressDialog(this);
         passwordEditText = findViewById(R.id.PasswordLogIn);
         textEmail = findViewById(R.id.EmailNewUser);
+
     }
+//    //login with email and password and check if the user put a input
+//    public void regButton(View view){
+//        password = passwordEditText.getText().toString();
+//        email = textEmail.getText().toString();
+//        if (TextUtils.isEmpty(email)) {
+//            Toast.makeText(getApplicationContext(), "Please enter email...", Toast.LENGTH_LONG).show();
+//        }
+//        if (TextUtils.isEmpty(password)) {
+//            Toast.makeText(getApplicationContext(), "Please enter password!", Toast.LENGTH_LONG).show();
+//        }
+//        mAuth.signInWithEmailAndPassword(email, password)
+//                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<AuthResult> task) {
+//                        if (task.isSuccessful()) {
+//                            FirebaseUser firebaseUser = mAuth.getCurrentUser();
+//                            assert firebaseUser != null;
+//                            String userID = firebaseUser.getUid();
+//                            Map<String, Object> m = new HashMap<>();
+//                            m.put("password", password);
+//                            ref_user.child(userID).updateChildren(m);
+//                            Toast.makeText(getApplicationContext(), "Login successful!", Toast.LENGTH_LONG).show();
+//                            Intent intent = new Intent(Login.this, Location.class);
+//                            startActivity(intent);
+//                        }
+//                        else {
+//                            Toast.makeText(getApplicationContext(), "Login failed! Please try again later", Toast.LENGTH_LONG).show();
+//
+//                        }
+//                    }
+//                });
+//    }
+
+
     //login with email and password and check if the user put a input
     public void regButton(View view){
         password = passwordEditText.getText().toString();
@@ -72,27 +129,28 @@ public class Login extends AppCompatActivity {
         if (TextUtils.isEmpty(password)) {
             Toast.makeText(getApplicationContext(), "Please enter password!", Toast.LENGTH_LONG).show();
         }
-        mAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            FirebaseUser firebaseUser = mAuth.getCurrentUser();
-                            assert firebaseUser != null;
-                            String userID = firebaseUser.getUid();
-                            Map<String, Object> m = new HashMap<>();
-                            m.put("password", password);
-                            ref_user.child(userID).updateChildren(m);
-                            Toast.makeText(getApplicationContext(), "Login successful!", Toast.LENGTH_LONG).show();
-                            Intent intent = new Intent(Login.this, Location.class);
-                            startActivity(intent);
-                        }
-                        else {
-                            Toast.makeText(getApplicationContext(), "Login failed! Please try again later", Toast.LENGTH_LONG).show();
 
-                        }
-                    }
-                });
+        client.sendGetRequest(ServerStrings.AUTH + email + "/:" + password, new Callback() {
+//
+            @Override
+            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                String responseBody = response.body().string();
+                Log.d(TAG, "Server response: " + responseBody);
+                Gson gson = new Gson();
+                User user = gson.fromJson(responseBody, User.class);
+                Map<String, Object> m = new HashMap<>();
+                m.put("password", password);
+                ref_user.child(user.getId()).updateChildren(m);
+                Intent intent = new Intent(getApplicationContext(), Location.class);
+                startActivity(intent);
+                finish();
+            }
+
+            @Override
+            public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                Log.d(TAG,e.getMessage());
+            }
+        });
     }
 
 
