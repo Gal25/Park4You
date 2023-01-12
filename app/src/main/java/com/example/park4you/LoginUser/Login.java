@@ -19,6 +19,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.park4you.APIClient;
@@ -65,7 +66,7 @@ public class Login extends AppCompatActivity {
     DatabaseReference ref_user;
     private String password, email;
     private FirebaseAuth mAuth;
-    Button forgetpass;
+    TextView forgetpass;
     public ProgressDialog loginprogress;
     private final APIClient client = new APIClient();
 

@@ -5,7 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Location.Location"
-    android:background="@drawable/park4you_backround">
+    >
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/park4you_backround"
+        android:scaleType="centerCrop"/>
 
     <EditText
         android:id="@+id/city"
