@@ -26,6 +26,7 @@ public class DeleteParking extends AppCompatActivity {
     private DatabaseReference database;
     private String email;
     private FirebaseUser firebaseUser;
+    private FirebaseAuth auto;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +36,9 @@ public class DeleteParking extends AppCompatActivity {
         textViewStreet = findViewById(R.id.StreetName);
         textViewHouseNum = findViewById(R.id.HouseNumber_);
         database = FirebaseDatabase.getInstance().getReference("Addresses");
+        auto = FirebaseAuth.getInstance();
+        firebaseUser = auto.getCurrentUser();
+
     }
     //This functon will delete a published parking by the owner from the database in case the owner does not want to rent it to others anymore
     public void delete_parking(View view){
@@ -43,24 +47,30 @@ public class DeleteParking extends AppCompatActivity {
         city = textViewCity.getText().toString();
         street = textViewStreet.getText().toString();
         houseNum = Integer.parseInt(textViewHouseNum.getText().toString());
-
         email = firebaseUser.getEmail();
+        System.out.println("email"+email);
         database.child(city).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                boolean found= false;
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Parking parking = dataSnapshot.getValue(Parking.class);
                     assert parking != null;
+                    System.out.println("parking.getEmail()" + parking.getEmail());
                     if (email.equals(parking.getEmail())) {
                         if (parking.getStreet().equals(street) && parking.getHouseNum() == houseNum) {
+                            found = true;
                             dataSnapshot.getRef().removeValue();
                             Toast.makeText(DeleteParking.this, "Parking Deleted!", Toast.LENGTH_SHORT).show();
                             break;
                         }
-                    }else{
-                        Toast.makeText(DeleteParking.this, "not your Parking!", Toast.LENGTH_SHORT).show();
-                        break;
                     }
+
+                }
+
+                if(!found){
+                    Toast.makeText(DeleteParking.this, "not your Parking!", Toast.LENGTH_SHORT).show();
+
                 }
             }
             @Override

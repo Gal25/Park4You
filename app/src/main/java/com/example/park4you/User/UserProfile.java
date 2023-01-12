@@ -43,12 +43,12 @@ public class UserProfile extends Menu {
         textViewUserNameBot = findViewById(R.id.textViewNameBot);
         textViewphoneNum = findViewById(R.id.textViewPhoneNum);
         database = FirebaseDatabase.getInstance().getReference("Users");
-        auto = FirebaseAuth.getInstance();
         showUserProfile();
 
     }
     //Presenter
     private void showUserProfile() {
+        auto = FirebaseAuth.getInstance();
         FirebaseUser firebaseUser = auto.getCurrentUser();
         String userID = firebaseUser.getUid();
 

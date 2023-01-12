@@ -12,6 +12,8 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.text.InputType;
 import android.text.TextUtils;
 import android.util.Log;
@@ -86,38 +88,30 @@ public class Login extends AppCompatActivity {
         textEmail = findViewById(R.id.EmailNewUser);
 
     }
-//    //login with email and password and check if the user put a input
-//    public void regButton(View view){
-//        password = passwordEditText.getText().toString();
-//        email = textEmail.getText().toString();
-//        if (TextUtils.isEmpty(email)) {
-//            Toast.makeText(getApplicationContext(), "Please enter email...", Toast.LENGTH_LONG).show();
-//        }
-//        if (TextUtils.isEmpty(password)) {
-//            Toast.makeText(getApplicationContext(), "Please enter password!", Toast.LENGTH_LONG).show();
-//        }
-//        mAuth.signInWithEmailAndPassword(email, password)
-//                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<AuthResult> task) {
-//                        if (task.isSuccessful()) {
-//                            FirebaseUser firebaseUser = mAuth.getCurrentUser();
-//                            assert firebaseUser != null;
-//                            String userID = firebaseUser.getUid();
-//                            Map<String, Object> m = new HashMap<>();
-//                            m.put("password", password);
-//                            ref_user.child(userID).updateChildren(m);
-//                            Toast.makeText(getApplicationContext(), "Login successful!", Toast.LENGTH_LONG).show();
-//                            Intent intent = new Intent(Login.this, Location.class);
-//                            startActivity(intent);
-//                        }
-//                        else {
-//                            Toast.makeText(getApplicationContext(), "Login failed! Please try again later", Toast.LENGTH_LONG).show();
-//
-//                        }
-//                    }
-//                });
-//    }
+    //login with email and password and check if the user put a input
+    public void signIN(String email,String password){
+        mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            FirebaseUser firebaseUser = mAuth.getCurrentUser();
+                            assert firebaseUser != null;
+                            String userID = firebaseUser.getUid();
+                            Map<String, Object> m = new HashMap<>();
+                            m.put("password", password);
+                            ref_user.child(userID).updateChildren(m);
+                            Toast.makeText(getApplicationContext(), "Login successful!", Toast.LENGTH_LONG).show();
+                            Intent intent = new Intent(Login.this, Location.class);
+                            startActivity(intent);
+                        }
+                        else {
+                            Toast.makeText(getApplicationContext(), "Login failed! Please try again later", Toast.LENGTH_LONG).show();
+
+                        }
+                    }
+                });
+    }
 
 
     //login with email and password and check if the user put a input
@@ -132,19 +126,43 @@ public class Login extends AppCompatActivity {
         }
 
         client.sendGetRequest(ServerStrings.AUTH + email + "/:" + password, new Callback() {
-//
             @Override
             public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
                 String responseBody = response.body().string();
+                System.out.println(responseBody);
                 Log.d(TAG, "Server response: " + responseBody);
-                Gson gson = new Gson();
-                User user = gson.fromJson(responseBody, User.class);
-                Map<String, Object> m = new HashMap<>();
-                m.put("password", password);
-                ref_user.child(user.getId()).updateChildren(m);
-                Intent intent = new Intent(getApplicationContext(), Location.class);
-                startActivity(intent);
-                finish();
+                if (responseBody.contains("password") && responseBody.contains("code")) {
+                    new Handler(Looper.getMainLooper()).post(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(Login.this, "Wrong password please try again", Toast.LENGTH_SHORT).show();
+
+                        }
+                    });
+                }else if(responseBody.contains("code")){
+                    new Handler(Looper.getMainLooper()).post(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(Login.this, "Wrong email please try again", Toast.LENGTH_SHORT).show();
+
+                        }
+                    });
+                }else {
+                    Gson gson = new Gson();
+                    User user = gson.fromJson(responseBody, User.class);
+//                    FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+                    if(mAuth.getCurrentUser() == null ) {
+                        // User is not signed in
+                        signIN(email,password);
+                    }
+
+                    Map<String, Object> m = new HashMap<>();
+                    m.put("password", password);
+                    ref_user.child(user.getId()).updateChildren(m);
+                    Intent intent = new Intent(getApplicationContext(), Location.class);
+                    startActivity(intent);
+
+                }
             }
 
             @Override
