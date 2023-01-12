@@ -1,4 +1,4 @@
-package com.example.park4you.Parking;
+package com.example.park4you.Object;
 
 import java.util.Objects;
 

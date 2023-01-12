@@ -16,7 +16,7 @@
         android:layout_marginBottom="16dp"
         app:cardCornerRadius="8dp"
         app:cardElevation="8dp"
-        tools:context=".Parking.AvailableParking"
+        tools:context=".Presenter.AvailableParking"
         android:backgroundTint="@color/silver">
 
 

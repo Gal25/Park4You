@@ -1,4 +1,4 @@
-package com.example.park4you.Payment;
+package com.example.park4you.Object;
 
 public class Payment {
 

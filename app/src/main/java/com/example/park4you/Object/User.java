@@ -1,10 +1,4 @@
-package com.example.park4you.User;
-
-import androidx.annotation.NonNull;
-
-import com.example.park4you.Order.Order;
-
-import java.util.List;
+package com.example.park4you.Object;
 
 public class User {
     private String email;

@@ -1,4 +1,4 @@
-package com.example.park4you.Order.Presenter;
+package com.example.park4you.Presenter;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -8,10 +8,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import com.example.park4you.Location.PresenterLocation;
-import com.example.park4you.Menu.Menu;
-import com.example.park4you.Order.Order;
-import com.example.park4you.Parking.Time;
+import com.example.park4you.Object.Order;
+import com.example.park4you.Object.Time;
 import com.example.park4you.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -30,7 +28,7 @@ import java.util.Objects;
 //The purpose of this class is to add the orders that the customer ordered into a list
 //and show on the screen with the adapter
 //the orders list show if the user choose that
-public class PresentOrders extends Menu {
+public class PresentOrders extends PresenterMenu {
     RecyclerView recyclerView;
     DatabaseReference database;
     ArrayList<Order> list;

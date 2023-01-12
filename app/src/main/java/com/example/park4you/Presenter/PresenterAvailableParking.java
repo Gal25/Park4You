@@ -1,4 +1,4 @@
-package com.example.park4you.Parking;
+package com.example.park4you.Presenter;
 
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
@@ -13,10 +13,9 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.park4you.Menu.Menu;
-import com.example.park4you.Order.ModelOrdersDB;
-import com.example.park4you.Order.Presenter.PresenterOrderConfirmation;
-import com.example.park4you.Payment.PresenterPayment;
+import com.example.park4you.Model.ModelOrdersDB;
+import com.example.park4you.Model.ModelParkingDB;
+import com.example.park4you.Object.Parking;
 import com.example.park4you.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -27,7 +26,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class PresenterAvailableParking extends Menu {
+public class PresenterAvailableParking extends PresenterMenu {
 
 
     private RecyclerView recyclerView;
@@ -40,7 +39,7 @@ public class PresenterAvailableParking extends Menu {
     private String streetName;
     private ModelOrdersDB ordersDB;
     View v2;
-    private ParkingDB ParkingDB;
+    private ModelParkingDB ParkingDB;
     private String AvHours;
 //    private PaymentDB paymentDB;
     private boolean payment;
@@ -59,7 +58,7 @@ public class PresenterAvailableParking extends Menu {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         ordersDB = new ModelOrdersDB();
 //        paymentDB = new PaymentDB();
-        ParkingDB = new ParkingDB();
+        ParkingDB = new ModelParkingDB(this);
         list = new ArrayList<>();
         myAdapter = new ParkingAdapter(this,list);
         recyclerView.setAdapter(myAdapter);
@@ -137,8 +136,8 @@ public class PresenterAvailableParking extends Menu {
 
     //Go to order confirmation when the customer's payment details appear
     public void DeleteAfterPayment(){
-        ParkingDB = new ParkingDB();
-        int pos=ParkingDB.DeleteParking(city, id, list);
+        ParkingDB = new ModelParkingDB(this);
+        int pos=ParkingDB.UpdateParking(city, id, list);
         list.remove(pos); //remove it from the list after rent
         myAdapter.notifyItemRemoved(pos);
     }

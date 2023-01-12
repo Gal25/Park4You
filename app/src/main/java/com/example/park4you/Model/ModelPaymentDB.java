@@ -1,17 +1,19 @@
-package com.example.park4you.Payment;
+package com.example.park4you.Model;
 
 import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 
-import com.example.park4you.Menu.Menu;
+import com.example.park4you.Presenter.PresenterMenu;
+import com.example.park4you.Object.Payment;
+import com.example.park4you.Presenter.PresenterPayment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class ModelPaymentDB extends Menu {
+public class ModelPaymentDB extends PresenterMenu {
 
     private EditText creditNumber;
     private EditText expirationDate;

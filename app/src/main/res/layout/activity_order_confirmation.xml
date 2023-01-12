@@ -13,7 +13,7 @@
         android:background="@drawable/order"
         android:layout_centerVertical="true"
         app:circularflow_viewCenter="@drawable/order"
-        tools:context=".Order.Presenter.PresenterOrderConfirmation">
+        tools:context=".Presenter.PresenterOrderConfirmation">
 
     </RelativeLayout>
 </RelativeLayout>

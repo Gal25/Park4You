@@ -1,4 +1,4 @@
-package com.example.park4you.Parking;
+package com.example.park4you.Presenter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.park4you.Object.Parking;
 import com.example.park4you.R;
 
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package com.example.park4you.Order;
+package com.example.park4you.Model;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,9 +6,9 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.park4you.Location.PresenterLocation;
-import com.example.park4you.Parking.Parking;
-import com.example.park4you.Parking.Time;
+import com.example.park4you.Presenter.PresenterLocation;
+import com.example.park4you.Object.Parking;
+import com.example.park4you.Object.Time;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;

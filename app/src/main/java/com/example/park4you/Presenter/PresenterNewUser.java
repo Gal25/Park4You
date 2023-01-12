@@ -1,15 +1,14 @@
-package com.example.park4you.User;
+package com.example.park4you.Presenter;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
-import com.example.park4you.LoginUser.PresenterLogin;
-import com.example.park4you.Menu.Menu;
+import com.example.park4you.Model.ModelUserDB;
 import com.example.park4you.R;
 
-public class PresenterNewUser extends Menu {
+public class PresenterNewUser extends PresenterMenu {
 
     private EditText passwordEditText,textName, textEmail, textPhone;
     public String id;

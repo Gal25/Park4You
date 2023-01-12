@@ -1,23 +1,25 @@
-package com.example.park4you.Order.Presenter;
+package com.example.park4you.Presenter;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.park4you.Order.Order;
+import com.example.park4you.Object.Order;
 import com.example.park4you.R;
 import android.content.Context;
+
 import java.util.ArrayList;
 
-// this class is adapter to the screen -> to create a list of User parking that he order
-public class UserOrdersAdapter extends RecyclerView.Adapter<UserOrdersAdapter.MyViewHolder>{
+// this class is adapter to the screen -> to create a list of owner parking that that he posted and users ordered them
+public class OwnerOrdersAdapter extends RecyclerView.Adapter<OwnerOrdersAdapter.MyViewHolder> {
     Context context;
     ArrayList<Order> list;
 
-    public UserOrdersAdapter(Context context, ArrayList<Order> list) {
+    public OwnerOrdersAdapter(Context context, ArrayList<Order> list) {
         this.context = context;
         this.list = list;
     }
@@ -25,7 +27,7 @@ public class UserOrdersAdapter extends RecyclerView.Adapter<UserOrdersAdapter.My
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(context).inflate(R.layout.user_parkings, parent, false);
+        View v = LayoutInflater.from(context).inflate(R.layout.owner_parkings, parent, false);
         return new MyViewHolder(v);
     }
 
@@ -48,17 +50,17 @@ public class UserOrdersAdapter extends RecyclerView.Adapter<UserOrdersAdapter.My
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
 
-        TextView cityName, streetName, houseNumber, avHours, pricePerHour, ownerEmail, customerEmail, OrderId, ParkingId;
+        TextView cityName, streetName, houseNumber, avHours, pricePerHour, ownerEmail, customerEmail;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            cityName = itemView.findViewById(R.id.textCityU);
-            streetName = itemView.findViewById(R.id.textStreetU);
-            houseNumber = itemView.findViewById(R.id.textHouseNumU);
-            avHours = itemView.findViewById(R.id.textAvailableHoursU);
-            pricePerHour = itemView.findViewById(R.id.textPriceU);
-            ownerEmail = itemView.findViewById(R.id.textEmailU);
-            customerEmail = itemView.findViewById(R.id.textCustomerEmailU);
+            cityName = itemView.findViewById(R.id.textCityO);
+            streetName = itemView.findViewById(R.id.textStreetO);
+            houseNumber = itemView.findViewById(R.id.textHouseNumO);
+            avHours = itemView.findViewById(R.id.textAvailableHoursO);
+            pricePerHour = itemView.findViewById(R.id.textPriceO);
+            ownerEmail = itemView.findViewById(R.id.textEmailO);
+            customerEmail = itemView.findViewById(R.id.textCustomerEmailO);
         }
     }
 }

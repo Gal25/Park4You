@@ -1,17 +1,16 @@
-package com.example.park4you.User;
+package com.example.park4you.Presenter;
 
 import android.os.Bundle;
-import com.example.park4you.Menu.Menu;
 
 import android.widget.TextView;
 
 //import com.example.park4you.Order.PresenterOwnerOrders;
+import com.example.park4you.Model.ModelUserDB;
 import com.example.park4you.R;
 //import com.example.park4you.RentUser.RentUser;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
 
-public class PresenterUserProfile extends Menu {
+
+public class PresenterUserProfile extends PresenterMenu {
 
     private TextView textViewemail, textViewUserNameTop, textViewUserNameBot,  textViewphoneNum;
 

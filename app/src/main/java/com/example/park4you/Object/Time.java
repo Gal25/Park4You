@@ -1,4 +1,4 @@
-package com.example.park4you.Parking;
+package com.example.park4you.Object;
 
 public class Time {
     private String start;

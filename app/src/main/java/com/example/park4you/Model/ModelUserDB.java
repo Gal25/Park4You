@@ -1,8 +1,11 @@
-package com.example.park4you.User;
+package com.example.park4you.Model;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.park4you.Presenter.PresenterNewUser;
+import com.example.park4you.Presenter.PresenterUserProfile;
+import com.example.park4you.Object.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseUser;

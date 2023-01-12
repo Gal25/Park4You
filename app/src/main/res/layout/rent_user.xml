@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Parking.ParkingDB"
+    tools:context=".Model.ModelParkingDB"
     android:background="@drawable/header_backround">
 
 

@@ -1,4 +1,4 @@
-package com.example.park4you.Menu;
+package com.example.park4you.Presenter;
 
 import android.content.Intent;
 import android.view.MenuInflater;
@@ -7,18 +7,12 @@ import android.view.MenuItem;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.park4you.Location.PresenterLocation;
-import com.example.park4you.LoginUser.PresenterLogin;
-import com.example.park4you.Order.ModelOrdersDB;
-import com.example.park4you.Order.Presenter.PresentOrders;
-import com.example.park4you.Parking.DeleteParking;
-import com.example.park4you.Parking.ParkingDB;
-import com.example.park4you.Payment.ModelPaymentDB;
+import com.example.park4you.Model.ModelOrdersDB;
+import com.example.park4you.Model.ModelPaymentDB;
 import com.example.park4you.R;
-import com.example.park4you.User.PresenterUserProfile;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class Menu extends AppCompatActivity {
+public class PresenterMenu extends AppCompatActivity {
 
 
     /*
@@ -46,7 +40,7 @@ public class Menu extends AppCompatActivity {
                 startActivity(intent1);
                 return true;
             case R.id.item4:
-                Intent intent2 = new Intent(this, ParkingDB.class);
+                Intent intent2 = new Intent(this, PresenterNewParking.class);
                 startActivity(intent2);
                 return true;
             case R.id.item5:
@@ -73,7 +67,7 @@ public class Menu extends AppCompatActivity {
                 startActivity(intent6);
                 return true;
             case R.id.item9:
-                Intent intent7 = new Intent(this, DeleteParking.class);
+                Intent intent7 = new Intent(this, PresenterDeleteParking.class);
                 startActivity(intent7);
                 return true;
             case R.id.item10:

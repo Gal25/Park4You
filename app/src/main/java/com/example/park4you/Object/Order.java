@@ -1,10 +1,4 @@
-package com.example.park4you.Order;
-
-import androidx.annotation.NonNull;
-
-import com.example.park4you.Parking.Time;
-
-import java.util.Collection;
+package com.example.park4you.Object;
 
 public class Order {
 

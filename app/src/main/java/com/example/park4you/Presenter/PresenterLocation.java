@@ -1,4 +1,4 @@
-package com.example.park4you.Location;
+package com.example.park4you.Presenter;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -6,16 +6,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
-import com.example.park4you.Menu.Menu;
 //import com.example.park4you.Order.PresenterOwnerOrders;
 //import com.example.park4you.Parking.ParkingList;
-import com.example.park4you.Parking.PresenterAvailableParking;
-import com.example.park4you.Parking.Time;
+import com.example.park4you.Object.Time;
 import com.example.park4you.R;
 //import com.example.park4you.RentUser.RentUser;
 
 
-public class PresenterLocation extends Menu {
+public class PresenterLocation extends PresenterMenu {
 
     @SuppressLint("WrongViewCast")
     @Override

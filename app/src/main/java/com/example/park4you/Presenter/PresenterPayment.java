@@ -1,4 +1,4 @@
-package com.example.park4you.Payment;
+package com.example.park4you.Presenter;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,13 +6,12 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.park4you.Menu.Menu;
-import com.example.park4you.Parking.PresenterAvailableParking;
+import com.example.park4you.Model.ModelPaymentDB;
 import com.example.park4you.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 
-public class PresenterPayment extends Menu {
+public class PresenterPayment extends PresenterMenu {
 
     private EditText creditNumber;
     private EditText expirationDate;

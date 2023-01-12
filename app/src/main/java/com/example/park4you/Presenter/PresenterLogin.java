@@ -1,4 +1,4 @@
-package com.example.park4you.LoginUser;
+package com.example.park4you.Presenter;
 
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
@@ -24,11 +24,9 @@ import android.widget.Toast;
 
 import com.example.park4you.APIClient;
 import com.example.park4you.R;
-import com.example.park4you.Location.PresenterLocation;
 import com.example.park4you.ServerStrings;
 //import com.example.park4you.User.PresenterUser;
-import com.example.park4you.User.PresenterNewUser;
-import com.example.park4you.User.User;
+import com.example.park4you.Object.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
