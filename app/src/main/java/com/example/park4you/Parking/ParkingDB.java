@@ -7,11 +7,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.park4you.Menu.Menu;
-import com.example.park4you.Order.Order;
-import com.example.park4you.Order.OrdersDB;
+import com.example.park4you.Order.ModelOrdersDB;
 import com.example.park4you.R;
 //import com.example.park4you.RentUser.RentUser;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -30,7 +28,7 @@ import java.util.Objects;
 public class ParkingDB extends Menu {
     private FirebaseAuth auto;
 //    private String city;
-    private OrdersDB ordersDB;
+    private ModelOrdersDB ordersDB;
     private ParkingAdapter myAdapter;
     private ArrayList<Parking> list;
     private DatabaseReference databaseReference;
@@ -89,7 +87,8 @@ public class ParkingDB extends Menu {
     }
 
     public int DeleteParking(String city, String id, ArrayList<Parking> list){
-        ordersDB = new OrdersDB();
+
+        ordersDB = new ModelOrdersDB();
         final int[] pos = {0};
         DatabaseReference database = FirebaseDatabase.getInstance().getReference().child("Addresses");
         database.child(city).addListenerForSingleValueEvent(new ValueEventListener() {

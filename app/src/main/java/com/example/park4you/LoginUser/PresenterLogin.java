@@ -6,7 +6,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
@@ -18,7 +17,6 @@ import android.text.InputType;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -26,22 +24,19 @@ import android.widget.Toast;
 
 import com.example.park4you.APIClient;
 import com.example.park4you.R;
-import com.example.park4you.Location.Location;
+import com.example.park4you.Location.PresenterLocation;
 import com.example.park4you.ServerStrings;
 //import com.example.park4you.User.PresenterUser;
+import com.example.park4you.User.PresenterNewUser;
 import com.example.park4you.User.User;
-import com.example.park4you.User.UserDB;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -49,19 +44,12 @@ import java.util.Map;
 
 import okhttp3.Call;
 import okhttp3.Callback;
-import okhttp3.FormBody;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
 import okhttp3.Response;
-import okhttp3.MediaType;
 
-import com.example.park4you.User.User;
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 
 
-public class Login extends AppCompatActivity {
+public class PresenterLogin extends AppCompatActivity {
 
     private EditText passwordEditText;
     private EditText textEmail;
@@ -88,6 +76,8 @@ public class Login extends AppCompatActivity {
         textEmail = findViewById(R.id.EmailNewUser);
 
     }
+
+
     //login with email and password and check if the user put a input
     public void signIN(String email,String password){
         mAuth.signInWithEmailAndPassword(email, password)
@@ -102,7 +92,7 @@ public class Login extends AppCompatActivity {
                             m.put("password", password);
                             ref_user.child(userID).updateChildren(m);
                             Toast.makeText(getApplicationContext(), "Login successful!", Toast.LENGTH_LONG).show();
-                            Intent intent = new Intent(Login.this, Location.class);
+                            Intent intent = new Intent(PresenterLogin.this, PresenterLocation.class);
                             startActivity(intent);
                         }
                         else {
@@ -135,7 +125,7 @@ public class Login extends AppCompatActivity {
                     new Handler(Looper.getMainLooper()).post(new Runnable() {
                         @Override
                         public void run() {
-                            Toast.makeText(Login.this, "Wrong password please try again", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(PresenterLogin.this, "Wrong password please try again", Toast.LENGTH_SHORT).show();
 
                         }
                     });
@@ -143,7 +133,7 @@ public class Login extends AppCompatActivity {
                     new Handler(Looper.getMainLooper()).post(new Runnable() {
                         @Override
                         public void run() {
-                            Toast.makeText(Login.this, "Wrong email please try again", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(PresenterLogin.this, "Wrong email please try again", Toast.LENGTH_SHORT).show();
 
                         }
                     });
@@ -152,14 +142,13 @@ public class Login extends AppCompatActivity {
                     User user = gson.fromJson(responseBody, User.class);
 //                    FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
                     if(mAuth.getCurrentUser() == null ) {
-                        // User is not signed in
                         signIN(email,password);
                     }
 
                     Map<String, Object> m = new HashMap<>();
                     m.put("password", password);
                     ref_user.child(user.getId()).updateChildren(m);
-                    Intent intent = new Intent(getApplicationContext(), Location.class);
+                    Intent intent = new Intent(getApplicationContext(), PresenterLocation.class);
                     startActivity(intent);
 
                 }
@@ -175,7 +164,7 @@ public class Login extends AppCompatActivity {
 
     //if there are a new user go to add the user to DB with UserDB class
     public void newUserButton(View view){
-        Intent in = new Intent(Login.this, UserDB.class);
+        Intent in = new Intent(PresenterLogin.this, PresenterNewUser.class);
         startActivity(in);
     }
 
@@ -227,16 +216,16 @@ public class Login extends AppCompatActivity {
                 if (task.isSuccessful()) {
                     // if isSuccessful then done message will be shown
                     // and you can change the password
-                    Toast.makeText(Login.this, "Done sent", Toast.LENGTH_LONG).show();
+                    Toast.makeText(PresenterLogin.this, "Done sent", Toast.LENGTH_LONG).show();
                 } else {
-                    Toast.makeText(Login.this, "Error Occurred", Toast.LENGTH_LONG).show();
+                    Toast.makeText(PresenterLogin.this, "Error Occurred", Toast.LENGTH_LONG).show();
                 }
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
                 loadingBar.dismiss();
-                Toast.makeText(Login.this, "Error Failed", Toast.LENGTH_LONG).show();
+                Toast.makeText(PresenterLogin.this, "Error Failed", Toast.LENGTH_LONG).show();
             }
         });
     }

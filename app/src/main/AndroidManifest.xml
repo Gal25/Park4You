@@ -24,32 +24,32 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".Payment.PaymentDB"
+            android:name=".Payment.PresenterPayment"
             android:exported="false"
-            android:parentActivityName=".Location.Location">
+            android:parentActivityName=".Location.PresenterLocation">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Order.PresentOrders"
+            android:name=".Order.Presenter.PresentOrders"
             android:exported="false"
-            android:parentActivityName=".Location.Location">
+            android:parentActivityName=".Location.PresenterLocation">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Order.OrdersDB"
+            android:name=".Order.ModelOrdersDB"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Order.PresenterOrderConfirmation"
+            android:name=".Order.Presenter.PresenterOrderConfirmation"
             android:exported="true"
-            android:parentActivityName=".Location.Location">
+            android:parentActivityName=".Location.PresenterLocation">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -63,7 +63,7 @@
         <activity
             android:name=".Parking.PresenterAvailableParking"
             android:exported="true"
-            android:parentActivityName=".Location.Location">
+            android:parentActivityName=".Location.PresenterLocation">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -84,7 +84,7 @@
         <activity
             android:name=".Parking.ParkingDB"
             android:exported="true"
-            android:parentActivityName=".Location.Location">
+            android:parentActivityName=".Location.PresenterLocation">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -92,36 +92,36 @@
         <activity
             android:name=".Parking.DeleteParking"
             android:exported="true"
-            android:parentActivityName=".Location.Location">
+            android:parentActivityName=".Location.PresenterLocation">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Location.Location"
+            android:name=".Location.PresenterLocation"
             android:exported="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".User.UserDB"
+            android:name=".User.PresenterNewUser"
             android:exported="true"
-            android:parentActivityName=".LoginUser.Login">
+            android:parentActivityName=".LoginUser.PresenterLogin">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".User.UserProfile"
+            android:name=".User.PresenterUserProfile"
             android:exported="true"
-            android:parentActivityName=".Location.Location">
+            android:parentActivityName=".Location.PresenterLocation">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".LoginUser.Login"
+            android:name=".LoginUser.PresenterLogin"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -129,13 +129,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".Menu.Drawer"
-            android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

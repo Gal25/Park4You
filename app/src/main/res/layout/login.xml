@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginUser.Login"
+    tools:context=".LoginUser.PresenterLogin"
     android:id="@+id/container">
     <ImageView
         android:layout_width="match_parent"

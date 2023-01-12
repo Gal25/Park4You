@@ -1,22 +1,18 @@
-package com.example.park4you.Order;
-
-import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+package com.example.park4you.Order.Presenter;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Toast;
 
-import com.example.park4you.Location.Location;
+import com.example.park4you.Location.PresenterLocation;
 import com.example.park4you.Menu.Menu;
+import com.example.park4you.Order.Order;
 import com.example.park4you.Parking.Time;
 import com.example.park4you.R;
-import com.example.park4you.User.UserDB;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -112,7 +108,7 @@ public class PresentOrders extends Menu {
                     OrdersOwnersAdapter.notifyDataSetChanged();
                 }else{
                     Toast.makeText(PresentOrders.this, "You don`t have parking here", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(PresentOrders.this, Location.class);
+                    Intent intent = new Intent(PresentOrders.this, PresenterLocation.class);
                     startActivity(intent);
                 }
             }

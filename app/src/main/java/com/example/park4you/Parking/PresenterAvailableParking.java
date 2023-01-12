@@ -10,18 +10,15 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.park4you.Location.Location;
 import com.example.park4you.Menu.Menu;
-import com.example.park4you.Order.OrdersDB;
-import com.example.park4you.Order.PresenterOrderConfirmation;
-import com.example.park4you.Payment.PaymentDB;
+import com.example.park4you.Order.ModelOrdersDB;
+import com.example.park4you.Order.Presenter.PresenterOrderConfirmation;
+import com.example.park4you.Payment.PresenterPayment;
 import com.example.park4you.R;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -29,7 +26,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class PresenterAvailableParking extends Menu {
 
@@ -42,11 +38,11 @@ public class PresenterAvailableParking extends Menu {
     private String city;
     private  String id;
     private String streetName;
-    private OrdersDB ordersDB;
+    private ModelOrdersDB ordersDB;
     View v2;
     private ParkingDB ParkingDB;
     private String AvHours;
-    private PaymentDB paymentDB;
+//    private PaymentDB paymentDB;
     private boolean payment;
 
     private final boolean[] receive = new boolean[1];
@@ -61,8 +57,8 @@ public class PresenterAvailableParking extends Menu {
         database = FirebaseDatabase.getInstance().getReference().child("Addresses");
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        ordersDB = new OrdersDB();
-        paymentDB = new PaymentDB();
+        ordersDB = new ModelOrdersDB();
+//        paymentDB = new PaymentDB();
         ParkingDB = new ParkingDB();
         list = new ArrayList<>();
         myAdapter = new ParkingAdapter(this,list);
@@ -125,7 +121,7 @@ public class PresenterAvailableParking extends Menu {
                     System.out.println("123");
                     Toast.makeText(PresenterAvailableParking.this, "fill in your payment details.",
                             Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(PresenterAvailableParking.this, PaymentDB.class);
+                    Intent intent = new Intent(PresenterAvailableParking.this, PresenterPayment.class);
                     intent.putExtra("City Name", city);
                     intent.putExtra("Street Name", streetName);
                     intent.putExtra("time", AvHours);

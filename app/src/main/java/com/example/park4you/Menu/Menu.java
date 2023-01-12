@@ -7,15 +7,15 @@ import android.view.MenuItem;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.park4you.Location.Location;
-import com.example.park4you.LoginUser.Login;
-import com.example.park4you.Order.OrdersDB;
-import com.example.park4you.Order.PresentOrders;
+import com.example.park4you.Location.PresenterLocation;
+import com.example.park4you.LoginUser.PresenterLogin;
+import com.example.park4you.Order.ModelOrdersDB;
+import com.example.park4you.Order.Presenter.PresentOrders;
 import com.example.park4you.Parking.DeleteParking;
 import com.example.park4you.Parking.ParkingDB;
-import com.example.park4you.Payment.PaymentDB;
+import com.example.park4you.Payment.ModelPaymentDB;
 import com.example.park4you.R;
-import com.example.park4you.User.UserProfile;
+import com.example.park4you.User.PresenterUserProfile;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class Menu extends AppCompatActivity {
@@ -38,11 +38,11 @@ public class Menu extends AppCompatActivity {
         String func;
         switch (item.getItemId()){
             case R.id.item2:
-                Intent intent = new Intent(this, UserProfile.class);
+                Intent intent = new Intent(this, PresenterUserProfile.class);
                 startActivity(intent);
                 return true;
             case R.id.item3:
-                Intent intent1 = new Intent(this, Location.class);
+                Intent intent1 = new Intent(this, PresenterLocation.class);
                 startActivity(intent1);
                 return true;
             case R.id.item4:
@@ -63,11 +63,11 @@ public class Menu extends AppCompatActivity {
                 return true;
             case R.id.item7:
                 FirebaseAuth.getInstance().signOut();
-                Intent intent5 = new Intent(this, Login.class);
+                Intent intent5 = new Intent(this, PresenterLogin.class);
                 startActivity(intent5);
                 return true;
             case R.id.item8:
-                Intent intent6 = new Intent(this, OrdersDB.class);
+                Intent intent6 = new Intent(this, ModelOrdersDB.class);
                 func = "release_parking";
                 intent6.putExtra("func", func);
                 startActivity(intent6);
@@ -77,7 +77,7 @@ public class Menu extends AppCompatActivity {
                 startActivity(intent7);
                 return true;
             case R.id.item10:
-                Intent intent8 = new Intent(this, PaymentDB.class);
+                Intent intent8 = new Intent(this, ModelPaymentDB.class);
                 startActivity(intent8);
                 return true;
             default: return super.onOptionsItemSelected(item);

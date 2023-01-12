@@ -6,9 +6,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.park4you.Location.Location;
+import com.example.park4you.Location.PresenterLocation;
 import com.example.park4you.Parking.Parking;
-import com.example.park4you.Parking.PresenterAvailableParking;
 import com.example.park4you.Parking.Time;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -24,7 +23,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-public class OrdersDB extends AppCompatActivity {
+public class ModelOrdersDB extends AppCompatActivity {
 
     DatabaseReference database_user;
     FirebaseUser firebaseUser;
@@ -97,6 +96,7 @@ public class OrdersDB extends AppCompatActivity {
             }
         });
     }
+
     public void release_parking(){
         FirebaseUser firebaseUser;
         FirebaseAuth auto;
@@ -167,7 +167,7 @@ public class OrdersDB extends AppCompatActivity {
                         }
                     }
                 }
-                Intent intent = new Intent(OrdersDB.this, Location.class);
+                Intent intent = new Intent(ModelOrdersDB.this, PresenterLocation.class);
                 startActivity(intent);
             }
             @Override
