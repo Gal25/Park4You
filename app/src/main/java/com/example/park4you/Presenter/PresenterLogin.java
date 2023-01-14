@@ -49,6 +49,7 @@ import com.google.gson.Gson;
 public class PresenterLogin extends AppCompatActivity {
     /**
      * This class handles the login page. All the user functionalities such as login, forgot password and new user.
+     *
      */
     private EditText passwordEditText;
     private EditText textEmail;
