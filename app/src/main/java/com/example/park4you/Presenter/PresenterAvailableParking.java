@@ -27,7 +27,9 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class PresenterAvailableParking extends PresenterMenu {
-
+    /**
+     * This class is responsible of showing available parking as the user chooses.
+     */
 
     private RecyclerView recyclerView;
     private DatabaseReference database;
@@ -65,7 +67,9 @@ public class PresenterAvailableParking extends PresenterMenu {
         Show_Parking();
     }
 
-
+    /**
+     * This will get all the information a user puts for a parking he searches for and will display all the park spots available.
+     */
     public void Show_Parking(){
         String cityName = getIntent().getStringExtra("City Name");
         streetName = getIntent().getStringExtra("Street Name");
@@ -100,8 +104,9 @@ public class PresenterAvailableParking extends PresenterMenu {
     }
 
 
-
-    //Choose and delete the parking from the parking list and update the parking display screen using the adapter
+    /**
+     * Choose and delete the parking from the parking list and update the parking display screen using the adapter.
+     */
     public void ChooseParking(View view){
         textView = findViewById(R.id.textCity);
         city = textView.getText().toString();
@@ -140,7 +145,10 @@ public class PresenterAvailableParking extends PresenterMenu {
         dialog.show();
     }
 
-    //Go to order confirmation when the customer's payment details appear
+    /**
+     * This will add a new parking to owner and customer database after the customer had paid. Then removes the parking from
+     * the addresses database.
+     */
     public void DeleteAfterPayment(){
         ParkingDB = new ModelParkingDB(this);
         int pos=ParkingDB.UpdateParking(city, id, list);
@@ -148,7 +156,9 @@ public class PresenterAvailableParking extends PresenterMenu {
         myAdapter.notifyItemRemoved(pos);
     }
 
-    //Check if the customer has payment details
+    /**
+     * Checks if the customer has payment details
+     */
     public void SearchDetails() {
         final Object[] value = new Object[1];
         DatabaseReference reference2;
@@ -175,8 +185,15 @@ public class PresenterAvailableParking extends PresenterMenu {
             }
         });
     }
-    // this checks if the start hour and the end hour of the parking the user wishes to rent correspond to the actual time the owner of the
-    //parking wishes to rent it
+
+    /**
+     * This checks if the start hour and the end hour of the parking the user wishes to rent correspond to the actual time
+     * the owner of the parking wishes to rent it
+     * @param hours1 - Start time
+     * @param hours2 - End time
+     * @return
+     */
+
     public boolean checkTime(String hours1, String hours2){
         char[] hou1 = hours1.toCharArray();
         char[] hou2 = hours2.toCharArray();

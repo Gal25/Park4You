@@ -9,7 +9,9 @@ import com.example.park4you.Model.ModelUserDB;
 import com.example.park4you.R;
 
 public class PresenterNewUser extends PresenterMenu {
-
+    /***
+     * This class handles the input from a new user
+     */
     private EditText passwordEditText,textName, textEmail, textPhone;
     public String id;
     private ModelUserDB userDB;
@@ -29,6 +31,9 @@ public class PresenterNewUser extends PresenterMenu {
 
     }
 
+    /**
+     * Will get all the data from the edit texts and call the registerUser function to add this new user tp the database
+     */
     public void registerButton(View view){
         String username = textName.getText().toString();
         String phone = textPhone.getText().toString();

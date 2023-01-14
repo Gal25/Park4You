@@ -15,7 +15,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class PresenterDeleteParking extends AppCompatActivity {
-
+    /**
+     * This class handles the delete parking option.
+     */
     private EditText textViewCity, textViewStreet, textViewHouseNum;
 
     private DatabaseReference database;
@@ -39,7 +41,11 @@ public class PresenterDeleteParking extends AppCompatActivity {
         parkingDB = new ModelParkingDB(this);
 
     }
-    //This functon will delete a published parking by the owner from the database in case the owner does not want to rent it to others anymore
+
+    /**
+     * This function will delete a published parking by the owner from the
+     * database in case the owner does not want to rent it to others anymore.
+     */
     public void delete_parking(View view) {
         String city, street;
         int houseNum;

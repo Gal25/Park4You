@@ -24,7 +24,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ModelOrdersDB extends AppCompatActivity {
-
+    /**
+     This class takes an order made by a user and adds it to the database of all the customer's parking and all of the owner's parking
+     */
     DatabaseReference database_user;
     FirebaseUser firebaseUser;
     FirebaseAuth auto;
@@ -40,8 +42,10 @@ public class ModelOrdersDB extends AppCompatActivity {
     }
 
 
-
-    //create a data document in database that represents the orders of the users
+    /**
+     create a data document in database that represents the orders of the users
+     @param p - A parking the user has ordered
+     */
     public void create_order_customer(Parking p) {
         auto = FirebaseAuth.getInstance();
         firebaseUser = auto.getCurrentUser();
@@ -70,7 +74,10 @@ public class ModelOrdersDB extends AppCompatActivity {
         });
     }
 
-    //create a data document in database that represents the orders of the owners
+    /**
+     create a data document in database that represents the orders of the owners
+     @param p - A parking the user has ordered
+     */
     public void create_order_owner(Parking p){
         auto = FirebaseAuth.getInstance();
         firebaseUser = auto.getCurrentUser();
@@ -97,6 +104,10 @@ public class ModelOrdersDB extends AppCompatActivity {
         });
     }
 
+    /**
+     * This function will release a rented parking from a customer. When a customer is done with his parking, he releases it from his rental.
+     * It will return the parking to the database of addresses
+     */
     public void release_parking(){
         FirebaseUser firebaseUser;
         FirebaseAuth auto;

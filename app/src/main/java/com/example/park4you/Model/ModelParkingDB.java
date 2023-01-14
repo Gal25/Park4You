@@ -26,7 +26,9 @@ import java.util.HashMap;
 
 //This class saves a new parking entered by a user to the database
 public class ModelParkingDB extends PresenterMenu {
-
+    /**
+     This class has methods which is responsible for deleting a parking, adding a new parking and updating it in both customer and owner
+     */
     private ModelOrdersDB ordersDB;
     private PresenterNewParking presenterNewParking;
     private PresenterAvailableParking presenterAvailableParking;
@@ -45,7 +47,12 @@ public class ModelParkingDB extends PresenterMenu {
         this.deleteParking = deleteParking;
     }
 
-    //This will get all the data from the edit texts and save it to a Parking object to the database
+    /**
+     * This will add a new parking to the database
+     * @param key
+     * @param city
+     * @param hashMap
+     */
     public void newParking(String key,String city,HashMap<String, Object> hashMap) {
     DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Addresses");
         assert key != null;
@@ -57,6 +64,12 @@ public class ModelParkingDB extends PresenterMenu {
         });
     }
 
+    /**
+     * This function adds a new parking to the owner's rented from parking and the customer's rented parking
+     * @param city - The city where the parking is located
+     * @param id - The id of the customer
+     * @param list - The list of all the park spots available
+     */
     public int UpdateParking(String city, String id, ArrayList<Parking> list){
 
         ordersDB = new ModelOrdersDB();
@@ -91,7 +104,13 @@ public class ModelParkingDB extends PresenterMenu {
         return pos[0];
     }
 
-
+    /**
+     * This will delete a parking from the database if an owner wishes to stop renting a park spot.
+     * @param city - City where the parking is located
+     * @param email - His email
+     * @param street - Street of the parking
+     * @param houseNum - it's number
+     */
     public void DeleteParking(String city, String email, String street, int houseNum){
         DatabaseReference database = FirebaseDatabase.getInstance().getReference("Addresses");
         FirebaseAuth auto = FirebaseAuth.getInstance();

@@ -11,7 +11,9 @@ import com.example.park4you.R;
 
 
 public class PresenterUserProfile extends PresenterMenu {
-
+    /**
+     * This class sets all the user profile info into the user profile page.
+     */
     private TextView textViewemail, textViewUserNameTop, textViewUserNameBot,  textViewphoneNum;
 
 
@@ -27,7 +29,10 @@ public class PresenterUserProfile extends PresenterMenu {
         userDB.getUser();
 
     }
-    //Presenter
+
+    /**
+     * Gets user info and present it.
+     */
     public void showUserProfile(String UserName, String email,String phoneNum) {
         textViewemail.setText(email);
         textViewphoneNum.setText(phoneNum);

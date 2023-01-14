@@ -12,7 +12,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 
 public class PresenterPayment extends PresenterMenu {
-
+    /**
+     * This class will get all the information from the user about his payment info and call the payment model to handle it.
+     */
     private EditText creditNumber;
     private EditText expirationDate;
     private EditText cvv;
@@ -34,7 +36,9 @@ public class PresenterPayment extends PresenterMenu {
         paymentDB = new ModelPaymentDB(this);
     }
 
-    //This will get all the payment info from the user and saves it to the database
+    /**
+     * This will get all the payment info from the user and saves it to the database
+     */
     public void SaveButton(View view) {
         presenterAvailableParking = new PresenterAvailableParking();
         creditNumber = findViewById(R.id.CreditNumber);

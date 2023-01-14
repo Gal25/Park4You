@@ -20,6 +20,9 @@ import java.util.HashMap;
 import java.util.Objects;
 
 public class PresenterNewParking extends PresenterMenu {
+    /**
+     * This class handles a new parking added by a user.
+     */
     private FirebaseAuth auto;
     private ModelOrdersDB ordersDB;
     private ParkingAdapter myAdapter;
@@ -49,8 +52,10 @@ public class PresenterNewParking extends PresenterMenu {
 
 
     }
+    /**
+     * This will get all the data from the edit texts and save it to a Parking object to the database
+     */
     public void addParking(View view) {
-        //This will get all the data from the edit texts and save it to a Parking object to the database
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Addresses");
         String city = cityText.getText().toString();
         String key = reference.child(city).push().getKey();

@@ -1,7 +1,9 @@
 package com.example.park4you.Object;
 
 public class Payment {
-
+    /**
+     * This class represents all the payment info of a user. It has the usual constructor, getters, setters and a toString.
+     */
     private String CardNumber;
     private String Date;
     private String CVV;

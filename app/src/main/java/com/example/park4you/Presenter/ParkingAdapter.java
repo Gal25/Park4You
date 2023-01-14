@@ -17,6 +17,10 @@ import java.util.ArrayList;
 
 // this class is adapter to the screen -> to create a list of  available parking that shows in DB
 public class ParkingAdapter extends RecyclerView.Adapter<ParkingAdapter.MyViewHolder> {
+    /**
+     * * This class is responsible of representing list of park spots. It is using an inflated view holder to dynamically add park spots
+     * to the page.
+     */
     Context context;
     ArrayList<Parking> list;
 

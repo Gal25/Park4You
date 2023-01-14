@@ -24,7 +24,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ValueEventListener;
 
 public class ModelUserDB extends AppCompatActivity {
-
+    /**
+     * This class is responsible of a user registration.
+     */
     private DatabaseReference mDatabase;
     private static final String USERS = "Users";
     private String TAG = "Init user";
@@ -42,6 +44,9 @@ public class ModelUserDB extends AppCompatActivity {
         this.presenterUser = presenterUser;
     }
 
+    /**
+     * This function takes a user info and adds the user to the database
+     */
     public void registerUser(String email,String password,String phone,String username) {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         mDatabase = database.getReference(USERS);
@@ -67,7 +72,9 @@ public class ModelUserDB extends AppCompatActivity {
                 });
     }
 
-
+    /**
+     * This will get the current user in the app and show his profile using showUserProfile method
+     */
     public void getUser() {
         mAuth = FirebaseAuth.getInstance();
         firebaseUser = mAuth.getCurrentUser();

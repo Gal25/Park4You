@@ -14,6 +14,9 @@ import java.util.ArrayList;
 
 // this class is adapter to the screen -> to create a list of User parking that he order
 public class UserOrdersAdapter extends RecyclerView.Adapter<UserOrdersAdapter.MyViewHolder>{
+    /**
+     * This is the adapter class which will show all the orders a user has.
+     */
     Context context;
     ArrayList<Order> list;
 

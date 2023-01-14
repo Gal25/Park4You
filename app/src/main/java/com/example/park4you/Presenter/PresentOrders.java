@@ -25,10 +25,12 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-//The purpose of this class is to add the orders that the customer ordered into a list
-//and show on the screen with the adapter
-//the orders list show if the user choose that
+
+
 public class PresentOrders extends PresenterMenu {
+    /**
+     * This class will show all the parking spots a user has rented and all the parking spots a user has for rental.
+     */
     RecyclerView recyclerView;
     DatabaseReference database;
     ArrayList<Order> list;
@@ -38,6 +40,9 @@ public class PresentOrders extends PresenterMenu {
     OwnerOrdersAdapter OrdersOwnersAdapter;
     String owner;
 
+    /**
+     * This will use the adapters to get all the parking spots in customers parking and owners parking.
+     */
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,7 +79,10 @@ public class PresentOrders extends PresenterMenu {
 
 
     }
-    // This function will show all the orders of a user have rented and all the orders of an owner who got his parking rented
+
+    /***
+     * This function will show all the orders of a user have rented and all the orders of an owner who got his parking rented
+     */
     public void ShowOrders(){
         database.child(firebaseUser.getUid()).addValueEventListener(new ValueEventListener() {
             @SuppressLint("NotifyDataSetChanged")

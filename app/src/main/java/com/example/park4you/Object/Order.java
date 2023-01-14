@@ -1,7 +1,9 @@
 package com.example.park4you.Object;
 
 public class Order {
-
+    /**
+     * This class represents an order made by a customer for renting a parking. It has the usual constructor, getters, setters and a toString.
+     */
     private String city;
     private String street;
     private int houseNum;
@@ -11,7 +13,7 @@ public class Order {
     private String id;
     private String emailCustomer;
     private String parkingId;
-    private boolean parking_now;
+    private boolean parking_now; // boolean to determine if a parking is currently used by a customer
     private String ownerID;
 
 

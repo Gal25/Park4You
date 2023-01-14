@@ -14,7 +14,10 @@ import com.example.park4you.R;
 
 
 public class PresenterLocation extends PresenterMenu {
-
+    /**
+     * This class handles a park spot search
+     * @param savedInstanceState
+     */
     @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +25,9 @@ public class PresenterLocation extends PresenterMenu {
         setContentView(R.layout.location);
     }
 
+    /**
+     * Gets all the information a user wants about available parking in a city, street and hours
+     */
     public void proceedButton(View view){
         //This function will get the data of a parking the user wants to search for and will direct him using the intent to the parking.
         Intent intent = new Intent(PresenterLocation.this, PresenterAvailableParking.class);

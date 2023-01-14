@@ -1,6 +1,9 @@
 package com.example.park4you.Object;
 
 public class User {
+    /**
+     * This class represents a user and all of his information. It has the usual constructor, getters and setters.
+     */
     private String email;
     private String userName;
     private String phoneNum;

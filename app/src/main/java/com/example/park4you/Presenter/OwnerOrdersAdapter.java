@@ -16,6 +16,9 @@ import java.util.ArrayList;
 
 // this class is adapter to the screen -> to create a list of owner parking that that he posted and users ordered them
 public class OwnerOrdersAdapter extends RecyclerView.Adapter<OwnerOrdersAdapter.MyViewHolder> {
+    /**
+     * This class is responsible of representing list of orders. It is using an inflated view holder to dynamically add orders to the page.
+     */
     Context context;
     ArrayList<Order> list;
 

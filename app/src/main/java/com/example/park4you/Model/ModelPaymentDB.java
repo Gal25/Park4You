@@ -14,7 +14,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class ModelPaymentDB extends PresenterMenu {
-
+    /**
+     * This class is responsible of the payment methods in the app
+     */
     private EditText creditNumber;
     private EditText expirationDate;
     private EditText cvv;
@@ -28,7 +30,10 @@ public class ModelPaymentDB extends PresenterMenu {
         this.presenterPayment = presenterPayment;
     }
 
-    //This will get all the payment info from the user and saves it to the database
+    /**
+     * This will get all the payment info from the user and saves it to the database
+     * It gets all of the user payment info
+     */
     public void addPamymentDetails(String CreditNumber, String ExpirationDate,String CVV, String Email) {
         Payment payment = new Payment(CreditNumber, ExpirationDate, CVV, Email);
 

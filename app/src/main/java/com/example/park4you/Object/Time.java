@@ -1,6 +1,9 @@
 package com.example.park4you.Object;
 
 public class Time {
+    /**
+     * This class represents the time the parking is available for rent. It has the usual constructor, getters, setters and a toString.
+     */
     private String start;
     private String end;
 

@@ -3,6 +3,9 @@ package com.example.park4you.Object;
 import java.util.Objects;
 
 public class Parking {
+    /**
+     * This class represents a parking that is published by an owner. It has the usual constructor, getters, setters and a toString.
+     */
     private String city;
     private String street;
     private int houseNum;

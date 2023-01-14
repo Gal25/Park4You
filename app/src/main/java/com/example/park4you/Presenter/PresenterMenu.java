@@ -15,9 +15,9 @@ import com.google.firebase.auth.FirebaseAuth;
 public class PresenterMenu extends AppCompatActivity {
 
 
-    /*
-    This class creates the menu which appears at the top right of the screen.
-    It has many options for the user like profile and parking details and more.
+    /**
+     * This class creates the menu which appears at the top right of the screen.
+     * It has many options for the user like profile and parking details and more.
      */
     @Override
     public boolean onCreateOptionsMenu(android.view.Menu menu) {

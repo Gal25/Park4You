@@ -48,7 +48,9 @@ import com.google.gson.Gson;
 
 
 public class PresenterLogin extends AppCompatActivity {
-
+    /**
+     * This class handles the login page. All the user functionalities such as login, forgot password and new user.
+     */
     private EditText passwordEditText;
     private EditText textEmail;
     DatabaseReference ref_user;
@@ -75,8 +77,9 @@ public class PresenterLogin extends AppCompatActivity {
 
     }
 
-
-    //login with email and password and check if the user put a input
+    /**
+     * This function takes email and password, checks if they exist in the database and if they do the user is logged in.
+     */
     public void signIN(String email,String password){
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -101,8 +104,10 @@ public class PresenterLogin extends AppCompatActivity {
                 });
     }
 
-
-    //login with email and password and check if the user put a input
+    /**
+     * This function takes the input from the user and calls the server to handle the log in.
+     * Then if the client is logged in it will take him to the nect page.
+     */
     public void regButton(View view){
         password = passwordEditText.getText().toString();
         email = textEmail.getText().toString();
@@ -160,7 +165,9 @@ public class PresenterLogin extends AppCompatActivity {
     }
 
 
-    //if there are a new user go to add the user to DB with UserDB class
+    /**
+     * If its a new user send it to the new user page.
+     */
     public void newUserButton(View view){
         Intent in = new Intent(PresenterLogin.this, PresenterNewUser.class);
         startActivity(in);
@@ -168,6 +175,9 @@ public class PresenterLogin extends AppCompatActivity {
 
     ProgressDialog loadingBar;
 
+    /***
+     * This handles the forgot password button. It opens a dialog text and asks for email.
+     */
     public void showRecoverPasswordDialog(View view) {
         AlertDialog.Builder builder=new AlertDialog.Builder(this);
         builder.setTitle("Recover Password");
@@ -200,6 +210,11 @@ public class PresenterLogin extends AppCompatActivity {
         builder.create().show();
     }
 
+    /***
+     * After the user has inserted his email to the forgot password box it will begin password recovery here.
+     * It will send the user email asking him to change his password for a new one.
+     * @param email - The user email
+     */
     private void beginRecovery(String email) {
         loadingBar = new ProgressDialog(this);
         loadingBar.setMessage("Sending Email....");
