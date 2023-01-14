@@ -41,7 +41,7 @@ public class ParkingAdapter extends RecyclerView.Adapter<ParkingAdapter.MyViewHo
         holder.avHours.setText(parking.getAvHours().toString());
         holder.pricePerHour.setText(Double.toString(parking.getPrice()));
         holder.email.setText(parking.getEmail());
-        holder.id.setText(parking.getid());
+//        holder.id.setText(parking.getid());
     }
 
     @Override
@@ -59,7 +59,6 @@ public class ParkingAdapter extends RecyclerView.Adapter<ParkingAdapter.MyViewHo
             avHours = itemView.findViewById(R.id.textAvailableHours);
             pricePerHour = itemView.findViewById(R.id.textPrice);
             email = itemView.findViewById(R.id.textEmail);
-            id = itemView.findViewById(R.id.park_id);
         }
     }
 

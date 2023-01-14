@@ -79,7 +79,13 @@ public class PresenterAvailableParking extends PresenterMenu {
                     assert parking != null;
                     if (parking.getStreet().equals(streetName)) {
                         String hours = parking.getAvHours().toString();
-                        if (checkTime(AvHours, hours)) {
+//                        System.out.println("AvHours " + AvHours);
+//                        System.out.println("hours " + hours);
+                        if (AvHours.length() != 11){
+                            Toast.makeText(PresenterAvailableParking.this, "You search a wrong hour please try again", Toast.LENGTH_SHORT).show();
+                            break;
+                        }
+                        else if (checkTime(AvHours, hours)) {
                             list.add(parking);
                         }
                     }
@@ -102,8 +108,8 @@ public class PresenterAvailableParking extends PresenterMenu {
         boolean[] check = {false};
         v2 =recyclerView.findContainingItemView(view);
         assert v2 != null;
-        textView = v2.findViewById(R.id.park_id);
-        id = textView.getText().toString();
+//        textView = v2.findViewById(R.id.park_id);
+//        id = textView.getText().toString();
 
         SearchDetails();
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -117,7 +123,7 @@ public class PresenterAvailableParking extends PresenterMenu {
                     Intent intent = new Intent(PresenterAvailableParking.this, PresenterOrderConfirmation.class);
                     startActivity(intent);                }
                 else{
-                    System.out.println("123");
+//                    System.out.println("123");
                     Toast.makeText(PresenterAvailableParking.this, "fill in your payment details.",
                             Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(PresenterAvailableParking.this, PresenterPayment.class);

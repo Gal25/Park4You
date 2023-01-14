@@ -40,16 +40,15 @@ public class PresenterDeleteParking extends AppCompatActivity {
 
     }
     //This functon will delete a published parking by the owner from the database in case the owner does not want to rent it to others anymore
-    public void delete_parking(View view){
+    public void delete_parking(View view) {
         String city, street;
         int houseNum;
         city = textViewCity.getText().toString();
         street = textViewStreet.getText().toString();
         houseNum = Integer.parseInt(textViewHouseNum.getText().toString());
         email = firebaseUser.getEmail();
-        System.out.println("email"+email);
-
-        parkingDB.DeleteParking(city,email,street,houseNum);
+        parkingDB.DeleteParking(city, email, street, houseNum);
         Toast.makeText(PresenterDeleteParking.this, "Parking Deleted!", Toast.LENGTH_SHORT).show();
+
     }
 }

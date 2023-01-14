@@ -1,6 +1,7 @@
 package com.example.park4you.Model;
 
 import android.annotation.SuppressLint;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -30,6 +31,7 @@ public class ModelParkingDB extends PresenterMenu {
     private PresenterNewParking presenterNewParking;
     private PresenterAvailableParking presenterAvailableParking;
     private PresenterDeleteParking deleteParking;
+
 
     public ModelParkingDB(PresenterNewParking presenterNewParking) {
         this.presenterNewParking = presenterNewParking;
@@ -97,24 +99,18 @@ public class ModelParkingDB extends PresenterMenu {
         database.child(city).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                boolean found= false;
+                boolean found;
+                found = false;
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Parking parking = dataSnapshot.getValue(Parking.class);
                     assert parking != null;
-                    System.out.println("parking.getEmail()" + parking.getEmail());
                     if (email.equals(parking.getEmail())) {
                         if (parking.getStreet().equals(street) && parking.getHouseNum() == houseNum) {
-                            found = true;
+                            found=true;
                             dataSnapshot.getRef().removeValue();
                             break;
                         }
                     }
-
-                }
-
-                if(!found){
-//                    Toast.makeText(DeleteParking.this, "not your Parking!", Toast.LENGTH_SHORT).show();
-
                 }
             }
             @Override
@@ -122,5 +118,4 @@ public class ModelParkingDB extends PresenterMenu {
             }
         });
     }
-
 }
