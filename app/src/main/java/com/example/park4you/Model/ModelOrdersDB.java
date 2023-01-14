@@ -122,7 +122,6 @@ public class ModelOrdersDB extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     if(first_time[0]) {
-//                        Order order = dataSnapshot.getValue(Order.class);
                         Map<String, Object> newPost = (Map<String, Object>) dataSnapshot.getValue();
                         assert newPost != null;
                         Collection<Object> arr = newPost.values();

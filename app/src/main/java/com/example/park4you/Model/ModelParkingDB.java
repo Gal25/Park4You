@@ -1,9 +1,11 @@
 package com.example.park4you.Model;
 
 import android.annotation.SuppressLint;
+import android.os.Bundle;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.example.park4you.Presenter.PresenterMenu;
 //import com.example.park4you.RentUser.RentUser;
@@ -34,6 +36,11 @@ public class ModelParkingDB extends PresenterMenu {
     private PresenterAvailableParking presenterAvailableParking;
     private PresenterDeleteParking deleteParking;
 
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        deleteParking = new PresenterDeleteParking(this);
+    }
 
     public ModelParkingDB(PresenterNewParking presenterNewParking) {
         this.presenterNewParking = presenterNewParking;
@@ -71,7 +78,6 @@ public class ModelParkingDB extends PresenterMenu {
      * @param list - The list of all the park spots available
      */
     public int UpdateParking(String city, String id, ArrayList<Parking> list){
-
         ordersDB = new ModelOrdersDB();
         final int[] pos = {0};
         DatabaseReference database = FirebaseDatabase.getInstance().getReference().child("Addresses");
@@ -83,7 +89,6 @@ public class ModelParkingDB extends PresenterMenu {
                     Parking park = dataSnapshot.getValue(Parking.class);
                     assert park != null;
                     if (park.getid().equals(id)) {
-                        System.out.println("list  "+list);
                         ordersDB.create_order_customer(park); //add the parking to the user's parking database
                         ordersDB.create_order_owner(park); //add the parking to the owner's parking database
                         for (int i = 0; i < list.size(); i++){
@@ -92,7 +97,6 @@ public class ModelParkingDB extends PresenterMenu {
                             }
                         }
                         dataSnapshot.getRef().removeValue();
-
                         break;
                     }
                 }
@@ -113,24 +117,22 @@ public class ModelParkingDB extends PresenterMenu {
      */
     public void DeleteParking(String city, String email, String street, int houseNum){
         DatabaseReference database = FirebaseDatabase.getInstance().getReference("Addresses");
-        FirebaseAuth auto = FirebaseAuth.getInstance();
-        FirebaseUser firebaseUser = auto.getCurrentUser();
+        final boolean[] found = new boolean[1];
         database.child(city).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                boolean found;
-                found = false;
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Parking parking = dataSnapshot.getValue(Parking.class);
                     assert parking != null;
                     if (email.equals(parking.getEmail())) {
                         if (parking.getStreet().equals(street) && parking.getHouseNum() == houseNum) {
-                            found=true;
+                            found[0] = true;
                             dataSnapshot.getRef().removeValue();
                             break;
                         }
                     }
                 }
+                deleteParking.check_deleted(found[0]);
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {

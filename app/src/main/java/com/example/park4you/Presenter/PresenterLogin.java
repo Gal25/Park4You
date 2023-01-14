@@ -66,11 +66,9 @@ public class PresenterLogin extends AppCompatActivity {
         setContentView(R.layout.login);
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.toolbar_title);
-//        getSupportActionBar().setTitle("Login");
         ref_user = FirebaseDatabase.getInstance().getReference("Users");
         mAuth= FirebaseAuth.getInstance();
         forgetpass=findViewById(R.id.forgetpass);
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         loginprogress=new ProgressDialog(this);
         passwordEditText = findViewById(R.id.PasswordLogIn);
         textEmail = findViewById(R.id.EmailNewUser);
@@ -122,7 +120,6 @@ public class PresenterLogin extends AppCompatActivity {
             @Override
             public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
                 String responseBody = response.body().string();
-                System.out.println(responseBody);
                 Log.d(TAG, "Server response: " + responseBody);
                 if (responseBody.contains("password") && responseBody.contains("code")) {
                     new Handler(Looper.getMainLooper()).post(new Runnable() {

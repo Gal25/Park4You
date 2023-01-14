@@ -34,6 +34,7 @@ public class PresenterPayment extends PresenterMenu {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mAuth = FirebaseAuth.getInstance();
         paymentDB = new ModelPaymentDB(this);
+
     }
 
     /**
@@ -50,17 +51,24 @@ public class PresenterPayment extends PresenterMenu {
         CVV = cvv.getText().toString();
         Email = email.getText().toString();
 
-        paymentDB.addPamymentDetails(CreditNumber, ExpirationDate, CVV, Email);
+        paymentDB.addPaymentDetails(CreditNumber, ExpirationDate, CVV, Email);
         Toast.makeText(PresenterPayment.this, "Details Saved!", Toast.LENGTH_SHORT).show();
 
+        String release = getIntent().getStringExtra("details");
+        System.out.println("realse " + release);
+        if (release == null) {
 
-        String cityName = getIntent().getStringExtra("City Name");
-        String streetName = getIntent().getStringExtra("Street Name");
-        String AvHours = getIntent().getStringExtra("time");
-        Intent intent = new Intent(this, PresenterAvailableParking.class); //order Confirmishiadadms
-        intent.putExtra("City Name", cityName);
-        intent.putExtra("Street Name", streetName);
-        intent.putExtra("time", AvHours);
-        startActivity(intent);
+            String cityName = getIntent().getStringExtra("City Name");
+            String streetName = getIntent().getStringExtra("Street Name");
+            String AvHours = getIntent().getStringExtra("time");
+            Intent intent = new Intent(this, PresenterAvailableParking.class); //order Confirmishiadadms
+            intent.putExtra("City Name", cityName);
+            intent.putExtra("Street Name", streetName);
+            intent.putExtra("time", AvHours);
+            startActivity(intent);
+        }else{
+            Intent intent = new Intent(this, PresenterLocation.class); //order Confirmishiadadms
+            startActivity(intent);
+        }
     }
 }

@@ -42,7 +42,6 @@ public class OwnerOrdersAdapter extends RecyclerView.Adapter<OwnerOrdersAdapter.
         holder.houseNumber.setText(Integer.toString(order.getHouseNum()));
         holder.avHours.setText(order.getAvHours().toString());
         holder.pricePerHour.setText(Double.toString(order.getPrice()));
-        holder.ownerEmail.setText(order.getEmailOwner());
         holder.customerEmail.setText(order.getEmailCustomer());
     }
 
@@ -62,7 +61,6 @@ public class OwnerOrdersAdapter extends RecyclerView.Adapter<OwnerOrdersAdapter.
             houseNumber = itemView.findViewById(R.id.textHouseNumO);
             avHours = itemView.findViewById(R.id.textAvailableHoursO);
             pricePerHour = itemView.findViewById(R.id.textPriceO);
-            ownerEmail = itemView.findViewById(R.id.textEmailO);
             customerEmail = itemView.findViewById(R.id.textCustomerEmailO);
         }
     }

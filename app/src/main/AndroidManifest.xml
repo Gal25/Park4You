@@ -24,6 +24,13 @@
                 android:value="" />
         </activity>
         <activity
+            android:name=".Model.ModelPaymentDB"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".Presenter.PresenterPayment"
             android:exported="false"
             android:parentActivityName=".Presenter.PresenterLocation">

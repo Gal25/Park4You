@@ -30,6 +30,7 @@ public class PresenterMenu extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         String owner;
         String func;
+        String details;
         switch (item.getItemId()){
             case R.id.item2:
                 Intent intent = new Intent(this, PresenterUserProfile.class);
@@ -71,7 +72,9 @@ public class PresenterMenu extends AppCompatActivity {
                 startActivity(intent7);
                 return true;
             case R.id.item10:
-                Intent intent8 = new Intent(this, ModelPaymentDB.class);
+                Intent intent8 = new Intent(this, PresenterPayment.class);
+                details = "details";
+                intent8.putExtra("details", details);
                 startActivity(intent8);
                 return true;
             default: return super.onOptionsItemSelected(item);

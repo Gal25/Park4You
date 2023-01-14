@@ -15,17 +15,19 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class PresenterDeleteParking extends AppCompatActivity {
-    /**
-     * This class handles the delete parking option.
-     */
-    private EditText textViewCity, textViewStreet, textViewHouseNum;
 
+    private EditText textViewCity, textViewStreet, textViewHouseNum;
     private DatabaseReference database;
     private String email;
     private FirebaseUser firebaseUser;
     private FirebaseAuth auto;
     private ModelParkingDB parkingDB;
 
+    public PresenterDeleteParking(){}
+
+    public PresenterDeleteParking(ModelParkingDB modelParkingDB) {
+        this.parkingDB = modelParkingDB;
+    }
 
 
     @Override
@@ -42,10 +44,7 @@ public class PresenterDeleteParking extends AppCompatActivity {
 
     }
 
-    /**
-     * This function will delete a published parking by the owner from the
-     * database in case the owner does not want to rent it to others anymore.
-     */
+    //This functon will delete a published parking by the owner from the database in case the owner does not want to rent it to others anymore
     public void delete_parking(View view) {
         String city, street;
         int houseNum;
@@ -54,7 +53,13 @@ public class PresenterDeleteParking extends AppCompatActivity {
         houseNum = Integer.parseInt(textViewHouseNum.getText().toString());
         email = firebaseUser.getEmail();
         parkingDB.DeleteParking(city, email, street, houseNum);
-        Toast.makeText(PresenterDeleteParking.this, "Parking Deleted!", Toast.LENGTH_SHORT).show();
+    }
+    public void check_deleted(boolean found){
+        if (found){
+            Toast.makeText(PresenterDeleteParking.this, "Parking Deleted!", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(PresenterDeleteParking.this, "not your parking!", Toast.LENGTH_SHORT).show();
 
+        }
     }
 }

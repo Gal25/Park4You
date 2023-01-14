@@ -21,6 +21,7 @@
 (client parking history) as (client_parking_history2)
 (Log out) as (log_out1)
 (Log out) as (log_out2)
+(delete parking) as (delete_parking)
 (Menu) as (menu1)
 (Menu) as (menu2)
 
@@ -61,6 +62,7 @@ Owner --> (Use2)
 (menu2) --> (log_out2)
 (menu2) --> (new_parking)
 (menu2) --> (owner_parking_history)
+(menu2) --> (delete_parking)
 
 note right of Owner : any owner can be user
 note right of Owner : Owner`s cases

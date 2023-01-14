@@ -43,10 +43,9 @@ public class PresenterAvailableParking extends PresenterMenu {
     View v2;
     private ModelParkingDB ParkingDB;
     private String AvHours;
-//    private PaymentDB paymentDB;
     private boolean payment;
-
     private final boolean[] receive = new boolean[1];
+
     //Add the parking into to the parking list and update the parking display screen using the adapter
     @SuppressLint("MissingInflatedId")
     @Override
@@ -59,7 +58,6 @@ public class PresenterAvailableParking extends PresenterMenu {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         ordersDB = new ModelOrdersDB();
-//        paymentDB = new PaymentDB();
         ParkingDB = new ModelParkingDB(this);
         list = new ArrayList<>();
         myAdapter = new ParkingAdapter(this,list);
@@ -83,8 +81,6 @@ public class PresenterAvailableParking extends PresenterMenu {
                     assert parking != null;
                     if (parking.getStreet().equals(streetName)) {
                         String hours = parking.getAvHours().toString();
-//                        System.out.println("AvHours " + AvHours);
-//                        System.out.println("hours " + hours);
                         if (AvHours.length() != 11){
                             Toast.makeText(PresenterAvailableParking.this, "You search a wrong hour please try again", Toast.LENGTH_SHORT).show();
                             break;
@@ -113,8 +109,8 @@ public class PresenterAvailableParking extends PresenterMenu {
         boolean[] check = {false};
         v2 =recyclerView.findContainingItemView(view);
         assert v2 != null;
-//        textView = v2.findViewById(R.id.park_id);
-//        id = textView.getText().toString();
+        textView = v2.findViewById(R.id.park_id);
+        id = textView.getText().toString();
 
         SearchDetails();
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -126,9 +122,8 @@ public class PresenterAvailableParking extends PresenterMenu {
                 if (payment) {
                     DeleteAfterPayment();
                     Intent intent = new Intent(PresenterAvailableParking.this, PresenterOrderConfirmation.class);
-                    startActivity(intent);                }
-                else{
-//                    System.out.println("123");
+                    startActivity(intent);
+                }else{
                     Toast.makeText(PresenterAvailableParking.this, "fill in your payment details.",
                             Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(PresenterAvailableParking.this, PresenterPayment.class);
@@ -184,6 +179,8 @@ public class PresenterAvailableParking extends PresenterMenu {
                 // Handle error
             }
         });
+        System.out.println("payment " + payment);
+        System.out.println("recieve " + receive[0]);
     }
 
     /**

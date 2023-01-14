@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="16dp">
-            <EditText
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/textViewNameBot"
@@ -52,7 +52,7 @@
                 android:drawablePadding="10dp"
                 android:text="loading"
                 android:textColor="@color/white"/>
-            <EditText
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/textViewEmail"
@@ -63,7 +63,7 @@
                 android:drawablePadding="10dp"
                 android:text="loading"
                 android:textColor="@color/white"/>
-            <EditText
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/textViewPhoneNum"

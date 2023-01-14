@@ -41,7 +41,6 @@ public class UserOrdersAdapter extends RecyclerView.Adapter<UserOrdersAdapter.My
         holder.avHours.setText(order.getAvHours().toString());
         holder.pricePerHour.setText(Double.toString(order.getPrice()));
         holder.ownerEmail.setText(order.getEmailOwner());
-        holder.customerEmail.setText(order.getEmailCustomer());
     }
 
     @Override
@@ -61,7 +60,6 @@ public class UserOrdersAdapter extends RecyclerView.Adapter<UserOrdersAdapter.My
             avHours = itemView.findViewById(R.id.textAvailableHoursU);
             pricePerHour = itemView.findViewById(R.id.textPriceU);
             ownerEmail = itemView.findViewById(R.id.textEmailU);
-            customerEmail = itemView.findViewById(R.id.textCustomerEmailU);
         }
     }
 }

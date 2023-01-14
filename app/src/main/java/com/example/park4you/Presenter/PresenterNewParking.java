@@ -24,10 +24,6 @@ public class PresenterNewParking extends PresenterMenu {
      * This class handles a new parking added by a user.
      */
     private FirebaseAuth auto;
-    private ModelOrdersDB ordersDB;
-    private ParkingAdapter myAdapter;
-    private ArrayList<Parking> list;
-    private DatabaseReference databaseReference;
     private EditText EmailText, cityText, streetText, houseNumText, AvStartHoursText, AvEndHoursText, priceText;
     private ModelParkingDB parkingDB;
 
@@ -39,7 +35,6 @@ public class PresenterNewParking extends PresenterMenu {
         setContentView(R.layout.rent_user);
         auto = FirebaseAuth.getInstance();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        databaseReference = FirebaseDatabase.getInstance().getReference();
         EmailText = findViewById(R.id.Email);
         cityText = findViewById(R.id.City);
         streetText = findViewById(R.id.Street);

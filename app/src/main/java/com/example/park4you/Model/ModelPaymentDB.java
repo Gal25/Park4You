@@ -34,7 +34,7 @@ public class ModelPaymentDB extends PresenterMenu {
      * This will get all the payment info from the user and saves it to the database
      * It gets all of the user payment info
      */
-    public void addPamymentDetails(String CreditNumber, String ExpirationDate,String CVV, String Email) {
+    public void addPaymentDetails(String CreditNumber, String ExpirationDate,String CVV, String Email) {
         Payment payment = new Payment(CreditNumber, ExpirationDate, CVV, Email);
 
         FirebaseAuth auth;
