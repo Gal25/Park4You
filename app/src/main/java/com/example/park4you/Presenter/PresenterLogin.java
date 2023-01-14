@@ -22,9 +22,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.park4you.APIClient;
+import com.example.park4you.Client;
 import com.example.park4you.R;
-import com.example.park4you.ServerStrings;
+import com.example.park4you.Server;
 //import com.example.park4you.User.PresenterUser;
 import com.example.park4you.Object.User;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -58,7 +58,7 @@ public class PresenterLogin extends AppCompatActivity {
     private FirebaseAuth mAuth;
     TextView forgetpass;
     public ProgressDialog loginprogress;
-    private final APIClient client = new APIClient();
+    private final Client client = new Client();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,7 +116,7 @@ public class PresenterLogin extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Please enter password!", Toast.LENGTH_LONG).show();
         }
 
-        client.sendGetRequest(ServerStrings.AUTH + email + "/:" + password, new Callback() {
+        client.sendGetRequest(Server.AUTH + email + "/:" + password, new Callback() {
             @Override
             public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
                 String responseBody = response.body().string();

@@ -12,7 +12,7 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.MediaType;
 
-public class APIClient {
+public class Client {
 
     final String TAG = "API";
 
